@@ -4,6 +4,16 @@
   box-sizing: border-box;
   font-family: 'montserrat' serif;
 }
+
+body {
+  padding-top: 70px; /* Account for fixed navbar */
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px; /* Smaller padding for mobile */
+  }
+}
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
