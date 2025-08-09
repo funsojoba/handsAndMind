@@ -8,6 +8,7 @@ import fosterFamily from "../../assets/foster-family.jpg"
 const Home = ()=>{
     const [currentMonth, setCurrentMonth] = useState(new Date())
     const [selectedEvent, setSelectedEvent] = useState(null)
+    const [activeForm, setActiveForm] = useState('support')
 
     // Sample event data - you can replace these with real events
     const events = [
@@ -272,49 +273,280 @@ const Home = ()=>{
 
     <SectionFour>
         <div className="signup-container">
-            <h2 className="signup-title montserrat-bold">Ready to Get Started?</h2>
-            <p className="signup-subtitle">Join our community and get the support you need</p>
+            <h2 className="signup-title montserrat-bold">Get In Touch</h2>
+            <p className="signup-subtitle">Choose the form that best fits your needs</p>
             
-            <form className="signup-form">
-                <div className="form-row">
-                    <div className="form-group">
-                        <label htmlFor="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" required />
+            <div className="form-toggle">
+                <button 
+                    className={`toggle-btn ${activeForm === 'support' ? 'active' : ''}`}
+                    onClick={() => setActiveForm('support')}
+                >
+                    Support Request Form
+                </button>
+                <button 
+                    className={`toggle-btn ${activeForm === 'contact' ? 'active' : ''}`}
+                    onClick={() => setActiveForm('contact')}
+                >
+                    Contact Form
+                </button>
+            </div>
+            
+            {activeForm === 'support' ? (
+                <form className="signup-form">
+                    <h3 className="form-section-title">Hearts & Mind Support Request Sign-Up Form</h3>
+                    
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" id="email" name="email" required />
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" required />
+                    
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="contactMethod">Preferred Contact Method</label>
+                            <select id="contactMethod" name="contactMethod" required>
+                                <option value="">Select contact method</option>
+                                <option value="email">Email</option>
+                                <option value="text">Text</option>
+                                <option value="phone">Phone Call</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                
-                <div className="form-row">
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" required />
+                    
+                    <div className="form-section">
+                        <h4 className="section-subtitle">Your Needs (Check All That Apply)</h4>
+                        
+                        <div className="checkbox-group">
+                            <h5>Practical Support:</h5>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="laundry" />
+                                <span className="checkmark"></span>
+                                Laundry Assistance
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="mealPrep" />
+                                <span className="checkmark"></span>
+                                Meal Prep
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="errands" />
+                                <span className="checkmark"></span>
+                                Errands
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="emergencyCleaning" />
+                                <span className="checkmark"></span>
+                                Emergency Cleaning
+                            </label>
+                        </div>
+                        
+                        <div className="checkbox-group">
+                            <h5>Community Connection:</h5>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="brunchInvites" />
+                                <span className="checkmark"></span>
+                                Hearts & Mind Brunch Invites
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="joinPod" />
+                                <span className="checkmark"></span>
+                                Join a POD
+                            </label>
+                        </div>
+                        
+                        <div className="checkbox-group">
+                            <h5>Cultural Support:</h5>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="indigenousHealing" />
+                                <span className="checkmark"></span>
+                                Indigenous Healing Circles
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="blackParentGroup" />
+                                <span className="checkmark"></span>
+                                Black Parent Affinity Group
+                            </label>
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone" />
+                    
+                    <button type="submit" className="submit-btn">Submit Support Request</button>
+                </form>
+            ) : (
+                <form className="signup-form">
+                    <h3 className="form-section-title">Hearts & Mind Contact Form</h3>
+                    
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="contactFullName">Full Name</label>
+                            <input type="text" id="contactFullName" name="contactFullName" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required />
+                        </div>
                     </div>
-                </div>
-                
-                <div className="form-group">
-                    <label htmlFor="package">Preferred Package</label>
-                    <select id="package" name="package" required>
-                        <option value="">Select a package</option>
-                        <option value="bronze">Bronze</option>
-                        <option value="silver">Silver</option>
-                        <option value="gold">Gold</option>
-                    </select>
-                </div>
-                
-                <div className="form-group">
-                    <label htmlFor="message">Additional Information</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your needs..."></textarea>
-                </div>
-                
-                <button type="submit" className="submit-btn">Get Started Today</button>
-            </form>
+                    
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="contactPhone">Phone</label>
+                            <input type="tel" id="contactPhone" name="contactPhone" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="organization">Organization (if applicable)</label>
+                            <input type="text" id="organization" name="organization" />
+                        </div>
+                    </div>
+                    
+                    <div className="form-section">
+                        <h4 className="section-subtitle">Who Are You?</h4>
+                        <div className="form-group">
+                            <select id="whoAreYou" name="whoAreYou" required>
+                                <option value="">I am a...</option>
+                                <option value="fosterParent">Foster Parent/Kinship Caregiver</option>
+                                <option value="schoolRep">School/University Representative</option>
+                                <option value="volunteer">Community Volunteer</option>
+                                <option value="agencyPartner">Agency Partner (CAS, Nonprofit, etc.)</option>
+                                <option value="donor">Potential Donor/Sponsor</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div className="form-section">
+                        <h4 className="section-subtitle">How Can We Help? (Check All That Apply)</h4>
+                        
+                        <div className="checkbox-group">
+                            <h5>For Foster Parents:</h5>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="homeSupport" />
+                                <span className="checkmark"></span>
+                                Sign up for Home Support
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="joinPodContact" />
+                                <span className="checkmark"></span>
+                                Join a POD (peer support group)
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="attendBrunch" />
+                                <span className="checkmark"></span>
+                                Attend a Hearts & Mind Brunchin
+                            </label>
+                        </div>
+                        
+                        <div className="checkbox-group">
+                            <h5>For Schools/Volunteers:</h5>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="studentPlacements" />
+                                <span className="checkmark"></span>
+                                Student Placements/Internships
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="volunteerOpportunities" />
+                                <span className="checkmark"></span>
+                                Volunteer Opportunities
+                            </label>
+                        </div>
+                        
+                        <div className="checkbox-group">
+                            <h5>For Agencies/Partners:</h5>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="collaborationMeeting" />
+                                <span className="checkmark"></span>
+                                Request a Collaboration Meeting
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="inviteToEvent" />
+                                <span className="checkmark"></span>
+                                Invite Hearts & Mind to an Event
+                            </label>
+                        </div>
+                        
+                        <div className="checkbox-group">
+                            <h5>General:</h5>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="donationQuestions" />
+                                <span className="checkmark"></span>
+                                Donation Questions
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="mediaInquiry" />
+                                <span className="checkmark"></span>
+                                Media/Press Inquiry
+                            </label>
+                            <label className="checkbox-label">
+                                <input type="checkbox" name="other" />
+                                <span className="checkmark"></span>
+                                Other (describe below)
+                            </label>
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="otherDescription">Other Description</label>
+                            <textarea id="otherDescription" name="otherDescription" rows="3" placeholder="Please describe your inquiry..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <div className="form-section">
+                        <h4 className="section-subtitle">Follow-Up Preferences</h4>
+                        
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label>Best way to contact you:</label>
+                                <div className="radio-group">
+                                    <label className="radio-label">
+                                        <input type="radio" name="contactPreference" value="email" />
+                                        <span className="radio-mark"></span>
+                                        Email
+                                    </label>
+                                    <label className="radio-label">
+                                        <input type="radio" name="contactPreference" value="phone" />
+                                        <span className="radio-mark"></span>
+                                        Phone
+                                    </label>
+                                    <label className="radio-label">
+                                        <input type="radio" name="contactPreference" value="text" />
+                                        <span className="radio-mark"></span>
+                                        Text
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div className="form-group">
+                                <label>Best time:</label>
+                                <div className="radio-group">
+                                    <label className="radio-label">
+                                        <input type="radio" name="bestTime" value="morning" />
+                                        <span className="radio-mark"></span>
+                                        Morning
+                                    </label>
+                                    <label className="radio-label">
+                                        <input type="radio" name="bestTime" value="afternoon" />
+                                        <span className="radio-mark"></span>
+                                        Afternoon
+                                    </label>
+                                    <label className="radio-label">
+                                        <input type="radio" name="bestTime" value="evening" />
+                                        <span className="radio-mark"></span>
+                                        Evening
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" className="submit-btn">Submit Contact Form</button>
+                </form>
+            )}
         </div>
     </SectionFour>
 
