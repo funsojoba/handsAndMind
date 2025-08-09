@@ -1,7 +1,7 @@
 import { SectionOne, SectionTwo, SectionThree, SectionFour, AboutMe, UpcomingEvents } from "./style"
 import NavBar from "../../components/NavBar"
 import Footer from "../../components/Footer"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 import fosterFamily from "../../assets/foster-family.jpg"
 
@@ -42,7 +42,7 @@ const Home = ()=>{
         const year = currentMonth.getFullYear()
         const month = currentMonth.getMonth()
         const firstDay = new Date(year, month, 1)
-        const lastDay = new Date(year, month + 1, 0)
+        // const lastDay = new Date(year, month + 1, 0)
         const startDate = new Date(firstDay)
         startDate.setDate(startDate.getDate() - firstDay.getDay())
         

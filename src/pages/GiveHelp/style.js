@@ -6,14 +6,14 @@ export const GiveHelpContainer = styled.div`
 `
 
 export const HeroSection = styled.div`
-    background: linear-gradient(135deg, #8D24B4 0%, #7a1f9e 100%);
+    background: linear-gradient(135deg, #8D24B4 0%, #38064bff 100%);
     color: white;
     padding: 80px 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     
     @media (max-width: 768px) {
@@ -899,5 +899,4 @@ export const ContactFormSection = styled.div`
             margin-top: 5px;
             display: block;
         }
-    }
 `
