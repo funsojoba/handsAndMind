@@ -151,7 +151,6 @@ const Home = ()=>{
                     <div className="package-header">
                         <div className="package-icon">🥉</div>
                         <h3>Bronze</h3>
-                        <div className="price">$??/month</div>
                     </div>
                     <div className="package-features">
                         <div className="feature">
@@ -170,7 +169,6 @@ const Home = ()=>{
                     <div className="package-header">
                         <div className="package-icon">🥈</div>
                         <h3>Silver</h3>
-                        <div className="price">$??/month</div>
                     </div>
                     <div className="package-features">
                         <div className="feature">
@@ -193,7 +191,6 @@ const Home = ()=>{
                     <div className="package-header">
                         <div className="package-icon">🥇</div>
                         <h3>Gold</h3>
-                        <div className="price">$??/month</div>
                     </div>
                     <div className="package-features">
                         <div className="feature">

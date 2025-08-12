@@ -67,15 +67,9 @@ const NavBar = () => {
             items: [
                 { name: "Hearts & Home Relief Packages", to: "#" },
                 { name: "Reflect & Renew Workshops", to: "#" },
-                { name: "Foster Parent Win Spotlight", to: "#" },
                 { name: "Hearts & Mind Community Network", to: "#" },
                 { name: "Hearts & Mind Brunchin", to: "#" }
             ]
-        },
-        {
-            name: "Heart & Home Relief Package",
-            to: "#",
-            type: "link"
         },
         {
             name: "Our Community",
