@@ -217,6 +217,11 @@ export const NavBarDiv = styled.div`
                     background: rgba(141, 36, 180, 0.1);
                     color: #8D24B4;
                 }
+                
+                &.active {
+                    background: rgba(141, 36, 180, 0.15);
+                    color: #8D24B4;
+                }
             }
             
             .mobile-dropdown-toggle {

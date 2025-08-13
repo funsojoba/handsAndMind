@@ -5,6 +5,7 @@ import './index.css'
 import Home from './pages/Home/index.jsx'
 import About from './pages/About/index.jsx'
 import GiveHelp from './pages/GiveHelp/index.jsx'
+import Chapters from './pages/Chapters/index.jsx'
 
 import {
   createBrowserRouter,
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/give-help",
     element: <GiveHelp />
+  },
+  {
+    path: "/chapters",
+    element: <Chapters />
   }
 ])
 

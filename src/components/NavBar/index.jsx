@@ -1,12 +1,19 @@
 import { useState, useEffect, useRef } from "react"
 import { NavBarDiv } from "./style"
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router-dom"
 
 const NavBar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const [activeDropdown, setActiveDropdown] = useState(null)
     const [isScrolled, setIsScrolled] = useState(false)
     const dropdownRef = useRef(null)
+    const location = useLocation()
+
+    // Function to check if a navigation item is active
+    const isActiveRoute = (itemPath) => {
+        if (!itemPath) return false
+        return location.pathname === itemPath
+    }
 
     // Handle scroll effect
     useEffect(() => {
@@ -82,8 +89,8 @@ const NavBar = () => {
             name: "Chapters",
             type: "dropdown",
             items: [
-                { name: "Join a Chapter", to: "#" },
-                { name: "Start a Chapter", to: "#" }
+                { name: "Join a Chapter", to: "/chapters#join" },
+                { name: "Start a Chapter", to: "/chapters#start" }
             ]
         },
         {
@@ -117,7 +124,7 @@ const NavBar = () => {
                     {navigationItems.map((item, index) => (
                         <div key={index} className="nav-item" ref={dropdownRef}>
                             {item.type === 'link' ? (
-                                <Link to={item.to} className="nav-link">
+                                <Link to={item.to} className={`nav-link ${isActiveRoute(item.to) ? 'active' : ''}`}>
                                     {item.name}
                                 </Link>
                             ) : (
@@ -168,7 +175,7 @@ const NavBar = () => {
                         {item.type === 'link' ? (
                             <Link 
                                 to={item.to} 
-                                className="mobile-nav-link"
+                                className={`mobile-nav-link ${isActiveRoute(item.to) ? 'active' : ''}`}
                                 onClick={toggleMobileMenu}
                             >
                                 {item.name}

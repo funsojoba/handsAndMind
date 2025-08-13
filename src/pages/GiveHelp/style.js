@@ -56,6 +56,7 @@ export const HeroSection = styled.div`
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
             
             &:hover {
                 background: #ffed4e;
@@ -68,7 +69,7 @@ export const HeroSection = styled.div`
     .hero-image {
         img {
             width: 100%;
-            height: 400px;
+            /* height: 400px; */
             object-fit: cover;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);

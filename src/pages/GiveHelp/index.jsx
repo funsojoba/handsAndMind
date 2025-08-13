@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useLocation } from "react-router-dom"
 import { 
     GiveHelpContainer, 
     HeroSection, 
@@ -12,11 +13,22 @@ import {
 } from "./style"
 import NavBar from "../../components/NavBar"
 import Footer from "../../components/Footer"
+import { Link } from "react-router-dom"
+import { useHashNavigation } from "../../utils/scrollToSection"
 
 const GiveHelp = () => {
     const [activeTab, setActiveTab] = useState('corporate')
     const [activeFormTab, setActiveFormTab] = useState('sponsor')
     const [expandedFAQ, setExpandedFAQ] = useState(null)
+    const location = useLocation()
+    const handleHashNavigation = useHashNavigation(location)
+
+    // Handle hash navigation on page load
+    useEffect(() => {
+        if (location.hash) {
+            handleHashNavigation()
+        }
+    }, [location, handleHashNavigation])
 
     const toggleFAQ = (index) => {
         setExpandedFAQ(expandedFAQ === index ? null : index)
@@ -33,17 +45,18 @@ const GiveHelp = () => {
                         Businesses, foundations, and community partners; join us to prevent burnout
                         and keep foster placements stable.
                     </p>
-                    <button className="hero-cta">Learn How to Help</button>
+                    <Link className="hero-cta" to="#sponsorship">Learn How to Help</Link>
+                    {/* <button className="hero-cta">Learn How to Help</button> */}
                 </div>
                 <div className="hero-image">
                     <img 
-                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                        src="https://res.cloudinary.com/ddl2pf4qh/image/upload/v1755063080/HeartsAndMind/image_zcflup.png" 
                         alt="Diverse group of smiling parents and kids" 
                     />
                 </div>
             </HeroSection>
 
-            <SponsorshipSection>
+            <SponsorshipSection id="sponsorship">
                 <h2 className="section-title">Sponsorship Opportunities</h2>
                 <div className="tabs-container">
                     <div className="tabs">
@@ -108,7 +121,7 @@ const GiveHelp = () => {
                 </div>
             </SponsorshipSection>
 
-            <WhySponsorSection>
+            <WhySponsorSection id="why-sponsor">
                 <h2 className="section-title">Why Sponsor?</h2>
                 <div className="stats-testimonials">
                     <div className="stats">
@@ -154,7 +167,7 @@ const GiveHelp = () => {
                 </div>
             </WhySponsorSection>
 
-            <HowItWorksSection>
+            <HowItWorksSection id="how-it-works">
                 <h2 className="section-title">How It Works</h2>
                 <div className="steps-container">
                     <div className="step">
@@ -176,7 +189,7 @@ const GiveHelp = () => {
                 <button className="cta-button">Become a Sponsor Today</button>
             </HowItWorksSection>
 
-            <FAQSection>
+            <FAQSection id="faq">
                 <h2 className="section-title">Sponsor FAQ</h2>
                 <div className="faq-container">
                     {[
@@ -238,7 +251,7 @@ const GiveHelp = () => {
                 </div>
             </FooterCTASection>
 
-            <ContactFormSection>
+            <ContactFormSection id="contact">
                 <h2 className="section-title">Get Involved</h2>
                 <p className="section-subtitle">Choose how you'd like to contribute to our community</p>
                 

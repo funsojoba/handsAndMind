@@ -3,6 +3,25 @@ import background from "../../assets/BG_ONE.jpg"
 
 
 
+export const LinkTag = styled.a`
+    color: #f0f0f0;
+    background: #8D24B4;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border: 2px solid #f0f0f0;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+        color: #FFD700;
+        background: #501565ff;
+        transform: translateY(-2px);
+    }
+`
+
+
 export const SectionOne = styled.div`
     display: flex;
     justify-content: center;

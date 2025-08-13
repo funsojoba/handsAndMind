@@ -1,9 +1,10 @@
-import { SectionOne, SectionTwo, SectionThree, SectionFour, AboutMe, UpcomingEvents } from "./style"
+import { SectionOne, SectionTwo, SectionThree, SectionFour, AboutMe, UpcomingEvents, LinkTag } from "./style"
 import NavBar from "../../components/NavBar"
 import Footer from "../../components/Footer"
 import { useState } from "react"
 
 import fosterFamily from "../../assets/foster-family.jpg"
+import { Link } from "react-router-dom"
 
 const Home = ()=>{
     const [currentMonth, setCurrentMonth] = useState(new Date())
@@ -93,15 +94,18 @@ const Home = ()=>{
             <div className="about-content">
                 <h2 className="about-title montserrat-bold">About Hearts & Mind</h2>
                 <p className="about-description">
+                    We envision a future where every child in foster care thrives in a home grounded in 
+                    compassion, cultural integrity, and emotional safety—and where every foster parent is 
+                    supported, respected, and equipped to sustain that environment.
+                </p>
+                <p className="about-description">
                     At Hearts & Mind, we believe healing happens in the community. Our monthly
                     Hearts & Mind Brunches are more than just meals—they're a lifeline for foster
                     parents and kinship caregivers. Join us to:
                 </p>
-                <ul className="about-benefits">
-                    <li>Connect with others who truly understand the journey.</li>
-                    <li>Recharge over chef-prepared comfort food.</li>
-                    <li>Access resources in a judgment-free zone.</li>
-                </ul>
+                <Link to="/about">
+                    <LinkTag>Learn More</LinkTag>
+                </Link>
             </div>
         </div>
     </AboutMe>
