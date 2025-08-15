@@ -64,12 +64,11 @@ const About = () => {
 
     return (
         <>
-        {/* <NavBar/> */}
         <Nav />
         <AboutContainer>
             <HeroSection>
                 <div className="hero-content">
-                    <h1 className="montserrat-bold">About HEARTSANDMIND</h1>
+                    <h1 className="montserrat-bold">About HEARTS AND MIND</h1>
                     <p>Empowering foster parents with resources, relational guidance, and in-home support</p>
                 </div>
             </HeroSection>
@@ -79,7 +78,7 @@ const About = () => {
                     <h2 className="section-title montserrat-bold">Our Mission</h2>
                     <div className="mission-content">
                         <p className="mission-text">
-                            HEARTSANDMIND exists to empower foster parents with the resources, relational guidance, 
+                            HEARTS AND MIND exists to empower foster parents with the resources, relational guidance, 
                             and in-home support they need to provide safe, nurturing, and stable environments for the 
                             children entrusted to their care. We believe that by centering healing, cultural safety, and 
                             dignity, we can reduce caregiver burnout, stabilize foster placements, and improve long-term 
@@ -154,7 +153,7 @@ const About = () => {
                             wouldn't just survive but begin to heal and thrive.
                         </p>
                         <p className="history-text">
-                            And so, HEARTSANDMIND was born; not just as an organization, but as a community promise: 
+                            And so, HEARTS AND MIND was born; not just as an organization, but as a community promise: 
                             to center healing, dignity, and people over process.
                         </p>
                     </div>

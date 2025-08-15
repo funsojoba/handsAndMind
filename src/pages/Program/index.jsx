@@ -106,7 +106,7 @@ const Program = () => {
                         </div>
 
                         <div className="programs-grid">
-                            {programs.map((program, index) => (
+                            {programs.map((program) => (
                                 <ProgramCard 
                                     key={program.id}
                                     color={program.color}

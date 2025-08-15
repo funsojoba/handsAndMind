@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import ChapterImg from "../../assets/Chapter.jpg"
 
 export const ChaptersContainer = styled.div`
     min-height: 100vh;
@@ -6,10 +7,18 @@ export const ChaptersContainer = styled.div`
 `
 
 export const HeroSection = styled.div`
-    background: #8D24B4;
+    /* background: #8D24B4; */
+    /* background: linear-gradient(rgba(141,36,180,0.7), rgba(141,36,180,0.7)), url(${ChapterImg}) center/cover no-repeat; */
+    background: url(${ChapterImg});
+    background-position: center;
+    background-size: cover;
     padding: 80px 20px;
     text-align: center;
     color: white;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .hero-content {
         max-width: 800px;

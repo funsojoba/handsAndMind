@@ -26,8 +26,7 @@ export const SectionOne = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75vh;
-    /* background: #8D24B4; */
+    height: 80vh;
     background-image: url(${background});
     background-size: cover;
     background-position: center;

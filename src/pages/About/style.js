@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+import AboutImg from "../../assets/About.jpg"
+
 export const AboutContainer = styled.div`
     min-height: 100vh;
     background: #f8f9fa;
@@ -10,6 +12,13 @@ export const HeroSection = styled.div`
     padding: 80px 20px;
     text-align: center;
     color: white;
+    background: url(${AboutImg});
+    height: 75vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .hero-content {
         max-width: 800px;
