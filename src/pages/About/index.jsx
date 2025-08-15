@@ -11,6 +11,8 @@ import {
     ChallengesSection 
 } from "./style"
 
+import Nav from "../../components/Nav"
+
 const About = () => {
     const coreValues = [
         {
@@ -62,7 +64,8 @@ const About = () => {
 
     return (
         <>
-        <NavBar/>
+        {/* <NavBar/> */}
+        <Nav />
         <AboutContainer>
             <HeroSection>
                 <div className="hero-content">

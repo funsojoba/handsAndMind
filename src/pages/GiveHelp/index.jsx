@@ -11,7 +11,7 @@ import {
     FooterCTASection,
     ContactFormSection 
 } from "./style"
-import NavBar from "../../components/NavBar"
+import Nav from "../../components/Nav"
 import Footer from "../../components/Footer"
 import { Link } from "react-router-dom"
 import { useHashNavigation } from "../../utils/scrollToSection"
@@ -36,7 +36,7 @@ const GiveHelp = () => {
 
     return (
         <GiveHelpContainer>
-            <NavBar />
+            <Nav />
             
             <HeroSection>
                 <div className="hero-content">

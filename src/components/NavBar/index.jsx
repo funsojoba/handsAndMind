@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react"
 import { NavBarDiv } from "./style"
-import { Link, useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
+import { scrollToSection } from "../../utils/scrollToSection"
+
+
 
 const NavBar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -8,6 +11,7 @@ const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false)
     const dropdownRef = useRef(null)
     const location = useLocation()
+    const navigate = useNavigate()
 
     // Function to check if a navigation item is active
     const isActiveRoute = (itemPath) => {
@@ -52,6 +56,35 @@ const NavBar = () => {
         setActiveDropdown(null)
     }
 
+    // const handleNavigation = (path) => {
+    //     console.log('Navigating to:', path)
+    //     closeDropdown()
+    //     toggleMobileMenu()
+    //     navigate(path)
+    // }
+
+    const handleNavigation = (path) => {
+    closeDropdown()
+    toggleMobileMenu()
+
+    const [pathname, hash] = path.split("#")
+
+    if (location.pathname === pathname) {
+        // Already on the target page → scroll directly
+        if (hash) scrollToSection(hash)
+    } else {
+        // Navigate to a different page
+        navigate(pathname)
+
+        if (hash) {
+            // Wait for the new page to render, then scroll
+            setTimeout(() => {
+                scrollToSection(hash)
+            }, 200)
+        }
+    }
+}
+
     const navigationItems = [
         {
             name: "Home",
@@ -70,13 +103,8 @@ const NavBar = () => {
         },
         {
             name: "Our Programs",
-            type: "dropdown",
-            items: [
-                { name: "Hearts & Home Relief Packages", to: "#" },
-                { name: "Reflect & Renew Workshops", to: "#" },
-                { name: "Hearts & Mind Community Network", to: "#" },
-                { name: "Hearts & Mind Brunchin", to: "#" }
-            ]
+            to: "/programs",
+            type: "link"
         },
         {
             name: "Our Community",
@@ -113,22 +141,29 @@ const NavBar = () => {
         <NavBarDiv className={isScrolled ? 'scrolled' : ''}>
             <div className="nav-container">
                 <div className="logo">
-                    <Link to="/">
+                    <button 
+                        className="logo-button"
+                        onClick={() => navigate('/')}
+                        aria-label="Go to home page"
+                    >
                         <img src="/favicon.ico" alt="Hearts & Mind Logo" />
                         {/* <span className="logo-text">Hearts & Mind</span> */}
-                    </Link>
+                    </button>
                 </div>
 
                 {/* Desktop Navigation */}
                 <nav className="nav-menu desktop-nav">
                     {navigationItems.map((item, index) => (
-                        <div key={index} className="nav-item" ref={dropdownRef}>
+                        <div key={index} className="nav-item">
                             {item.type === 'link' ? (
-                                <Link to={item.to} className={`nav-link ${isActiveRoute(item.to) ? 'active' : ''}`}>
+                                <button 
+                                    className={`nav-link ${isActiveRoute(item.to) ? 'active' : ''}`}
+                                    onClick={() => handleNavigation(item.to)}
+                                >
                                     {item.name}
-                                </Link>
+                                </button>
                             ) : (
-                                <div className="nav-item-dropdown">
+                                <div className="nav-item-dropdown" ref={dropdownRef}>
                                     <button 
                                         className={`nav-link dropdown-toggle ${activeDropdown === item.name ? 'active' : ''}`}
                                         onClick={() => toggleDropdown(item.name)}
@@ -137,16 +172,15 @@ const NavBar = () => {
                                         <span className="dropdown-arrow">▼</span>
                                     </button>
                                     {activeDropdown === item.name && (
-                                        <div className="dropdown-menu">
+                                        <div className="dropdown-menu active">
                                             {item.items.map((subItem, subIndex) => (
-                                                <Link 
+                                                <button 
                                                     key={subIndex} 
-                                                    to={subItem.to} 
                                                     className="dropdown-item"
-                                                    onClick={closeDropdown}
+                                                    onClick={() => handleNavigation(subItem.to)}
                                                 >
                                                     {subItem.name}
-                                                </Link>
+                                                </button>
                                             ))}
                                         </div>
                                     )}
@@ -173,13 +207,12 @@ const NavBar = () => {
                 {navigationItems.map((item, index) => (
                     <div key={index} className="mobile-nav-item">
                         {item.type === 'link' ? (
-                            <Link 
-                                to={item.to} 
+                            <button 
                                 className={`mobile-nav-link ${isActiveRoute(item.to) ? 'active' : ''}`}
-                                onClick={toggleMobileMenu}
+                                onClick={() => handleNavigation(item.to)}
                             >
                                 {item.name}
-                            </Link>
+                            </button>
                         ) : (
                             <div className="mobile-dropdown">
                                 <button 
@@ -194,14 +227,13 @@ const NavBar = () => {
                                 {activeDropdown === item.name && (
                                     <div className="mobile-dropdown-menu">
                                         {item.items.map((subItem, subIndex) => (
-                                            <Link 
+                                            <button 
                                                 key={subIndex} 
-                                                to={subItem.to} 
                                                 className="mobile-dropdown-item"
-                                                onClick={toggleMobileMenu}
+                                                onClick={() => handleNavigation(subItem.to)}
                                             >
                                                 {subItem.name}
-                                            </Link>
+                                            </button>
                                         ))}
                                     </div>
                                 )}

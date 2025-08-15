@@ -6,6 +6,8 @@ import Home from './pages/Home/index.jsx'
 import About from './pages/About/index.jsx'
 import GiveHelp from './pages/GiveHelp/index.jsx'
 import Chapters from './pages/Chapters/index.jsx'
+import Program from './pages/Program/index.jsx'
+import Workshops from './pages/Workshops/index.jsx'
 
 import {
   createBrowserRouter,
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
   {
     path: "/chapters",
     element: <Chapters />
+  },
+  {
+    path: "/programs",
+    element: <Program />
+  },
+  {
+    path: "/workshops",
+    element: <Workshops />
   }
 ])
 

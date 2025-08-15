@@ -1,5 +1,5 @@
 import { SectionOne, SectionTwo, SectionThree, SectionFour, AboutMe, UpcomingEvents, LinkTag } from "./style"
-import NavBar from "../../components/NavBar"
+import Nav from "../../components/Nav"
 import Footer from "../../components/Footer"
 import { useState } from "react"
 
@@ -77,7 +77,7 @@ const Home = ()=>{
     }
 
     return <>
-    <NavBar />
+    <Nav />
 
     <SectionOne>
         <div className="text">

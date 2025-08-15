@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import NavBar from "../../components/NavBar"
+import Nav from "../../components/Nav"
 import Footer from "../../components/Footer"
 import { useHashNavigation } from "../../utils/scrollToSection"
 import { 
@@ -21,6 +21,8 @@ const Chapters = () => {
     // Set active tab based on URL hash and handle scroll
     useEffect(() => {
         const hash = location.hash
+        console.log('Hash navigation triggered:', hash)
+        
         if (hash === '#start') {
             setActiveTab('start')
         } else {
@@ -29,9 +31,46 @@ const Chapters = () => {
         
         // Handle scroll to section if hash exists
         if (hash) {
-            handleHashNavigation()
+            // Use a longer delay to ensure the component is fully rendered
+            setTimeout(() => {
+                console.log('Attempting to scroll to section:', hash)
+                handleHashNavigation()
+            }, 300)
         }
     }, [location, handleHashNavigation])
+
+    // Additional effect to handle hash navigation when component mounts
+    useEffect(() => {
+        const hash = location.hash
+        if (hash) {
+            // Try to scroll to the section after component is mounted
+            setTimeout(() => {
+                const sectionId = hash.substring(1)
+                const element = document.getElementById(sectionId)
+                if (element) {
+                    // Try scrollIntoView first as it's more reliable
+                    try {
+                        element.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start',
+                            inline: 'nearest'
+                        })
+                        console.log('Component mount: Used scrollIntoView for:', sectionId)
+                    } catch (error) {
+                        console.log('Component mount: scrollIntoView failed, using manual scroll for:', sectionId)
+                        console.log(error)
+                        // Fallback to manual scroll
+                        const navbarHeight = window.innerWidth <= 768 ? 60 : 70
+                        const elementPosition = element.offsetTop - navbarHeight - 100
+                        window.scrollTo({
+                            top: elementPosition,
+                            behavior: 'smooth'
+                        })
+                    }
+                }
+            }, 500)
+        }
+    }, [])
 
     const handleTabChange = (tab) => {
         setActiveTab(tab)
@@ -44,7 +83,7 @@ const Chapters = () => {
 
     return (
         <>
-        <NavBar />
+        <Nav />
         <ChaptersContainer>
             <HeroSection>
                 <div className="hero-content">
@@ -81,7 +120,7 @@ const Chapters = () => {
 
                     <FormSection>
                         {activeTab === 'join' ? (
-                            <div className="form-container" id="join">
+                            <div className="form-container" id="join" style={{ scrollMarginTop: '100px' }}>
                                 <h3 className="form-title">Join a Chapter</h3>
                                 <p className="form-subtitle">
                                     Connect with existing chapters in your area and become part of a supportive community.
@@ -218,7 +257,7 @@ const Chapters = () => {
                                 </form>
                             </div>
                         ) : (
-                            <div className="form-container" id="start">
+                            <div className="form-container" id="start" style={{ scrollMarginTop: '100px' }}>
                                 <h3 className="form-title">Start a Chapter</h3>
                                 <p className="form-subtitle">
                                     Ready to lead? Start a new chapter in your community and create a supportive network for foster families.

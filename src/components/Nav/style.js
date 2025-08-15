@@ -59,6 +59,12 @@ export const NavBarDiv = styled.div`
         display: flex;
         align-items: center;
         gap: 5px;
+
+        li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
         
         @media (max-width: 1024px) {
             display: none;
