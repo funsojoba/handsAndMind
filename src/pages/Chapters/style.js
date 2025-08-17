@@ -207,6 +207,13 @@ export const FormSection = styled.div`
                 resize: vertical;
                 min-height: 100px;
             }
+            
+            .char-count {
+                color: #666;
+                font-size: 0.85rem;
+                margin-top: 5px;
+                display: block;
+            }
         }
 
         .form-section {
@@ -378,6 +385,270 @@ export const FormSection = styled.div`
                 padding: 12px;
                 font-size: 1rem;
             }
+        }
+    }
+`
+
+export const PODInfoSection = styled.div`
+    margin-bottom: 60px;
+    
+    .pod-intro {
+        text-align: center;
+        margin-bottom: 50px;
+        
+        .pod-title {
+            font-size: 2.5rem;
+            color: #8D24B4;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .pod-definition {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(141, 36, 180, 0.1);
+            border: 2px solid #f0f0f0;
+            max-width: 800px;
+            margin: 0 auto;
+            
+            h3 {
+                color: #8D24B4;
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+            
+            p {
+                color: #555;
+                line-height: 1.6;
+                font-size: 1.1rem;
+            }
+        }
+    }
+    
+    .steps-container {
+        margin-bottom: 50px;
+        
+        .steps-title {
+            font-size: 2rem;
+            color: #8D24B4;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        margin-bottom: 40px;
+        
+        .pod-intro {
+            margin-bottom: 40px;
+            
+            .pod-title {
+                font-size: 2rem;
+                margin-bottom: 25px;
+            }
+            
+            .pod-definition {
+                padding: 25px;
+                
+                h3 {
+                    font-size: 1.3rem;
+                }
+                
+                p {
+                    font-size: 1rem;
+                }
+            }
+        }
+        
+        .steps-container {
+            .steps-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+        }
+    }
+`
+
+export const StepCard = styled.div`
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(141, 36, 180, 0.1);
+    border: 2px solid #f0f0f0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(141, 36, 180, 0.15);
+        border-color: #8D24B4;
+    }
+    
+    .step-number {
+        background: #8D24B4;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+    
+    .step-content {
+        flex: 1;
+        
+        h4 {
+            color: #8D24B4;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+            
+            li {
+                color: #555;
+                line-height: 1.6;
+                margin-bottom: 5px;
+            }
+        }
+        
+        .time-commitment {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #8D24B4;
+            margin-top: 15px;
+        }
+        
+        .note {
+            background: #fff3cd;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin-top: 15px;
+            color: #856404;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        padding: 20px;
+        gap: 15px;
+        
+        .step-number {
+            width: 35px;
+            height: 35px;
+            font-size: 1.1rem;
+        }
+        
+        .step-content {
+            h4 {
+                font-size: 1.2rem;
+            }
+        }
+    }
+`
+
+export const PerksSection = styled.div`
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(141, 36, 180, 0.1);
+    border: 2px solid #f0f0f0;
+    
+    .perks-title {
+        font-size: 2rem;
+        color: #8D24B4;
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 600;
+    }
+    
+    .perks-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    
+    @media (max-width: 768px) {
+        padding: 30px 20px;
+        
+        .perks-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .perks-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+    }
+`
+
+export const PerkCard = styled.div`
+    text-align: center;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-3px);
+        border-color: #8D24B4;
+        box-shadow: 0 8px 25px rgba(141, 36, 180, 0.15);
+    }
+    
+    .perk-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+    
+    h4 {
+        color: #8D24B4;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+    
+    p {
+        color: #555;
+        line-height: 1.5;
+        font-size: 0.95rem;
+    }
+    
+    @media (max-width: 768px) {
+        padding: 20px;
+        
+        .perk-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        
+        h4 {
+            font-size: 1.1rem;
+        }
+        
+        p {
+            font-size: 0.9rem;
         }
     }
 `

@@ -1173,12 +1173,13 @@ export const UpcomingEvents = styled.div`
             
             img {
                 width: 100%;
-                max-width: 300px;
+                max-width: 400px;
                 height: 200px;
                 object-fit: cover;
                 border-radius: 10px;
                 margin-bottom: 20px;
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                aspect-ratio: 2 / 1;
             }
             
             .event-info {
@@ -1199,10 +1200,34 @@ export const UpcomingEvents = styled.div`
                     }
                     
                     &.event-description {
-                        color: #666;
-                        line-height: 1.6;
-                        margin-top: 15px;
-                    }
+                    color: #666;
+                    line-height: 1.6;
+                    margin-top: 15px;
+                }
+            }
+            
+            .event-registration-link {
+                display: inline-block;
+                background: #8D24B4;
+                color: white;
+                text-decoration: none;
+                padding: 12px 24px;
+                border-radius: 25px;
+                font-weight: 600;
+                margin-top: 20px;
+                transition: all 0.3s ease;
+                border: 2px solid #8D24B4;
+                
+                &:hover {
+                    background: #7a1f9e;
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(141, 36, 180, 0.3);
+                }
+                
+                &:active {
+                    transform: translateY(0);
+                }
+            }
                 }
             }
         }

@@ -14,28 +14,13 @@ const Home = ()=>{
     // Sample event data - you can replace these with real events
     const events = [
         {
-            date: '2025-08-15',
-            title: 'Hearts & Mind Brunch',
-            time: '11:00 AM - 2:00 PM',
-            location: 'Community Center, Ajax',
-            description: 'Join us for our monthly brunch gathering. Connect with other foster parents over delicious food and meaningful conversations.',
-            flier: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-        },
-        {
-            date: '2025-08-22',
-            title: 'Reflect & Renew Workshop',
-            time: '6:00 PM - 8:00 PM',
-            location: 'Hearts & Mind Office',
-            description: 'A guided workshop focused on self-care and renewal for foster parents and caregivers.',
-            flier: 'https://images.unsplash.com/photo-1515378960530-7c0a6236fb84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-        },
-        {
-            date: '2025-08-30',
-            title: 'Foster Parent Support Group',
-            time: '7:00 PM - 9:00 PM',
+            date: '2025-08-29',
+            title: 'Introductory Workshop',
+            time: '7:00 PM - 8:00 PM EST',
             location: 'Online Meeting',
-            description: 'Virtual support group meeting for foster parents to share experiences and get advice.',
-            flier: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            description: 'Hearts and mind trauma informed care approach for foster parents',
+            link: "https://www.eventbrite.ca/e/introductory-workshop-tickets-1597710337629?aff=oddtdtcreator",
+            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1755404999/HeartsAndMind/Group_xlbl2p.jpg'
         }
     ]
 
@@ -133,7 +118,7 @@ const Home = ()=>{
                 </div>
                 <div className="program-card">
                     <div className="card-icon">🌐</div>
-                    <h3>Hearts & Mind Community Network</h3>
+                    <h3>Hearts & Mind Support Group</h3>
                     <p>Building connections and support systems within our community</p>
                 </div>
                 <div className="program-card">
@@ -258,6 +243,16 @@ const Home = ()=>{
                                 <p className="event-time">{selectedEvent.time}</p>
                                 <p className="event-location">{selectedEvent.location}</p>
                                 <p className="event-description">{selectedEvent.description}</p>
+                                {selectedEvent.link && (
+                                    <a 
+                                        href={selectedEvent.link} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="event-registration-link"
+                                    >
+                                        Register for this event
+                                    </a>
+                                )}
                             </div>
                         </div>
                     ) : (

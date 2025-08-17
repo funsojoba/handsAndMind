@@ -40,7 +40,7 @@ const Program = () => {
                 "Safe, judgment-free space"
             ],
             actionText: "See Upcoming Brunches",
-            actionLink: "/chapters",
+            actionLink: "/events",
             color: "#E91E63"
         },
         {
@@ -54,7 +54,7 @@ const Program = () => {
                 "Inclusive of all family structures"
             ],
             actionText: "Explore Workshops",
-            actionLink: "/workshops",
+            actionLink: "/events",
             color: "#2196F3"
         },
         {

@@ -8,6 +8,7 @@ import GiveHelp from './pages/GiveHelp/index.jsx'
 import Chapters from './pages/Chapters/index.jsx'
 import Program from './pages/Program/index.jsx'
 import Workshops from './pages/Workshops/index.jsx'
+import Events from './pages/Events/index.jsx'
 
 import {
   createBrowserRouter,
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/workshops",
     element: <Workshops />
+  },
+  {
+    path: "/events",
+    element: <Events />
   }
 ])
 

@@ -9,7 +9,11 @@ import {
     ChaptersContent,
     TabNavigation,
     TabButton,
-    FormSection
+    FormSection,
+    PODInfoSection,
+    StepCard,
+    PerksSection,
+    PerkCard
 } from "./style"
 
 const Chapters = () => {
@@ -87,7 +91,7 @@ const Chapters = () => {
         <ChaptersContainer>
             <HeroSection>
                 <div className="hero-content">
-                    <h1 className="montserrat-bold">Chapters</h1>
+                    <h1 className="montserrat-bold">Chapters & PODs</h1>
                     <p>Connect with like-minded individuals in your community</p>
                 </div>
             </HeroSection>
@@ -97,8 +101,7 @@ const Chapters = () => {
                     <div className="intro-section">
                         <h2 className="section-title montserrat-bold">Join Our Community</h2>
                         <p className="section-description">
-                            Chapters are a way we gather people of like minds together in different locations. 
-                            Whether you want to join an existing chapter or start a new one, we're here to support 
+                            Whether you want to join an existing chapter or become a POD Leader, we're here to support 
                             your journey in building stronger communities for foster families.
                         </p>
                     </div>
@@ -114,12 +117,12 @@ const Chapters = () => {
                             active={activeTab === 'start'} 
                             onClick={() => handleTabChange('start')}
                         >
-                            Start a Chapter
+                            Become a POD Leader
                         </TabButton>
                     </TabNavigation>
 
-                    <FormSection>
-                        {activeTab === 'join' ? (
+                    {activeTab === 'join' ? (
+                        <FormSection>
                             <div className="form-container" id="join" style={{ scrollMarginTop: '100px' }}>
                                 <h3 className="form-title">Join a Chapter</h3>
                                 <p className="form-subtitle">
@@ -256,187 +259,237 @@ const Chapters = () => {
                                     <button type="submit" className="submit-btn">Submit Join Request</button>
                                 </form>
                             </div>
-                        ) : (
-                            <div className="form-container" id="start" style={{ scrollMarginTop: '100px' }}>
-                                <h3 className="form-title">Start a Chapter</h3>
-                                <p className="form-subtitle">
-                                    Ready to lead? Start a new chapter in your community and create a supportive network for foster families.
-                                </p>
-                                
-                                <form className="chapters-form">
-                                    <div className="form-row">
-                                        <div className="form-group">
-                                            <label htmlFor="startFullName">Full Name *</label>
-                                            <input type="text" id="startFullName" name="startFullName" required />
-                                        </div>
-                                        <div className="form-group">
-                                            <label htmlFor="startEmail">Email Address *</label>
-                                            <input type="email" id="startEmail" name="startEmail" required />
-                                        </div>
+                        </FormSection>
+                    ) : (
+                        <>
+                            <PODInfoSection>
+                                <div className="pod-intro">
+                                    <h2 className="pod-title">How to Become a Hearts & Mind POD Leader</h2>
+                                    <div className="pod-definition">
+                                        <h3>What's a POD?</h3>
+                                        <p>
+                                            A small, local group of 5-8 foster families who meet monthly for peer support, resource
+                                            sharing, and respite swaps. POD Leaders are trusted community connectors who reduce
+                                            isolation among caregivers.
+                                        </p>
                                     </div>
+                                </div>
 
-                                    <div className="form-row">
-                                        <div className="form-group">
-                                            <label htmlFor="startPhone">Phone Number *</label>
-                                            <input type="tel" id="startPhone" name="startPhone" required />
+                                <div className="steps-container">
+                                    <h3 className="steps-title">Step-by-Step Guide</h3>
+                                    
+                                    <StepCard>
+                                        <div className="step-number">1</div>
+                                        <div className="step-content">
+                                            <h4>Learn About the Role</h4>
+                                            <p>As a POD Leader, you'll:</p>
+                                            <ul>
+                                                <li>Host monthly gatherings (potlucks, park meetups, or virtual chats)</li>
+                                                <li>Share Hearts & Mind resources (respite vouchers, training)</li>
+                                                <li>Be the first to pilot new programs (e.g., cultural healing circles)</li>
+                                            </ul>
+                                            <p className="time-commitment"><strong>Time commitment:</strong> 3-5 hours/month</p>
                                         </div>
-                                        <div className="form-group">
-                                            <label htmlFor="startLocation">Chapter Location *</label>
-                                            <input type="text" id="startLocation" name="startLocation" placeholder="City, Province" required />
+                                    </StepCard>
+
+                                    <StepCard>
+                                        <div className="step-number">2</div>
+                                        <div className="step-content">
+                                            <h4>Check Eligibility</h4>
+                                            <p>You're a great fit if you:</p>
+                                            <ul>
+                                                <li>Are a current/former foster parent in the region</li>
+                                                <li>Believe in trauma-informed, culturally rooted support</li>
+                                                <li>Can commit to 3-5 hours monthly</li>
+                                            </ul>
+                                            <p className="note"><em>(No formal education required—lived experience valued!)</em></p>
                                         </div>
+                                    </StepCard>
+
+                                    <StepCard>
+                                        <div className="step-number">3</div>
+                                        <div className="step-content">
+                                            <h4>Complete the POD Leader Interest Form</h4>
+                                            <p>Fill out the form below with your information and motivations for becoming a POD Leader.</p>
+                                        </div>
+                                    </StepCard>
+
+                                    <StepCard>
+                                        <div className="step-number">4</div>
+                                        <div className="step-content">
+                                            <h4>Attend Orientation</h4>
+                                            <p>1-hour virtual training on:</p>
+                                            <ul>
+                                                <li>Trauma-informed group facilitation</li>
+                                                <li>Respite swap guidelines</li>
+                                                <li>Crisis resource navigation</li>
+                                            </ul>
+                                            <p>Receive your POD Leader Toolkit (agenda templates, icebreakers)</p>
+                                        </div>
+                                    </StepCard>
+
+                                    <StepCard>
+                                        <div className="step-number">5</div>
+                                        <div className="step-content">
+                                            <h4>Launch Your POD!</h4>
+                                            <p>Hearts & Mind will:</p>
+                                            <ul>
+                                                <li>Match you with 5-8 local families</li>
+                                                <li>Provide $50/month for snacks/supplies</li>
+                                                <li>Feature you on our "Community Builders" wall</li>
+                                            </ul>
+                                        </div>
+                                    </StepCard>
+
+                                    <StepCard>
+                                        <div className="step-number">6</div>
+                                        <div className="step-content">
+                                            <h4>Monthly Check-Ins</h4>
+                                            <ul>
+                                                <li>Share wins/challenges via 15-min Zoom calls with other Leaders</li>
+                                                <li>Access to private Facebook group for troubleshooting</li>
+                                            </ul>
+                                        </div>
+                                    </StepCard>
+                                </div>
+
+                                <PerksSection>
+                                    <h3 className="perks-title">POD Leader Perks</h3>
+                                    <div className="perks-grid">
+                                        <PerkCard>
+                                            <div className="perk-icon">🎓</div>
+                                            <h4>Free Course Access</h4>
+                                            <p>Free membership to Hearts & Mind courses</p>
+                                        </PerkCard>
+                                        <PerkCard>
+                                            <div className="perk-icon">🍽️</div>
+                                            <h4>Priority Brunch Access</h4>
+                                            <p>First access to brunch events</p>
+                                        </PerkCard>
+                                        <PerkCard>
+                                            <div className="perk-icon">🏆</div>
+                                            <h4>Leadership Certificate</h4>
+                                            <p>Leadership certificate after 6 months</p>
+                                        </PerkCard>
                                     </div>
+                                </PerksSection>
+                            </PODInfoSection>
 
-                                    <div className="form-section">
-                                        <h4>About You</h4>
-                                        <div className="form-group">
-                                            <label htmlFor="startRole">Your Role</label>
-                                            <select id="startRole" name="startRole" required>
-                                                <option value="">Select your role</option>
-                                                <option value="fosterParent">Foster Parent</option>
-                                                <option value="kinshipCaregiver">Kinship Caregiver</option>
-                                                <option value="socialWorker">Social Worker</option>
-                                                <option value="communityLeader">Community Leader</option>
-                                                <option value="professional">Professional in Child Welfare</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                        </div>
+                            <FormSection>
+                                <div className="form-container" id="start" style={{ scrollMarginTop: '100px' }}>
+                                    <h3 className="form-title">POD Leader Interest Form</h3>
+                                    <p className="form-subtitle">
+                                        Ready to become a POD Leader? Fill out this form to get started on your journey.
+                                    </p>
+                                    
+                                    <form className="chapters-form">
+                                        <div className="form-section">
+                                            <h4>Form Details</h4>
+                                            <div className="form-row">
+                                                <div className="form-group">
+                                                    <label htmlFor="podFullName">Full Name *</label>
+                                                    <input type="text" id="podFullName" name="podFullName" required />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="podEmail">Email Address *</label>
+                                                    <input type="email" id="podEmail" name="podEmail" required />
+                                                </div>
+                                            </div>
 
-                                        <div className="form-group">
-                                            <label htmlFor="startExperience">Years of Experience</label>
-                                            <select id="startExperience" name="startExperience" required>
-                                                <option value="">Select experience level</option>
-                                                <option value="1-3">1-3 years</option>
-                                                <option value="3-5">3-5 years</option>
-                                                <option value="5-10">5-10 years</option>
-                                                <option value="10+">10+ years</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                            <div className="form-row">
+                                                <div className="form-group">
+                                                    <label htmlFor="podPhone">Phone Number *</label>
+                                                    <input type="tel" id="podPhone" name="podPhone" required />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="podCity">City *</label>
+                                                    <input type="text" id="podCity" name="podCity" required />
+                                                </div>
+                                            </div>
 
-                                    <div className="form-section">
-                                        <h4>Chapter Vision</h4>
-                                        <div className="form-group">
-                                            <label htmlFor="startChapterType">Chapter Type *</label>
-                                            <select id="startChapterType" name="startChapterType" required>
-                                                <option value="">Select chapter type</option>
-                                                <option value="general">General Foster Care Support</option>
-                                                <option value="indigenous">Indigenous Cultural Support</option>
-                                                <option value="black">Black Parent Affinity</option>
-                                                <option value="youth">Youth-Focused</option>
-                                                <option value="specialized">Specialized Care (medical, behavioral)</option>
-                                                <option value="other">Other (specify below)</option>
-                                            </select>
-                                        </div>
-
-                                        <div className="form-group">
-                                            <label htmlFor="startChapterName">Proposed Chapter Name</label>
-                                            <input type="text" id="startChapterName" name="startChapterName" placeholder="e.g., Toronto Foster Care Community" />
-                                        </div>
-
-                                        <div className="form-group">
-                                            <label htmlFor="startVision">Chapter Vision & Goals *</label>
-                                            <textarea 
-                                                id="startVision" 
-                                                name="startVision" 
-                                                rows="4" 
-                                                placeholder="Describe your vision for this chapter and what you hope to achieve..."
-                                                required
-                                            ></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div className="form-section">
-                                        <h4>Meeting & Structure</h4>
-                                        <div className="form-group">
-                                            <label htmlFor="startMeetingFormat">Preferred Meeting Format</label>
-                                            <div className="radio-group">
-                                                <label className="radio-label">
-                                                    <input type="radio" name="startMeetingFormat" value="inPerson" />
-                                                    <span className="radio-mark"></span>
-                                                    In-Person Meetings
-                                                </label>
-                                                <label className="radio-label">
-                                                    <input type="radio" name="startMeetingFormat" value="virtual" />
-                                                    <span className="radio-mark"></span>
-                                                    Virtual Meetings
-                                                </label>
-                                                <label className="radio-label">
-                                                    <input type="radio" name="startMeetingFormat" value="hybrid" />
-                                                    <span className="radio-mark"></span>
-                                                    Hybrid (Both)
-                                                </label>
+                                            <div className="form-group">
+                                                <label htmlFor="podYearsFostering">Years Fostering *</label>
+                                                <select id="podYearsFostering" name="podYearsFostering" required>
+                                                    <option value="">Select years of experience</option>
+                                                    <option value="0-1">0-1 years</option>
+                                                    <option value="1-3">1-3 years</option>
+                                                    <option value="3-5">3-5 years</option>
+                                                    <option value="5-10">5-10 years</option>
+                                                    <option value="10+">10+ years</option>
+                                                </select>
                                             </div>
                                         </div>
 
-                                        <div className="form-group">
-                                            <label htmlFor="startFrequency">Meeting Frequency</label>
-                                            <select id="startFrequency" name="startFrequency" required>
-                                                <option value="">Select frequency</option>
-                                                <option value="weekly">Weekly</option>
-                                                <option value="biweekly">Bi-weekly</option>
-                                                <option value="monthly">Monthly</option>
-                                                <option value="quarterly">Quarterly</option>
-                                            </select>
+                                        <div className="form-section">
+                                            <h4>Why You?</h4>
+                                            <div className="form-group">
+                                                <label htmlFor="podStrengths">What strengths would you bring to a POD? *</label>
+                                                <textarea 
+                                                    id="podStrengths" 
+                                                    name="podStrengths" 
+                                                    rows="4" 
+                                                    placeholder="Describe your strengths and what you can offer as a POD Leader..."
+                                                    maxLength="150"
+                                                    required
+                                                ></textarea>
+                                                <small className="char-count">150 words maximum</small>
+                                            </div>
+
+                                            <div className="form-group">
+                                                <label htmlFor="podCulturalTies">Describe your cultural/community ties *</label>
+                                                <select id="podCulturalTies" name="podCulturalTies" required>
+                                                    <option value="">Select your cultural/community background</option>
+                                                    <option value="black">Black</option>
+                                                    <option value="indigenous">Indigenous</option>
+                                                    <option value="southAsian">South Asian</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                            </div>
+
+                                            {document.getElementById('podCulturalTies')?.value === 'other' && (
+                                                <div className="form-group">
+                                                    <label htmlFor="podCulturalOther">Please specify your cultural/community background</label>
+                                                    <input type="text" id="podCulturalOther" name="podCulturalOther" />
+                                                </div>
+                                            )}
                                         </div>
-                                    </div>
 
-                                    <div className="form-section">
-                                        <h4>Support & Resources Needed</h4>
-                                        <div className="checkbox-group">
-                                            <label className="checkbox-label">
-                                                <input type="checkbox" name="startTraining" />
-                                                <span className="checkmark"></span>
-                                                Leadership Training
-                                            </label>
-                                            <label className="checkbox-label">
-                                                <input type="checkbox" name="startResources" />
-                                                <span className="checkmark"></span>
-                                                Resource Materials
-                                            </label>
-                                            <label className="checkbox-label">
-                                                <input type="checkbox" name="startFunding" />
-                                                <span className="checkmark"></span>
-                                                Funding Support
-                                            </label>
-                                            <label className="checkbox-label">
-                                                <input type="checkbox" name="startMentorship" />
-                                                <span className="checkmark"></span>
-                                                Mentorship from Existing Chapters
-                                            </label>
-                                            <label className="checkbox-label">
-                                                <input type="checkbox" name="startMarketing" />
-                                                <span className="checkmark"></span>
-                                                Marketing & Promotion Support
-                                            </label>
+                                        <div className="form-section">
+                                            <h4>Logistics</h4>
+                                            <div className="form-group">
+                                                <label htmlFor="podHostingStyle">How would you host? *</label>
+                                                <textarea 
+                                                    id="podHostingStyle" 
+                                                    name="podHostingStyle" 
+                                                    rows="3" 
+                                                    placeholder="Describe your preferred hosting style (potlucks, park meetups, virtual chats, etc.)..."
+                                                    required
+                                                ></textarea>
+                                            </div>
+
+                                            <div className="form-group">
+                                                <label>Best time for meetings: *</label>
+                                                <div className="radio-group">
+                                                    <label className="radio-label">
+                                                        <input type="radio" name="podBestTime" value="weekdayEvenings" required />
+                                                        <span className="radio-mark"></span>
+                                                        Weekday evenings
+                                                    </label>
+                                                    <label className="radio-label">
+                                                        <input type="radio" name="podBestTime" value="weekends" />
+                                                        <span className="radio-mark"></span>
+                                                        Weekends
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div className="form-group">
-                                        <label htmlFor="startTimeline">Timeline for Launch</label>
-                                        <select id="startTimeline" name="startTimeline" required>
-                                            <option value="">Select timeline</option>
-                                            <option value="1-3months">1-3 months</option>
-                                            <option value="3-6months">3-6 months</option>
-                                            <option value="6-12months">6-12 months</option>
-                                            <option value="flexible">Flexible timeline</option>
-                                        </select>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label htmlFor="startAdditional">Additional Information</label>
-                                        <textarea 
-                                            id="startAdditional" 
-                                            name="startAdditional" 
-                                            rows="4" 
-                                            placeholder="Any additional information about your proposed chapter..."
-                                        ></textarea>
-                                    </div>
-
-                                    <button type="submit" className="submit-btn">Submit Chapter Proposal</button>
-                                </form>
-                            </div>
-                        )}
-                    </FormSection>
+                                        <button type="submit" className="submit-btn">Submit POD Leader Application</button>
+                                    </form>
+                                </div>
+                            </FormSection>
+                        </>
+                    )}
                 </div>
             </ChaptersContent>
         </ChaptersContainer>
