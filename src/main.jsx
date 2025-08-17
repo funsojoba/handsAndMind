@@ -9,6 +9,8 @@ import Chapters from './pages/Chapters/index.jsx'
 import Program from './pages/Program/index.jsx'
 import Workshops from './pages/Workshops/index.jsx'
 import Events from './pages/Events/index.jsx'
+import Volunteer from './pages/Volunteer/index.jsx'
+import Community from './pages/Community/index.jsx'
 
 import {
   createBrowserRouter,
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
   {
     path: "/events",
     element: <Events />
+  },
+  {
+    path: "/volunteer",
+    element: <Volunteer />
+  },
+  {
+    path: "/community",
+    element: <Community />
   }
 ])
 

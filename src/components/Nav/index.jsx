@@ -38,16 +38,23 @@ const Nav = () => {
         { name: "Start a Chapter", to: "/chapters#start" }
       ]
     },
-    { name: "Upcoming Events", to: "/events", type: "link" },
-    {
-      name: "Get Involved",
-      type: "dropdown",
-      items: [
-        { name: "Agencies", to: "/involved#agencies" },
-        { name: "Educational Institutions", to: "/involved#education" },
-        { name: "Volunteer", to: "/involved#volunteer" }
-      ]
-    }
+    { name: "Upcoming Events", 
+      to: "/events", 
+      type: "link" 
+    },
+    { name: "Volunteer", 
+      to: "/volunteer", 
+      type: "link" 
+    },
+    // {
+    //   name: "Get Involved",
+    //   type: "dropdown",
+    //   items: [
+    //     { name: "Agencies", to: "/involved#agencies" },
+    //     { name: "Educational Institutions", to: "/involved#education" },
+    //     { name: "Volunteer", to: "/involved#volunteer" }
+    //   ]
+    // }
   ];
 
   useEffect(() => {
