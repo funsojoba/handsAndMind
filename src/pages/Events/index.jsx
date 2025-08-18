@@ -14,26 +14,6 @@ const Events = () => {
             description: 'Hearts and mind trauma informed care approach for foster parents. Join us for an introductory session where we explore trauma-informed care principles specifically designed for foster parents.',
             link: "https://www.eventbrite.ca/e/introductory-workshop-tickets-1597710337629?aff=oddtdtcreator",
             flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1755404999/HeartsAndMind/Group_xlbl2p.jpg'
-        },
-        {
-            id: 2,
-            date: '2025-09-15',
-            title: 'Hearts & Mind Brunch',
-            time: '11:00 AM - 1:00 PM EST',
-            location: 'Community Center',
-            description: 'Monthly gathering for foster parents and kinship caregivers. Connect with others, share experiences, and build supportive relationships over a delicious meal.',
-            link: "https://example.com/brunch-registration",
-            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1755404999/HeartsAndMind/Group_xlbl2p.jpg'
-        },
-        {
-            id: 3,
-            date: '2025-09-28',
-            title: 'Trauma-Informed Parenting Workshop',
-            time: '2:00 PM - 4:00 PM EST',
-            location: 'Online Meeting',
-            description: 'Deep dive into trauma-informed parenting strategies. Learn practical techniques to support children who have experienced trauma and build stronger family connections.',
-            link: "https://example.com/trauma-workshop",
-            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1755404999/HeartsAndMind/Group_xlbl2p.jpg'
         }
     ]
 

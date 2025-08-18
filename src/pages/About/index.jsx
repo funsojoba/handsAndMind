@@ -51,16 +51,6 @@ const About = () => {
         "Deliver Sustainable, Justice-Informed Care"
     ]
 
-    const challenges = [
-        "Systemic Neglect and Under-Resourcing of Foster Families",
-        "High Rates of Burnout Among Caregivers",
-        "Trauma Misunderstood or Pathologized",
-        "Cultural Disconnection in Child Welfare Systems",
-        "Lack of Holistic and Relational Services",
-        "Barriers to Accessing Support",
-        "Over-Surveillance of Racialized Communities",
-        "Sustainability and Capacity Building"
-    ]
 
     return (
         <>
@@ -174,19 +164,6 @@ const About = () => {
                 </div>
             </ObjectivesSection>
 
-            <ChallengesSection>
-                <div className="section-container">
-                    <h2 className="section-title montserrat-bold">Challenges</h2>
-                    <div className="challenges-list">
-                        {challenges.map((challenge, index) => (
-                            <div key={index} className="challenge-item">
-                                <span className="challenge-number">{index + 1}.</span>
-                                <span className="challenge-text">{challenge}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </ChallengesSection>
         </AboutContainer>
         <Footer />
         </>

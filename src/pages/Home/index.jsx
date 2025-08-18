@@ -112,11 +112,6 @@ const Home = ()=>{
                     <p>Personal growth and healing through guided reflection sessions</p>
                 </div>
                 <div className="program-card">
-                    <div className="card-icon">⭐</div>
-                    <h3>Foster Parent Win Spotlight</h3>
-                    <p>Celebrating and highlighting the achievements of foster parents</p>
-                </div>
-                <div className="program-card">
                     <div className="card-icon">🌐</div>
                     <h3>Hearts & Mind Support Group</h3>
                     <p>Building connections and support systems within our community</p>
@@ -161,19 +156,12 @@ const Home = ()=>{
                     </div>
                     <div className="package-features">
                         <div className="feature">
-                            <span className="feature-icon">⏰</span>
-                            <span>4 hrs / 4 times a month</span>
-                        </div>
-                        <div className="feature">
                             <span className="feature-icon">⚡</span>
-                            <span>4hr response time</span>
+                            <span>Coming soon ...</span>
                         </div>
-                        <div className="feature">
-                            <span className="feature-icon">👥</span>
-                            <span>Best for: High-needs placements</span>
-                        </div>
+
                     </div>
-                    <button className="package-btn">Learn More</button>
+                    <button disabled className="package-btn">Learn More</button>
                 </div>
 
                 <div className="package-card gold">
@@ -182,17 +170,17 @@ const Home = ()=>{
                         <h3>Gold</h3>
                     </div>
                     <div className="package-features">
-                        <div className="feature">
+                        {/* <div className="feature">
                             <span className="feature-icon">⏰</span>
                             <span>4 hrs / 4 times a month</span>
                         </div>
                         <div className="feature">
                             <span className="feature-icon">🎯</span>
                             <span>Priority booking + 1 free course/month</span>
-                        </div>
+                        </div> */}
                         <div className="feature">
                             <span className="feature-icon">🍽️</span>
-                            <span>1 brunch reservation paid</span>
+                            <span>Coming soon ...</span>
                         </div>
                     </div>
                     <button className="package-btn">Learn More</button>
@@ -332,11 +320,6 @@ const Home = ()=>{
                                 <input type="checkbox" name="mealPrep" />
                                 <span className="checkmark"></span>
                                 Meal Prep
-                            </label>
-                            <label className="checkbox-label">
-                                <input type="checkbox" name="errands" />
-                                <span className="checkmark"></span>
-                                Errands
                             </label>
                             <label className="checkbox-label">
                                 <input type="checkbox" name="emergencyCleaning" />

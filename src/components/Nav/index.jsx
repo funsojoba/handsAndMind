@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { NavBarDiv } from "./style";
 
 const Nav = () => {
@@ -21,7 +21,7 @@ const Nav = () => {
       items: [
         { name: "Hearts & Home Relief Packages", to: "/programs#hears-home-relief" },
         { name: "Reflect & Renew Workshops", to: "/programs#reflect-renew-workshop" },
-        { name: "Hearts & Mind Community Network", to: "/programs#community-network" },
+        { name: "Hearts & Mind support group", to: "/programs#community-network" },
         { name: "Hearts & Mind Brunchin", to: "/programs#brunchin" }
       ]
     },
@@ -46,15 +46,6 @@ const Nav = () => {
       to: "/volunteer", 
       type: "link" 
     },
-    // {
-    //   name: "Get Involved",
-    //   type: "dropdown",
-    //   items: [
-    //     { name: "Agencies", to: "/involved#agencies" },
-    //     { name: "Educational Institutions", to: "/involved#education" },
-    //     { name: "Volunteer", to: "/involved#volunteer" }
-    //   ]
-    // }
   ];
 
   useEffect(() => {
@@ -94,14 +85,9 @@ const Nav = () => {
       <div className="nav-container">
         {/* Logo */}
         <div className="logo">
-            <button 
-                className="logo-button"
-                onClick={() => navigate('/')}
-                aria-label="Go to home page"
-            >
-                <img src="/favicon.ico" alt="Hearts & Mind Logo" />
-                {/* <span className="logo-text">Hearts & Mind</span> */}
-            </button>
+          <Link to="/">
+            <img src="/favicon.ico" alt="Hearts & Mind Logo" />
+          </Link>
         </div>
 
         {/* Desktop Nav */}

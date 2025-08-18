@@ -63,11 +63,18 @@ export const SocialLinks = styled.div`
 export const SocialLink = styled.a`
     color: #f0f0f0;
     text-decoration: none;
-    font-size: 1rem;
-    padding: 8px 16px;
-    border: 2px solid #f0f0f0;
-    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     transition: all 0.3s ease;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
 
     &:hover {
         color: #8D24B4;

@@ -23,35 +23,11 @@ export const NavBarDiv = styled.div`
         padding: 0 20px;
         max-width: 1400px;
         margin: 0 auto;
-        height: 70px;
     }
 
     .logo {
         display: flex;
         align-items: center;
-        
-        .logo-button {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #8D24B4;
-            font-weight: 700;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            
-            img {
-                width: 40px;
-                height: 40px;
-                margin-right: 12px;
-            }
-            
-            .logo-text {
-                white-space: nowrap;
-            }
-        }
     }
 
     /* Desktop Navigation */

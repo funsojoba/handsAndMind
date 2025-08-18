@@ -263,7 +263,7 @@ const Chapters = () => {
                     ) : (
                         <>
                             <PODInfoSection>
-                                <div className="pod-intro">
+                                <div className="pod-intro" id="start">
                                     <h2 className="pod-title">How to Become a Hearts & Mind POD Leader</h2>
                                     <div className="pod-definition">
                                         <h3>What's a POD?</h3>
@@ -301,6 +301,7 @@ const Chapters = () => {
                                                 <li>Are a current/former foster parent in the region</li>
                                                 <li>Believe in trauma-informed, culturally rooted support</li>
                                                 <li>Can commit to 3-5 hours monthly</li>
+                                                <li>Must be a community member</li>
                                             </ul>
                                             <p className="note"><em>(No formal education required—lived experience valued!)</em></p>
                                         </div>
@@ -376,7 +377,7 @@ const Chapters = () => {
                             </PODInfoSection>
 
                             <FormSection>
-                                <div className="form-container" id="start" style={{ scrollMarginTop: '100px' }}>
+                                <div className="form-container" style={{ scrollMarginTop: '100px' }}>
                                     <h3 className="form-title">POD Leader Interest Form</h3>
                                     <p className="form-subtitle">
                                         Ready to become a POD Leader? Fill out this form to get started on your journey.
