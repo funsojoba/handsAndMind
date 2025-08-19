@@ -302,11 +302,10 @@ export const NavBarDiv = styled.div`
         }
         
         .logo a {
-            font-size: 1.3rem;
+            width: 50px;
             
             img {
-                width: 35px;
-                height: 35px;
+                width: 100%;
                 margin-right: 10px;
             }
         }
@@ -331,11 +330,10 @@ export const NavBarDiv = styled.div`
         }
         
         .logo a {
-            font-size: 1.2rem;
+            /* width: 150px; */
             
             img {
-                width: 30px;
-                height: 30px;
+                width: 100%;
                 margin-right: 8px;
             }
         }

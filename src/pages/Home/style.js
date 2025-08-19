@@ -36,6 +36,10 @@ export const SectionOne = styled.div`
             font-size: 3rem; /* Increased font size */
             display: inline-block;
             color: #fff;
+
+            @media only screen and (max-width: 768px) {
+                font-size: 2em;
+            }
         }
         p{
             color: #fff;
@@ -1253,7 +1257,6 @@ export const UpcomingEvents = styled.div`
                 line-height: 1.5;
             }
         }
-    }
     
     @media (max-width: 768px) {
         padding: 60px 20px;
