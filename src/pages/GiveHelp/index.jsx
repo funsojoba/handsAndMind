@@ -283,9 +283,24 @@ const GiveHelp = () => {
                 <h2>Not ready to sponsor?</h2>
                 <p>Share this page with a business owner who might be!</p>
                 <div className="share-buttons">
-                    <button className="share-btn">Share on Facebook</button>
-                    <button className="share-btn">Share on LinkedIn</button>
-                    <button className="share-btn">Copy Link</button>
+                    <button 
+                        className="share-btn" 
+                        onClick={() => window.open('https://www.facebook.com/share/1AzxcDeoSy/?mibextid=wwXIfr', '_blank')}
+                    >
+                        Share on Facebook
+                    </button>
+                    <button 
+                        className="share-btn" 
+                        onClick={() => window.open('https://www.linkedin.com/company/heartsandmind-foster-community/', '_blank')}
+                    >
+                        Share on LinkedIn
+                    </button>
+                    <button 
+                        className="share-btn" 
+                        onClick={() => window.open('https://www.instagram.com/heartsandmindfc?igsh=MW1sYWR6dXdsYmkwcQ==', '_blank')}
+                    >
+                        Follow on Instagram
+                    </button>
                 </div>
             </FooterCTASection>
 
