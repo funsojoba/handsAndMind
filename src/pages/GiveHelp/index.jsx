@@ -16,6 +16,12 @@ import Footer from "../../components/Footer"
 import { Link } from "react-router-dom"
 import { useHashNavigation } from "../../utils/scrollToSection"
 
+// sponsors logo
+import BigGirLogo from "../../assets/sponsors/bigGirl.jpg"
+import soulReaction from "../../assets/sponsors/soulReaction.jpg"
+import oxfordCollege from "../../assets/sponsors/oxfordCollege.jpg"
+import dCare from "../../assets/sponsors/dcare.jpg"
+
 const GiveHelp = () => {
     const [activeTab, setActiveTab] = useState('corporate')
     const [activeFormTab, setActiveFormTab] = useState('sponsor')
@@ -231,12 +237,44 @@ const GiveHelp = () => {
             </FAQSection>
 
             <SponsorsSpotlightSection>
-                <h2 className="section-title">Current Sponsors Spotlight</h2>
+                <h2 className="section-title">Current Sponsors/Partners Spotlight</h2>
                 <div className="sponsors-grid">
-                    <div className="sponsor-logo">Local Bakery</div>
-                    <div className="sponsor-logo">Community Bank</div>
-                    <div className="sponsor-logo">Family Restaurant</div>
-                    <div className="sponsor-logo">Local Law Firm</div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={soulReaction} />
+                        </div>
+                        <div className="text">
+                            Soul Reaction
+                        </div>
+                    </div>
+                    
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={BigGirLogo} />
+                        </div>
+                        <div className="text">
+                            Big Girl Interupted
+                        </div>
+                    </div>
+                    
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={oxfordCollege} />
+                        </div>
+                        <div className="text">
+                            Oxford College
+                        </div>
+                    </div>
+                    
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={dCare} />
+                        </div>
+                        <div className="text">
+                            D'Care Foundation
+                        </div>
+                    </div>
+
                 </div>
                 <p className="join-text">Join these change-makers!</p>
             </SponsorsSpotlightSection>
@@ -622,17 +660,12 @@ const GiveHelp = () => {
                                     <label className="checkbox-label">
                                         <input type="checkbox" name="volunteerRoles" value="laundryHelper" />
                                         <span className="checkmark"></span>
-                                        Laundry Helper (2 hrs/week)
-                                    </label>
-                                    <label className="checkbox-label">
-                                        <input type="checkbox" name="volunteerRoles" value="mealPrepAssistant" />
-                                        <span className="checkmark"></span>
-                                        Meal Prep Assistant
+                                        Foster parents home support
                                     </label>
                                     <label className="checkbox-label">
                                         <input type="checkbox" name="volunteerRoles" value="brunchEventSetup" />
                                         <span className="checkmark"></span>
-                                        Brunch Event Setup
+                                        Event Setup
                                     </label>
                                     <label className="checkbox-label">
                                         <input type="checkbox" name="volunteerRoles" value="crisisRespiteVolunteer" />
@@ -645,6 +678,7 @@ const GiveHelp = () => {
                                         Cultural Program Support (e.g., Indigenous cooking)
                                     </label>
                                 </div>
+                                <div className="note">CAS is required for respite care</div>
                             </div>
                             
                             <div className="form-section">

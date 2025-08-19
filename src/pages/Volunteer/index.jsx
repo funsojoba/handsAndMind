@@ -179,18 +179,14 @@ const Volunteer = () => {
                                             <label className="checkbox-label">
                                                 <input type="checkbox" name="volunteerBrunchSetup" />
                                                 <span className="checkmark"></span>
-                                                Brunch Event Setup
+                                                Event Setup
                                             </label>
                                             <label className="checkbox-label">
                                                 <input type="checkbox" name="volunteerCrisisRespite" />
                                                 <span className="checkmark"></span>
                                                 Crisis Respite Volunteer
                                             </label>
-                                            <label className="checkbox-label">
-                                                <input type="checkbox" name="volunteerCulturalSupport" />
-                                                <span className="checkmark"></span>
-                                                Cultural Program Support (e.g., Indigenous cooking)
-                                            </label>
+
                                         </div>
                                     </div>
 
@@ -267,6 +263,7 @@ const Volunteer = () => {
                                                 <input type="tel" id="volunteerEmergencyPhone" name="volunteerEmergencyPhone" required />
                                             </div>
                                         </div>
+                                        <div className="note">CAS is required for respite care</div>
                                     </div>
 
                                     <div className="form-section">

@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import background from "../../assets/BG_2.png"
+import background from "../../assets/BG_5.jpg"
 
 export const VolunteerContainer = styled.div`
     min-height: 100vh;
-    background: #f8f9fa;
+    background: #f9f8faff;
 `
 
 export const HeroSection = styled.div`
@@ -233,6 +233,15 @@ export const FormSection = styled.div`
             background: #f8f9fa;
             border-radius: 12px;
             border-left: 4px solid #8D24B4;
+
+            .note {
+                background: #fff3cd;
+                padding: 10px 15px;
+                border-radius: 8px;
+                border-left: 4px solid #ffc107;
+                margin-top: 15px;
+                color: #856404;
+            }
 
             h4 {
                 font-size: 1.3rem;

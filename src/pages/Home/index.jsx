@@ -139,7 +139,7 @@ const Home = ()=>{
                     <div className="package-features">
                         <div className="feature">
                             <span className="feature-icon">⏰</span>
-                            <span>2 hrs / 4 times a month</span>
+                            <span>4 hrs / 2 times a month</span>
                         </div>
                         <div className="feature">
                             <span className="feature-icon">👥</span>
@@ -156,12 +156,16 @@ const Home = ()=>{
                     </div>
                     <div className="package-features">
                         <div className="feature">
-                            <span className="feature-icon">⚡</span>
-                            <span>Coming soon ...</span>
+                            <span className="feature-icon">⏰</span>
+                            <span>4 hrs / 4 times a month</span>
+                        </div>
+                        <div className="feature">
+                            <span className="feature-icon">🎯</span>
+                            <span>Priority booking</span>
                         </div>
 
                     </div>
-                    <button disabled className="package-btn">Learn More</button>
+                    <button disabled className="package-btn">Coming Soon ...</button>
                 </div>
 
                 <div className="package-card gold">
@@ -170,20 +174,16 @@ const Home = ()=>{
                         <h3>Gold</h3>
                     </div>
                     <div className="package-features">
-                        {/* <div className="feature">
+                        <div className="feature">
                             <span className="feature-icon">⏰</span>
                             <span>4 hrs / 4 times a month</span>
                         </div>
                         <div className="feature">
                             <span className="feature-icon">🎯</span>
                             <span>Priority booking + 1 free course/month</span>
-                        </div> */}
-                        <div className="feature">
-                            <span className="feature-icon">🍽️</span>
-                            <span>Coming soon ...</span>
                         </div>
                     </div>
-                    <button className="package-btn">Learn More</button>
+                    <button className="package-btn">Coming Soon ...</button>
                 </div>
             </div>
         </div>
@@ -500,26 +500,7 @@ const Home = ()=>{
                                 </div>
                             </div>
                             
-                            <div className="form-group">
-                                <label>Best time:</label>
-                                <div className="radio-group">
-                                    <label className="radio-label">
-                                        <input type="radio" name="bestTime" value="morning" />
-                                        <span className="radio-mark"></span>
-                                        Morning
-                                    </label>
-                                    <label className="radio-label">
-                                        <input type="radio" name="bestTime" value="afternoon" />
-                                        <span className="radio-mark"></span>
-                                        Afternoon
-                                    </label>
-                                    <label className="radio-label">
-                                        <input type="radio" name="bestTime" value="evening" />
-                                        <span className="radio-mark"></span>
-                                        Evening
-                                    </label>
-                                </div>
-                            </div>
+                          
                         </div>
                     </div>
                     

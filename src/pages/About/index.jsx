@@ -41,16 +41,6 @@ const About = () => {
         }
     ]
 
-    const objectives = [
-        "Strengthen the Foster Caregiving Ecosystem",
-        "Reduce Caregiver Burnout",
-        "Enhance Placement Stability",
-        "Improve Outcomes for Children in Care",
-        "Center Lived Experience and Community Voice",
-        "Advocate for Systemic Change",
-        "Deliver Sustainable, Justice-Informed Care"
-    ]
-
 
     return (
         <>
@@ -95,7 +85,7 @@ const About = () => {
                         </p>
                         <p className="vision-text">
                             In this future, caregiving is not a burden shouldered in isolation, but a collective responsibility 
-                            that our communities embrace and our systems resource. It is a future in which youth in care 
+                            that our communities embrace and our systems resource. It is a future in which children in care 
                             grow up with hope, stability, and opportunity, and where trauma is met not with punishment, 
                             but with connection, care, and culturally informed healing.
                         </p>
@@ -116,53 +106,6 @@ const About = () => {
                     </div>
                 </div>
             </ValuesSection>
-
-            <HistorySection>
-                <div className="section-container">
-                    <h2 className="section-title montserrat-bold">History and Founding Story</h2>
-                    <div className="history-content">
-                        <p className="history-text">
-                            Abigail Wonuigwe is a mother of two, a foster parent and a graduate of Oxford College's 
-                            Community Developmental Support Program, began witnessing a recurring crisis: foster 
-                            parents, particularly those caring for racialized children, were overwhelmed, isolated, and 
-                            unsupported. Many were on the brink of burnout. And the children in their care are brilliant, 
-                            resilient, and full of potential and were being failed by systems that too often ignored their 
-                            histories, culture, and humanity.
-                        </p>
-                        <p className="history-text">
-                            Abigail heard the same stories over and over: caregivers begging for respite and being denied, 
-                            youth with trauma histories shuffled between homes, children missing school or slipping into 
-                            survival behaviors such as substance use, self-harm, or street involvement as a result of their 
-                            pain was misunderstood or pathologized. She listened. She saw. And she knew something had 
-                            to change.
-                        </p>
-                        <p className="history-text">
-                            Drawing from her professional training, lived experience, and maternal wisdom, Abigail 
-                            imagined a new way forward: a nonprofit rooted in compassion, culturally attuned care, and 
-                            practical, in-home support. A place where caregivers wouldn't feel alone and where children 
-                            wouldn't just survive but begin to heal and thrive.
-                        </p>
-                        <p className="history-text">
-                            And so, HEARTS AND MIND was born; not just as an organization, but as a community promise: 
-                            to center healing, dignity, and people over process.
-                        </p>
-                    </div>
-                </div>
-            </HistorySection>
-
-            <ObjectivesSection>
-                <div className="section-container">
-                    <h2 className="section-title montserrat-bold">Objectives</h2>
-                    <div className="objectives-list">
-                        {objectives.map((objective, index) => (
-                            <div key={index} className="objective-item">
-                                <span className="objective-number">{index + 1}.</span>
-                                <span className="objective-text">{objective}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </ObjectivesSection>
 
         </AboutContainer>
         <Footer />

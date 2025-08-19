@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import background from "../../assets/BG_2.png"
+import background from "../../assets/BG_3.jpg"
 
 export const CommunityContainer = styled.div`
     min-height: 100vh;

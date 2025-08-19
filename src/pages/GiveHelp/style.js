@@ -507,11 +507,12 @@ export const SponsorsSpotlightSection = styled.div`
     }
     
     .sponsors-grid {
-        max-width: 800px;
         margin: 0 auto 30px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        display: flex;
         gap: 30px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
         
         .sponsor-logo {
             background: #f8f9fa;
@@ -528,6 +529,16 @@ export const SponsorsSpotlightSection = styled.div`
                 border-color: #8D24B4;
                 background: #f0f0f0;
                 transform: translateY(-2px);
+            }
+
+            .image{
+                width: 150px;
+                border-radius: 10px;
+                overflow: hidden;
+
+                img{
+                    width: 100%;
+                }
             }
         }
     }
@@ -721,6 +732,15 @@ export const ContactFormSection = styled.div`
             background: white;
             border-radius: 10px;
             border-left: 4px solid #8D24B4;
+
+            .note {
+                background: #fff3cd;
+                padding: 10px 15px;
+                border-radius: 8px;
+                border-left: 4px solid #ffc107;
+                margin-top: 15px;
+                color: #856404;
+            }
             
             h3 {
                 color: #8D24B4;
