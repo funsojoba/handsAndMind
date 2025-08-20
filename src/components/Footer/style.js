@@ -4,6 +4,19 @@ export const FooterContainer = styled.footer`
     background: #8D24B4;
     color: white;
     padding: 60px 20px 40px;
+
+    .copyright {
+        border-top: solid 1px #FFD700;
+        padding: 10px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: #f0f0f0;
+    }
 `
 
 export const FooterContent = styled.div`

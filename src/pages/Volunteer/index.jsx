@@ -167,14 +167,9 @@ const Volunteer = () => {
                                         <p className="section-description">Choose the opportunities that interest you:</p>
                                         <div className="checkbox-group">
                                             <label className="checkbox-label">
-                                                <input type="checkbox" name="volunteerLaundry" />
-                                                <span className="checkmark"></span>
-                                                Laundry Helper (2 hrs/week)
-                                            </label>
-                                            <label className="checkbox-label">
                                                 <input type="checkbox" name="volunteerMealPrep" />
                                                 <span className="checkmark"></span>
-                                                Meal Prep Assistant
+                                                Foster parents in-home support
                                             </label>
                                             <label className="checkbox-label">
                                                 <input type="checkbox" name="volunteerBrunchSetup" />

@@ -1,6 +1,9 @@
+import { useState } from "react"
 import { FooterContainer, FooterContent, FooterSection, FooterTitle, FooterLink, SocialLinks, SocialLink } from "./style"
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
+    const [year] = useState(currentYear);
     return (
         <FooterContainer>
             <FooterContent>
@@ -37,6 +40,11 @@ const Footer = () => {
                     </SocialLinks>
                 </FooterSection>
             </FooterContent>
+
+            <div className="copyright">
+                <small>&copy; Copyright {year}, HeartsandMind Inc, 1705794-6. All rights reserved.</small>
+            </div>
+
         </FooterContainer>
     )
 }
