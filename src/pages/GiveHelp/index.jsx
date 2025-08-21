@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import emailjs from "emailjs-com"
 import { 
     GiveHelpContainer, 
     HeroSection, 
@@ -26,6 +27,8 @@ const GiveHelp = () => {
     const [activeTab, setActiveTab] = useState('corporate')
     const [activeFormTab, setActiveFormTab] = useState('sponsor')
     const [expandedFAQ, setExpandedFAQ] = useState(null)
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitMessage, setSubmitMessage] = useState('')
     const location = useLocation()
     const handleHashNavigation = useHashNavigation(location)
 
@@ -38,6 +41,79 @@ const GiveHelp = () => {
 
     const toggleFAQ = (index) => {
         setExpandedFAQ(expandedFAQ === index ? null : index)
+    }
+
+    const handleVolunteerSubmit = async (e) => {
+        e.preventDefault()
+        setIsSubmitting(true)
+        setSubmitMessage('')
+
+        try {
+            const formData = new FormData(e.target)
+            console.log('Form Data:', Object.fromEntries(formData.entries()))
+            console.log("-----", formData)
+            const volunteerData = {
+                name: formData.get('volunteerName'),
+                email: formData.get('volunteerEmail'),
+                phone: formData.get('volunteerPhone'),
+                whyVolunteer: formData.get('whyVolunteer'),
+                volunteerRoles: formData.getAll('volunteerRoles'),
+                availability: formData.getAll('availability'),
+                skillsCerts: formData.getAll('skillsCerts'),
+                emergencyContact: formData.get('emergencyContact'),
+                backgroundCheck: formData.get('backgroundCheck') === 'on',
+                newsletters: formData.get('newsletters') === 'on'
+            }
+
+            // EmailJS configuration - you'll need to replace these with your actual credentials
+            const templateParams = {
+                to_email: 'volunteers@heartsandmind.org', // Replace with your email
+                name: volunteerData.name,
+                from_email: volunteerData.email,
+                time: new Date().toLocaleString(),
+                subject: 'New Volunteer Application - Hearts & Mind',
+                message: `
+                    New Volunteer Application
+
+                    Personal Information:
+                    - Name: ${volunteerData.name}
+                    - Email: ${volunteerData.email}
+                    - Phone: ${volunteerData.phone}
+                    - Why Volunteer: ${volunteerData.whyVolunteer}
+
+                    Volunteer Roles: ${volunteerData.volunteerRoles.join(', ') || 'None selected'}
+
+                    Availability: ${volunteerData.availability.join(', ') || 'None selected'}
+
+                    Skills/Certifications: ${volunteerData.skillsCerts.join(', ') || 'None selected'}
+
+                    Emergency Contact: ${volunteerData.emergencyContact}
+
+                    Consent:
+                    - Background Check: ${volunteerData.backgroundCheck ? 'Yes' : 'No'}
+                    - Newsletters: ${volunteerData.newsletters ? 'Yes' : 'No'}
+                `
+            }
+
+            // Send email using EmailJS
+            // You'll need to replace these IDs with your actual EmailJS credentials
+            const result = await emailjs.send(
+                'service_142mhiv', // Replace with your EmailJS service ID
+                'template_2qqpf08', // Replace with your EmailJS template ID
+                templateParams,
+                'PmoxR6KKr41SNPbuL' // Replace with your EmailJS user ID
+            )
+
+            console.log('Email sent successfully:', result.text)
+
+            setSubmitMessage('Thank you! Your volunteer application has been submitted successfully.')
+            e.target.reset()
+        } catch (error) {
+            console.error('Error submitting form:', error)
+            setSubmitMessage('Sorry, there was an error submitting your application. Please try again.')
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
@@ -635,7 +711,7 @@ const GiveHelp = () => {
                     )}
 
                     {activeFormTab === 'volunteer' && (
-                        <form className="volunteer-form">
+                        <form className="volunteer-form" onSubmit={handleVolunteerSubmit}>
                             <h3 className="form-title">Volunteer Signup Form</h3>
                             
                             <div className="form-section">
@@ -773,7 +849,18 @@ const GiveHelp = () => {
                                 </div>
                             </div>
                             
-                            <button type="submit" className="submit-btn">Join Our Village</button>
+                            {submitMessage && (
+                                <div className={`submit-message ${submitMessage.includes('error') ? 'error' : 'success'}`}>
+                                    {submitMessage}
+                                </div>
+                            )}
+                            <button 
+                                type="submit" 
+                                className="submit-btn" 
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Submitting...' : 'Join Our Village'}
+                            </button>
                         </form>
                     )}
                 </div>

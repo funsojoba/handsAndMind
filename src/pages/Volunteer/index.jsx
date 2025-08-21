@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+import emailjs from "emailjs-com"
 import Nav from "../../components/Nav"
 import Footer from "../../components/Footer"
 import { useHashNavigation } from "../../utils/scrollToSection"
@@ -14,6 +15,8 @@ import {
 
 const Volunteer = () => {
     const [activeTab, setActiveTab] = useState('volunteer')
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitMessage, setSubmitMessage] = useState('')
     const location = useLocation()
     const navigate = useNavigate()
     const handleHashNavigation = useHashNavigation(location)
@@ -81,6 +84,103 @@ const Volunteer = () => {
         }
     }
 
+    const handleVolunteerSubmit = async (e) => {
+        e.preventDefault()
+        setIsSubmitting(true)
+        setSubmitMessage('')
+
+        try {
+            const formData = new FormData(e.target)
+            console.log('Form Data:', Object.fromEntries(formData.entries()))
+            console.log('-----', formData)
+
+            const mapReason = (val) => {
+                if (val === 'fosterParent') return 'Foster Parent'
+                if (val === 'communityMember') return 'Community Member'
+                if (val === 'corporateGroup') return 'Corporate Group'
+                return val || ''
+            }
+
+            const volunteerRoles = []
+            if (formData.get('volunteerMealPrep')) volunteerRoles.push('Foster parents in-home support')
+            if (formData.get('volunteerBrunchSetup')) volunteerRoles.push('Event Setup')
+            if (formData.get('volunteerCrisisRespite')) volunteerRoles.push('Crisis Respite Volunteer')
+
+            const availability = []
+            if (formData.get('volunteerMornings')) availability.push('Mornings')
+            if (formData.get('volunteerAfternoons')) availability.push('Afternoons')
+            if (formData.get('volunteerEvenings')) availability.push('Evenings')
+            if (formData.get('volunteerWeekdays')) availability.push('Weekdays')
+            if (formData.get('volunteerWeekends')) availability.push('Weekends')
+
+            const skillsCerts = []
+            if (formData.get('volunteerFirstAid')) skillsCerts.push('First Aid/CPR')
+            if (formData.get('volunteerVulnerableSector')) skillsCerts.push('Vulnerable Sector Check')
+            if (formData.get('volunteerTraumaTraining')) skillsCerts.push('Trauma Training')
+
+            const volunteerData = {
+                name: formData.get('volunteerFullName'),
+                email: formData.get('volunteerEmail'),
+                phone: formData.get('volunteerPhone'),
+                whyVolunteer: mapReason(formData.get('volunteerWhy')),
+                volunteerRoles,
+                availability,
+                skillsCerts,
+                emergencyContactName: formData.get('volunteerEmergencyName'),
+                emergencyContactPhone: formData.get('volunteerEmergencyPhone'),
+                backgroundCheck: !!formData.get('volunteerBackgroundCheck'),
+                newsletters: !!formData.get('volunteerNewsletter')
+            }
+
+            const templateParams = {
+                to_email: 'volunteers@heartsandmind.org',
+                name: volunteerData.name,
+                from_email: volunteerData.email,
+                time: new Date().toLocaleString(),
+                subject: 'New Volunteer Application - Hearts & Mind',
+                message: `
+                    New Volunteer Application
+
+                    Personal Information:
+                    - Name: ${volunteerData.name}
+                    - Email: ${volunteerData.email}
+                    - Phone: ${volunteerData.phone}
+                    - Why Volunteer: ${volunteerData.whyVolunteer}
+
+                    Volunteer Roles: ${volunteerData.volunteerRoles.join(', ') || 'None selected'}
+
+                    Availability: ${volunteerData.availability.join(', ') || 'None selected'}
+
+                    Skills/Certifications: ${volunteerData.skillsCerts.join(', ') || 'None selected'}
+
+                    Emergency Contact:
+                    - Name: ${volunteerData.emergencyContactName}
+                    - Phone: ${volunteerData.emergencyContactPhone}
+
+                    Consent:
+                    - Background Check: ${volunteerData.backgroundCheck ? 'Yes' : 'No'}
+                    - Newsletters: ${volunteerData.newsletters ? 'Yes' : 'No'}
+                `
+            }
+
+            const result = await emailjs.send(
+                'service_142mhiv',
+                'template_2qqpf08',
+                templateParams,
+                'PmoxR6KKr41SNPbuL'
+            )
+
+            console.log('Email sent successfully:', result.text)
+            setSubmitMessage('Thank you! Your volunteer application has been submitted successfully.')
+            e.target.reset()
+        } catch (error) {
+            console.error('Error submitting form:', error)
+            setSubmitMessage('Sorry, there was an error submitting your application. Please try again.')
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
     return (
         <>
         <Nav />
@@ -131,7 +231,7 @@ const Volunteer = () => {
                                     Join our village of volunteers and help support foster families in your community.
                                 </p>
                                 
-                                <form className="volunteer-form">
+                                <form className="volunteer-form" onSubmit={handleVolunteerSubmit}>
                                     <div className="form-section">
                                         <h4>Personal Information</h4>
                                         <div className="form-row">
@@ -277,7 +377,14 @@ const Volunteer = () => {
                                         </div>
                                     </div>
 
-                                    <button type="submit" className="submit-btn">Join Our Village</button>
+                                    {submitMessage && (
+                                        <div className={`submit-message ${submitMessage.startsWith('Sorry') ? 'error' : 'success'}`}>
+                                            {submitMessage}
+                                        </div>
+                                    )}
+                                    <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                                        {isSubmitting ? 'Submitting...' : 'Join Our Village'}
+                                    </button>
                                 </form>
                             </div>
                         </FormSection>

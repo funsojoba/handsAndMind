@@ -851,6 +851,33 @@ export const ContactFormSection = styled.div`
                 transform: translateY(-2px);
                 box-shadow: 0 5px 15px rgba(141, 36, 180, 0.3);
             }
+            
+            &:disabled {
+                background: #ccc;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+            }
+        }
+        
+        .submit-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            
+            &.success {
+                background: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+            
+            &.error {
+                background: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+            }
         }
         
         .form-title {
