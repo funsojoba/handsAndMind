@@ -1,7 +1,8 @@
-import { SectionOne, SectionTwo, SectionThree, SectionFour, AboutMe, UpcomingEvents, LinkTag } from "./style"
+import { SectionOne, SectionTwo, SectionThree, SectionFour, AboutMe, UpcomingEvents, LinkTag, FormContainer } from "./style"
 import Nav from "../../components/Nav"
 import Footer from "../../components/Footer"
 import { useState } from "react"
+import emailjs from "emailjs-com"
 
 import fosterFamily from "../../assets/foster-family.jpg"
 import { Link } from "react-router-dom"
@@ -10,6 +11,27 @@ const Home = ()=>{
     const [currentMonth, setCurrentMonth] = useState(new Date())
     const [selectedEvent, setSelectedEvent] = useState(null)
     const [activeForm, setActiveForm] = useState('support')
+
+    const [contactIsSubmitting, setContactIsSubmitting] = useState(false)
+    const [contactSubmitMessage, setContactSubmitMessage] = useState('')
+
+
+    const scrollToSignupForm = () => {
+        setActiveForm('support')
+        setTimeout(() => {
+            const target = document.getElementById('signup')
+            if (target) {
+                try {
+                    const navbarHeight = window.innerWidth <= 768 ? 60 : 70
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20
+                    window.scrollTo({ top, behavior: 'smooth' })
+                } catch (err) {
+                    console.log(err)
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+            }
+        }, 0)
+    }
 
     // Sample event data - you can replace these with real events
     const events = [
@@ -58,6 +80,104 @@ const Home = ()=>{
     const handleDateClick = (day) => {
         if (day.hasEvent) {
             setSelectedEvent(day.event)
+        }
+    }
+
+    const handleContactSubmit = async (e) => {
+        e.preventDefault()
+        setContactIsSubmitting(true)
+        setContactSubmitMessage('')
+
+        try {
+            const formData = new FormData(e.target)
+            console.log("FORM DATA:", formData)
+            const whoAreYou = (val) =>{
+                if (val === "fosterParent") return "Foster Parent/Kinship Caregiver"
+                if (val === "schoolRep") return "School/University Representative" 
+                if (val === "volunteer") return "Community Volunteer"
+                if (val === "agencyPartner") return "Agency Partner (CAS, Nonprofit, etc.)"
+                if (val === "donor") return "Potential Donor/Sponsor"
+                if (val === "general") return "General Inquiry"
+                return val || "Not specified"
+            }
+
+            const howCanWeHelp = []
+            if (formData.get('homeSupport')) howCanWeHelp.push("Sign up for Home Support")
+            if (formData.get('joinPodContact')) howCanWeHelp.push("Join a POD (peer support group)")
+            if (formData.get('attendBrunch')) howCanWeHelp.push("Attend a Hearts & Mind Brunchin")
+            
+            
+            const forSchoolVolunteer = []
+            if (formData.get('studentPlacements')) forSchoolVolunteer.push("Student Placements/Internships")
+            if (formData.get('volunteerOpportunities')) forSchoolVolunteer.push("Volunteer Opportunities")
+
+            const agencyPartner = []
+            if (formData.get('collaborationMeeting')) agencyPartner.push("Request a Collaboration Meeting")
+            if (formData.get('inviteToEvent')) agencyPartner.push("Invite Hearts & Mind to an Event")
+
+            const general = []
+            if (formData.get('donationQuestions')) general.push("Donation Questions")
+            if (formData.get('mediaInquiry')) general.push("Media Inquiry")
+            if (formData.get('other')) general.push("Other Inquiry")
+            
+
+            const contactData = {
+                name: formData.get('contactFullName'),
+                email: formData.get('contactEmail'),
+                phone: formData.get('contactPhone'),
+                organization: formData.get('organization'),
+                whoAreYou: whoAreYou(formData.get('whoAreYou')),
+                howCanWeHelp: howCanWeHelp.join(", ") || "Not specified",
+                forSchoolVolunteer: forSchoolVolunteer.join(", ") || "Not specified",
+                agencyPartner: agencyPartner.join(", ") || "Not specified",
+                general: general.join(", ") || "Not specified",
+                otherDescription: formData.get('otherDescription'),
+                contactPreference: formData.get('contactPreference') || "Not specified",
+
+            }
+
+            const templateParams = {
+                to_email: '',
+                name: contactData.name,
+                from_email: contactData.email,
+                phone: contactData.phone,
+                time: new Date().toLocaleString(),
+                subject: 'New Contact Form Submission - Hearts & Mind',
+                message: `
+                    New Contact Form Submission:
+
+                    Personal Information:
+                    - Name : ${contactData.name}
+                    - Email: ${contactData.email}
+                    - Phone: ${contactData.phone || "Not provided"}
+                    - Organization: ${contactData.organization ||"Not provided"}
+                    - Who Are You: ${contactData.whoAreYou}
+                    - Contact Preference: ${contactData.contactPreference}
+                    Inquiry Details:
+                    - How Can We Help: ${contactData.howCanWeHelp}
+                    - For School/University Representatives: ${contactData.forSchoolVolunteer}
+                    - For Agency Partners: ${contactData.agencyPartner}
+                    - General Inquiries: ${contactData.general}
+                    - Other Description: ${contactData.otherDescription || "N/A"}
+
+                `
+            }
+
+            const result = await emailjs.send(
+                'service_v4m3ooa', 
+                'template_dxoi3bt',
+                templateParams,
+                'hQZgpt2Mnek8FbjAq'
+            )
+            console.log('Email sent successfully:', result.text)
+            setContactSubmitMessage('Thank you! Your contact form has been submitted successfully.')
+            e.target.reset()
+            
+        } catch (error) {
+            console.error('Error submitting contact form:', error)
+            setContactSubmitMessage('There was an error submitting your request. Please try again later.')
+        } finally {
+            setContactIsSubmitting(false)
         }
     }
 
@@ -146,7 +266,7 @@ const Home = ()=>{
                             <span>Best for: Parents needing occasional breaks</span>
                         </div>
                     </div>
-                    <button className="package-btn">Learn More</button>
+                    <button className="package-btn" onClick={scrollToSignupForm}>Learn More</button>
                 </div>
 
                 <div className="package-card silver">
@@ -255,7 +375,7 @@ const Home = ()=>{
         </div>
     </UpcomingEvents>
 
-    <SectionFour>
+    <SectionFour id="signup">
         <div className="signup-container">
             <h2 className="signup-title montserrat-bold">Get In Touch</h2>
             <p className="signup-subtitle">Choose the form that best fits your needs</p>
@@ -360,7 +480,7 @@ const Home = ()=>{
                     <button type="submit" className="submit-btn">Submit Support Request</button>
                 </form>
             ) : (
-                <form className="signup-form">
+                <form className="signup-form" onSubmit={handleContactSubmit}>
                     <h3 className="form-section-title">Hearts & Mind Contact Form</h3>
                     
                     <div className="form-row">
@@ -503,8 +623,15 @@ const Home = ()=>{
                           
                         </div>
                     </div>
+                    {contactSubmitMessage && (
+                        <p className="submit-message">{contactSubmitMessage}</p>
+                    )}
                     
-                    <button type="submit" className="submit-btn">Submit Contact Form</button>
+                    <button type="submit" 
+                            className="submit-btn" 
+                            disabled={contactIsSubmitting}>
+                                        {contactIsSubmitting ? 'Submitting...' : 'Submit Contact Form'}
+                                    </button>
                 </form>
             )}
         </div>

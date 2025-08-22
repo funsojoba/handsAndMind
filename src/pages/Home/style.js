@@ -1279,3 +1279,21 @@ export const UpcomingEvents = styled.div`
         }
     }
 `
+
+
+export const FormContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  padding: 10px;
+
+  iframe {
+    width: 100%;
+    max-width: 640px;
+    height: 800px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+`;
