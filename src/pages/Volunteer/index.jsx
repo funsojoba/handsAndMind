@@ -181,6 +181,12 @@ const Volunteer = () => {
         }
     }
 
+    // const handlePartnerSubmit = async (e) => {
+    //     e.preventDefault()
+
+
+    // }
+
     return (
         <>
         <Nav />

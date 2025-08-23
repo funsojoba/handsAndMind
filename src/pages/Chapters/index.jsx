@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { Form, useLocation, useNavigate } from "react-router-dom"
 import Nav from "../../components/Nav"
 import Footer from "../../components/Footer"
 import { useHashNavigation } from "../../utils/scrollToSection"
@@ -16,11 +16,16 @@ import {
     PerkCard
 } from "./style"
 
+import emailjs from "emailjs-com"
+
 const Chapters = () => {
     const [activeTab, setActiveTab] = useState('join')
     const location = useLocation()
     const navigate = useNavigate()
     const handleHashNavigation = useHashNavigation(location)
+    const [joinIsSubmitting, setJoinIsSubmitting] = useState(false)
+    const [joinChapterSubmitMessage, setJoinChapterSubmitMessage] = useState("")
+
 
     // Set active tab based on URL hash and handle scroll
     useEffect(() => {
@@ -85,6 +90,77 @@ const Chapters = () => {
         }
     }
 
+    const handleJoinChapterSubmit = async (e) =>{
+        e.preventDefault()
+        setJoinIsSubmitting(true)
+        setJoinChapterSubmitMessage("")
+
+        try{
+            const formData = new FormData(e.target)
+
+            const lookingFor = []
+            if (formData.get("joinSupport")) lookingFor.push("Peer Support & Connection")
+            if (formData.get("joinResources")) lookingFor.push("Access to Resources")
+            if (formData.get("joinAdvocacy")) lookingFor.push("Advocacy Opportunities")
+            if (formData.get("joinMentorship")) lookingFor.push("Mentorship")
+            if (formData.get("joinTraining")) lookingFor.push("Training and Education")
+
+            const joinChapterData = {
+                name: formData.get("joinFullName"),
+                email: formData.get("joinEmail"),
+                phone: formData.get("joinPhone"),
+                location: formData.get("joinLocation"),
+                role: formData.get("joinRole"),
+                experience: formData.get("joinExperience"),
+                chapterType: formData.get("joinChapterType"),
+                meetingPreference: formData.get("joinMeetingPreference"),
+                lookingFor: lookingFor.join(", ") || "Not specified",
+                message: formData.get("joinMessage")
+            }
+
+            const templateParams = {
+                to_email: 'chapters@heartsandmind.org',
+                time: new Date().toLocaleDateString(),
+                email: joinChapterData.email,
+                subject: "New Join Chapter Request",
+                name: joinChapterData.name,
+                message: `
+                    New Join Chapter Request    
+
+                    Form Information
+                    - Name : ${joinChapterData.name}
+                    - Email: ${joinChapterData.email}
+                    - Phone: ${joinChapterData.phone}
+                    - Location: ${joinChapterData.location}
+                    - Role: ${joinChapterData.role}
+                    - Experience: ${joinChapterData.experience}
+                    - Chapter Type: ${joinChapterData.chapterType}
+                    - Meeting Preference: ${joinChapterData.meetingPreference}
+                    - I am looking for: ${joinChapterData.lookingFor}
+                    - Other Message: ${joinChapterData.message}
+                `,
+            }
+
+            const result = await emailjs.send(
+                "service_4h9o5q7",
+                "template_to0o9je",
+                templateParams,
+                "09RppmD6_8vbMCvJp" //public key
+            )
+            console.log('Email sent successfully:', result.text)
+            setJoinChapterSubmitMessage('Thank you! Your contact form has been submitted successfully.')
+            e.target.reset()
+            console.log("FORM DATA->>", formData)
+        }catch(error){
+            console.log("error: ", error)
+            setJoinChapterSubmitMessage("Error : There was an error submitting this form. Please try again")
+        }finally{
+            setJoinIsSubmitting(false)
+        }
+
+    }
+
+
     return (
         <>
         <Nav />
@@ -122,7 +198,7 @@ const Chapters = () => {
                     </TabNavigation>
 
                     {activeTab === 'join' ? (
-                        <FormSection>
+                        <FormSection onSubmit={handleJoinChapterSubmit}>
                             <div className="form-container" id="join" style={{ scrollMarginTop: '100px' }}>
                                 <h3 className="form-title">Join a Chapter</h3>
                                 <p className="form-subtitle">
@@ -256,8 +332,17 @@ const Chapters = () => {
                                         ></textarea>
                                     </div>
 
-                                    <button type="submit" className="submit-btn">Submit Join Request</button>
+                                    <button type="submit" 
+                                        className="submit-btn" 
+                                        disabled={joinIsSubmitting}>
+                                                    {joinIsSubmitting ? 'Submitting...' : 'Submit Join Request'}
+                                    </button>
                                 </form>
+                                {joinChapterSubmitMessage && (
+                                    <div className={`submit-message ${joinChapterSubmitMessage.startsWith('Sorry') ? 'error' : 'success'}`}>
+                                        {joinChapterSubmitMessage}
+                                    </div>
+                                )}
                             </div>
                         </FormSection>
                     ) : (
