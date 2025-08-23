@@ -29,6 +29,9 @@ const GiveHelp = () => {
     const [expandedFAQ, setExpandedFAQ] = useState(null)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitMessage, setSubmitMessage] = useState('')
+    const [sponsorSubmitMessage, setSponsorSubmitMessage] = useState("")
+    const [sponsorSubmitting, setSponsorSubmitting] = useState(false)
+    
     const location = useLocation()
     const handleHashNavigation = useHashNavigation(location)
 
@@ -113,6 +116,111 @@ const GiveHelp = () => {
             setSubmitMessage('Sorry, there was an error submitting your application. Please try again.')
         } finally {
             setIsSubmitting(false)
+        }
+    }
+
+    const handleSponsorSubmit = async (e) =>{
+        e.preventDefault()
+        setSponsorSubmitting(true)
+        setSponsorSubmitMessage('')
+
+        try {
+            const formData = new FormData(e.target)
+            console.log('Form Data:', Object.fromEntries(formData.entries()))
+
+            const supportInterest = []
+            if(formData.get("corporate")) supportInterest.push("Corporate")
+            if(formData.get("localBusiness")) supportInterest.push("Local Business")
+            if(formData.get("inKind")) supportInterest.push("In-Kind")
+
+            const howToHelp = []
+            if(formData.get("generalDonation")) howToHelp.push("General Donation")
+            if(formData.get("programSponsor")) howToHelp.push("Program Sponsor")
+            if(formData.get("eventSponsor")) howToHelp.push("Event Sponsor")
+            
+            const inKindOptions = []
+            if(formData.get("mealKits")) inKindOptions.push("Meal Kits")
+            if(formData.get("cleaningSupplies")) inKindOptions.push("Cleaning Supplies")
+            if(formData.get("professionalServices")) inKindOptions.push("Professional Services")
+
+            const corporatePartnership = []
+            if(formData.get("employeeVolunteer")) corporatePartnership.push("Employee Volunteering")
+            if(formData.get("matchingGift")) corporatePartnership.push("Matching Gifts Program")
+
+
+            const culturalCommunity = []
+            if(formData.get("landBasedHealing")) culturalCommunity.push("Land-Based Healing")
+            if(formData.get("haircareMentalHealth")) culturalCommunity.push("Fund Haircare/Mental Health Days ")
+            if(formData.get("culturalEvents")) culturalCommunity.push("Sponsor Cultural Events")
+
+            const customizeSupport = []
+            if(formData.get("customPartnership")) customizeSupport.push("Interested in customizing support")
+            
+            const sponsorData = {
+                name: formData.get('sponsorName'),
+                email: formData.get('sponsorEmail'),
+                phone: formData.get('sponsorPhone'),
+                organization: formData.get('organization'),
+                
+                interest: supportInterest.join(", ") || 'None selected',
+                howToHelp: howToHelp.join(", ") || 'None selected',
+                inKindOptions: inKindOptions.join(", ") || 'None selected',
+                culturalCommunity: culturalCommunity.join(", ") || 'None selected',
+
+                programType: formData.get('programType'),
+                customizeSupport: customizeSupport.join(", ") || 'None selected',
+                customIdea: formData.get('customIdea'),
+            }
+
+
+            const templateParams = {
+                to_email: 'sponsors@heartsandmind.org',
+                name: sponsorData.name,
+                from_email: sponsorData.email,
+                time: new Date().toLocaleString(),
+                subject: 'New Sponsorship Inquiry - Hearts & Mind',
+                message: `
+                    New Sponsorship Inquiry
+
+                    Contact Information:
+                    - Name: ${sponsorData.name}
+                    - Email: ${sponsorData.email}
+                    - Phone: ${sponsorData.phone}
+                    - Organization: ${sponsorData.organization}
+
+                    Support Interest: ${sponsorData.interest}
+
+                    How to Help: ${sponsorData.howToHelp}
+
+                    In-Kind Options: ${sponsorData.inKindOptions}
+
+                    Corporate Partnership Options: ${sponsorData.corporatePartnershipOptions}
+
+                    Cultural/Community Support: ${sponsorData.culturalCommunity}
+
+                    Program Type: ${sponsorData.programType}
+
+                    Customize Support: ${sponsorData.customizeSupport}
+                    
+                    Custom Idea/Proposal: ${sponsorData.customIdea || 'N/A'}
+                `
+
+            }
+            const result = await emailjs.send(
+                'service_oq0ipyq', 
+                'template_j3e1slg', // Replace with your EmailJS template ID
+                templateParams,
+                'n5PSYCctGphvtLEB6' // Replace with your EmailJS user ID
+            )
+
+            console.log('Email sent successfully:', result.text)
+            setSubmitMessage("Thank you! Your sponsorship inquiry has been submitted successfully.")
+            e.target.reset()
+        }catch(error){
+            console.log("error: ", error)
+            setSponsorSubmitMessage("Sorry, there was an error submitting this form. Please try again")
+        }finally{
+            setSponsorSubmitting(false)
         }
     }
 
@@ -407,16 +515,26 @@ const GiveHelp = () => {
                 
                 <div className="form-content">
                     {activeFormTab === 'sponsor' && (
-                        <form className="sponsor-form">
+                        <form className="sponsor-form" onSubmit={handleSponsorSubmit}>
                             <h3 className="form-title">Contact Form for Sponsors</h3>
                             <div className="form-row">
                                 <div className="form-group">
                                     <label htmlFor="name">Name *</label>
-                                    <input type="text" id="name" name="name" required />
+                                    <input type="text" id="name" name="sponsorName" required />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="company">Company</label>
-                                    <input type="text" id="company" name="company" />
+                                    <input type="text" id="company" name="sponsorCompany" />
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label htmlFor="email">Email *</label>
+                                    <input type="email" id="email" name="sponsorEmail" required />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="phone">Phone</label>
+                                    <input type="text" id="phone" name="sponsorPhone" />
                                 </div>
                             </div>
                             
@@ -547,8 +665,20 @@ const GiveHelp = () => {
                                     </div>
                                 </div>
                             </div>
+                            
 
-                            <button type="submit" className="submit-btn">Submit Sponsorship Inquiry</button>
+                            <button 
+                                type="submit" 
+                                disabled={sponsorSubmitting}
+                                className="submit-btn">
+                                    {sponsorSubmitting ? "Submitting ..." : "Submit Sponsorship Inquiry"}
+                            </button>
+
+                            {sponsorSubmitMessage && (
+                                <div className={`submit-message ${sponsorSubmitMessage.startsWith('Sorry') ? 'error' : 'success'}`}>
+                                    {sponsorSubmitMessage}
+                                </div>
+                            )}
                         </form>
                     )}
 
