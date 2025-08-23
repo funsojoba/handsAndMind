@@ -26,6 +26,9 @@ const Chapters = () => {
     const [joinIsSubmitting, setJoinIsSubmitting] = useState(false)
     const [joinChapterSubmitMessage, setJoinChapterSubmitMessage] = useState("")
 
+    const [podSubmitting, setPodSubmitting] = useState(false)
+    const [podSubmitMessage, setPodSubmitMessage] = useState("")
+
 
     // Set active tab based on URL hash and handle scroll
     useEffect(() => {
@@ -153,11 +156,71 @@ const Chapters = () => {
             console.log("FORM DATA->>", formData)
         }catch(error){
             console.log("error: ", error)
-            setJoinChapterSubmitMessage("Error : There was an error submitting this form. Please try again")
+            setJoinChapterSubmitMessage("Sorry, there was an error submitting this form. Please try again")
         }finally{
             setJoinIsSubmitting(false)
         }
 
+    }
+
+    const handlePodLeaderSubmit = async (e) =>{
+        e.preventDefault()
+        setPodSubmitMessage("")
+        setPodSubmitting(true)
+        try{
+            const formData = new FormData(e.target)
+
+            const podLeaderData = {
+                name: formData.get("podFullName"),
+                email: formData.get("podEmail"),
+                phone: formData.get("podPhone"),
+                city: formData.get("podCity"),
+                yearsFostering: formData.get("podYearsFostering"),
+                podStrengths: formData.get("podStrengths"),
+                podCulturalTies: formData.get("podCulturalTies"),
+                podHostingStyle: formData.get("podHostingStyle"),
+                podBestTime: formData.get("podBestTime"),
+
+            }
+
+            const templateParams = {
+                to_email: 'chapters@heartsandmind.org',
+                time: new Date().toLocaleDateString(),
+                email: podLeaderData.email,
+                subject: "New POD Leader Application",
+                name: podLeaderData.name,
+                message: `
+                    New POD Leader Application
+
+                    Form Information
+                    - Name : ${podLeaderData.name}
+                    - Email: ${podLeaderData.email}
+                    - Phone: ${podLeaderData.phone}
+                    - City: ${podLeaderData.city}
+                    - Years Fostering: ${podLeaderData.yearsFostering}
+                    - POD Strengths: ${podLeaderData.podStrengths}
+                    - Cultural Ties: ${podLeaderData.podCulturalTies}
+                    - Hosting Style: ${podLeaderData.podHostingStyle}
+                    - Best Time: ${podLeaderData.podBestTime}
+                `
+                
+            }
+        const result = await emailjs.send(
+                "service_4h9o5q7",
+                "template_to0o9je",
+                templateParams,
+                "09RppmD6_8vbMCvJp" //public key
+            )
+        console.log('Email sent successfully:', result.text)
+        setPodSubmitMessage('Thank you! Your contact form has been submitted successfully.')
+        e.target.reset()
+        console.log("FORM DATA->>", formData)
+        }catch(error){
+            console.log("error: ", error)
+            setPodSubmitMessage("Sorry, there was an error submitting this form. Please try again.")
+        }finally{
+            setPodSubmitting(false)
+        }
     }
 
 
@@ -468,7 +531,7 @@ const Chapters = () => {
                                         Ready to become a POD Leader? Fill out this form to get started on your journey.
                                     </p>
                                     
-                                    <form className="chapters-form">
+                                    <form className="chapters-form" onSubmit={handlePodLeaderSubmit}>
                                         <div className="form-section">
                                             <h4>Form Details</h4>
                                             <div className="form-row">
@@ -570,8 +633,20 @@ const Chapters = () => {
                                             </div>
                                         </div>
 
-                                        <button type="submit" className="submit-btn">Submit POD Leader Application</button>
+                                        <button 
+                                            type="submit" 
+                                            disabled={podSubmitting}
+                                            className="submit-btn">
+                                                {podSubmitting ? "Submitting ..." :"Submit POD Leader Application"}
+                                        </button>
                                     </form>
+                                    {
+                                        podSubmitMessage && (
+                                            <div className={`submit-message ${podSubmitMessage.startsWith('Sorry') ? 'error' : 'success'}`}>
+                                                {podSubmitMessage}
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             </FormSection>
                         </>

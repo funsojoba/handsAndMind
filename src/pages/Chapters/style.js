@@ -348,25 +348,6 @@ export const FormSection = styled.div`
             }
         }
 
-         .submit-message {
-            margin-top: 16px;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 500;
-            text-align: center;
-
-            &.success {
-                background: #d4edda;
-                color: #155724;
-                border: 1px solid #c3e6cb;
-            }
-
-            &.error {
-                background: #f8d7da;
-                color: #721c24;
-                border: 1px solid #f5c6cb;
-            }
-        }
     }
 
     @media (max-width: 768px) {
@@ -677,4 +658,25 @@ export const PerkCard = styled.div`
             font-size: 0.9rem;
         }
     }
+
+
+    .submit-message {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+
+            &.success {
+                background: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+
+            &.error {
+                background: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+            }
+        }
 `
