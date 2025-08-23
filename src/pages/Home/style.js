@@ -893,6 +893,13 @@ export const SectionFour = styled.div`
         &:active {
             transform: translateY(0);
         }
+
+        &:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
     }
     
     @media (max-width: 768px) {

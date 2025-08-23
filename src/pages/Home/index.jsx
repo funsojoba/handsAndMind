@@ -15,6 +15,9 @@ const Home = ()=>{
     const [contactIsSubmitting, setContactIsSubmitting] = useState(false)
     const [contactSubmitMessage, setContactSubmitMessage] = useState('')
 
+    const [supportSubmitting, setSupportSubmitting] = useState(false)
+    const [supportSubmitMessage, setSupportSubmitMessage] = useState('')
+
 
     const scrollToSignupForm = () => {
         setActiveForm('support')
@@ -178,6 +181,81 @@ const Home = ()=>{
             setContactSubmitMessage('There was an error submitting your request. Please try again later.')
         } finally {
             setContactIsSubmitting(false)
+        }
+    }
+
+    const handleSupportSubmit = async (e) =>{
+        e.preventDefault()
+        setSupportSubmitting(true)
+        setSupportSubmitMessage('')
+
+        try{
+            const formData = new FormData(e.target)
+            console.log("FORM DATA:", formData)
+
+            const practicalSupport = []
+            if (formData.get('laundry')) practicalSupport.push("Laundry")
+            if (formData.get('mealPrep')) practicalSupport.push("Meal Prep")
+            if (formData.get('emergencyCleaning')) practicalSupport.push("Emergency Cleaning")
+
+            const communityConnection = []
+            if (formData.get('brunchInvites')) communityConnection.push("Brunch Invites")
+            if (formData.get('joinPod')) communityConnection.push("Join a POD")
+
+            const culturalSupport = []
+            if (formData.get('indigenousHealing')) culturalSupport.push("Indigenous Healing Circles")
+            if (formData.get('blackParentGroup')) culturalSupport.push("Black Parent Affinity Group")
+
+            const supportData = {
+                fullName: formData.get('supportFullName'),
+                email: formData.get('supportEmail'),
+                phone: formData.get('supportPhone'),
+                supportContactMethod: formData.get('supportContactMethod'),
+                practicalSupport: practicalSupport.join(", ") || "None selected",
+                communityConnection: communityConnection.join(", ") || "None selected",
+                culturalSupport: culturalSupport.join(", ") || "None selected",
+
+            }
+
+            const templateParams = {
+                to_email: '',
+                name: supportData.fullName,
+                from_email: supportData.email,
+                phone: supportData.phone,
+                time: new Date().toLocaleString(),
+                subject: 'New Support Signup - Hearts & Mind',
+                message: `
+                    New Support Signup:
+
+                    Personal Information:
+                    - Name : ${supportData.fullName}
+                    - Email: ${supportData.email}
+                    - Phone: ${supportData.phone || "Not provided"}
+                    - Preferred Contact Method: ${supportData.supportContactMethod}
+
+                    Support Interests:
+                    - Practical Support: ${supportData.practicalSupport}
+                    - Community Connection: ${supportData.communityConnection}
+                    - Cultural Support: ${supportData.culturalSupport}
+                `
+            }
+
+            const result = await emailjs.send(
+                'service_oq0ipyq', 
+                'template_j3e1slg', // Replace with your EmailJS template ID
+                templateParams,
+                'n5PSYCctGphvtLEB6' // Replace with your EmailJS user ID
+            )
+            console.log('Email sent successfully:', result.text)
+            setSupportSubmitMessage('Thank you! Your support signup has been submitted successfully.')
+            e.target.reset()
+
+        }catch(error){
+            console.log("error: ", error)
+            setSupportSubmitMessage("Sorry, there was an error submitting this form. Please try again")
+            }
+        finally{
+            setSupportSubmitting(false)
         }
     }
 
@@ -396,28 +474,28 @@ const Home = ()=>{
             </div>
             
             {activeForm === 'support' ? (
-                <form className="signup-form">
+                <form className="signup-form" onSubmit={handleSupportSubmit}>
                     <h3 className="form-section-title">Hearts & Mind Support Request Sign-Up Form</h3>
                     
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName" required />
+                            <input type="text" id="fullName" name="supportFullName" required />
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="email" required />
+                            <input type="email" id="email" name="supportEmail" required />
                         </div>
                     </div>
                     
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" required />
+                            <input type="tel" id="phone" name="supportPhone" required />
                         </div>
                         <div className="form-group">
                             <label htmlFor="contactMethod">Preferred Contact Method</label>
-                            <select id="contactMethod" name="contactMethod" required>
+                            <select id="contactMethod" name="supportContactMethod" required>
                                 <option value="">Select contact method</option>
                                 <option value="email">Email</option>
                                 <option value="text">Text</option>
@@ -476,8 +554,17 @@ const Home = ()=>{
                             </label>
                         </div>
                     </div>
+                    <button 
+                        type="submit" 
+                        disabled={supportSubmitting}
+                        className="submit-btn">
+                            {supportSubmitting ? 'Submitting...' : 'Submit Support Request'}
+                            
+                    </button>
                     
-                    <button type="submit" className="submit-btn">Submit Support Request</button>
+                    {supportSubmitMessage && (
+                        <p className="submit-message">{supportSubmitMessage}</p>
+                    )}
                 </form>
             ) : (
                 <form className="signup-form" onSubmit={handleContactSubmit}>
