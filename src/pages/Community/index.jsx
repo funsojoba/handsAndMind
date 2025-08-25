@@ -140,10 +140,10 @@ const Community = () => {
                             that makes our community special.
                         </p>
                         <div className="cta-buttons">
-                            <CTAButton onClick={() => window.location.href = '/events'}>
+                            <CTAButton to='/events'>
                                 View Upcoming Events
                             </CTAButton>
-                            <CTAButton onClick={() => window.location.href = '/volunteer'}>
+                            <CTAButton to='/volunteer'>
                                 Volunteer With Us
                             </CTAButton>
                         </div>

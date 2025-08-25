@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import background from "../../assets/BG_3.jpg"
+import { Link } from "react-router"
 
 export const CommunityContainer = styled.div`
     min-height: 100vh;
@@ -310,7 +311,7 @@ export const StatsSection = styled(Section)`
     }
 `
 
-export const CTAButton = styled.button`
+export const CTAButton = styled(Link)`
     padding: 15px 30px;
     background: #8D24B4;
     color: white;
@@ -319,6 +320,7 @@ export const CTAButton = styled.button`
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
+    text-decoration: none;
     transition: all 0.3s ease;
     min-width: 200px;
 

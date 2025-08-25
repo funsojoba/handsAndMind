@@ -10,7 +10,9 @@ import {
     FAQSection, 
     SponsorsSpotlightSection, 
     FooterCTASection,
-    ContactFormSection 
+    ContactFormSection,
+    CTAButton,
+    CTAButtonDiv
 } from "./style"
 import Nav from "../../components/Nav"
 import Footer from "../../components/Footer"
@@ -376,8 +378,11 @@ const GiveHelp = () => {
                         <p>Fewer disruptions, more stable homes.</p>
                     </div>
                 </div>
-                <button className="cta-button">Become a Sponsor Today</button>
+
             </HowItWorksSection>
+            <CTAButtonDiv>
+                <CTAButton to="#contact">Become a Sponsor Today</CTAButton>
+            </CTAButtonDiv>
 
             <FAQSection id="faq">
                 <h2 className="section-title">Sponsor FAQ</h2>

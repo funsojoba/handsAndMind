@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export const ProgramContainer = styled.div`
     min-height: 100vh;
@@ -306,10 +307,11 @@ export const FeatureList = styled.ul`
     }
 `
 
-export const ActionButton = styled.button`
+export const ActionButton = styled(Link)`
     padding: 12px 24px;
+    display: inline-block;
+    color: #fff;
     background: ${props => props.color};
-    color: white;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
@@ -317,7 +319,6 @@ export const ActionButton = styled.button`
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-block;
     text-align: center;
     min-width: 120px;
 

@@ -11,7 +11,7 @@ const Footer = () => {
                     <FooterTitle>Start A Conversation</FooterTitle>
                     <FooterLink href="mailto:info@heartsandmind.org">info@heartsandmind.org</FooterLink>
                     <FooterLink href="mailto:heartsandmindfc@gmail.com">heartsandmindfc@gmail.com</FooterLink>
-                    <FooterLink href="tel:+14376883727">+1(437) 688 3727</FooterLink>
+                    <FooterLink href="tel:+(905) 723-6908">(905) 723-6908</FooterLink>
                 </FooterSection>
 
                 <FooterSection>

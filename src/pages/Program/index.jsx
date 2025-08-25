@@ -11,6 +11,8 @@ import {
     ActionButton
 } from "./style"
 
+import { Link } from "react-router"
+
 const Program = () => {
     const [activeProgram, setActiveProgram] = useState(null)
 
@@ -68,20 +70,11 @@ const Program = () => {
                 "Virtual and in-person options"
             ],
             actionText: "Join a Group",
-            actionLink: "https://forms.google.com/support-group-signup",
+            actionLink: "/volunteer#volunteer",
             color: "#4CAF50"
         }
     ]
 
-    const handleActionClick = (program) => {
-        if (program.actionLink.startsWith('http')) {
-            // External link - open in new tab
-            window.open(program.actionLink, '_blank')
-        } else {
-            // Internal navigation
-            window.location.href = program.actionLink
-        }
-    }
 
     return (
         <>
@@ -135,13 +128,7 @@ const Program = () => {
                                     </div>
 
                                     <div className="program-footer">
-                                        <ActionButton 
-                                            onClick={(e) => {
-                                                e.stopPropagation()
-                                                handleActionClick(program)
-                                            }}
-                                            color={program.color}
-                                        >
+                                        <ActionButton to={program.actionLink} style={{ textDecoration: 'none' }} color={program.color}>
                                             {program.actionText}
                                         </ActionButton>
                                     </div>
@@ -156,14 +143,14 @@ const Program = () => {
                             </p>
                             <div className="cta-buttons">
                                 <ActionButton 
-                                    onClick={() => window.location.href = '/chapters'}
+                                    to="/chapters"
                                     color="#8D24B4"
                                     className="primary"
                                 >
                                     Join a Chapter
                                 </ActionButton>
                                 <ActionButton 
-                                    onClick={() => window.location.href = '/give-help'}
+                                    to="/give-help"
                                     color="#E91E63"
                                     className="secondary"
                                 >

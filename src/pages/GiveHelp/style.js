@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 import styled from "styled-components"
 
 export const GiveHelpContainer = styled.div`
@@ -402,8 +403,18 @@ export const HowItWorksSection = styled.div`
         }
     }
     
-    .cta-button {
-        display: block;
+`
+
+export const CTAButtonDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const CTAButton = styled(Link)`
+        display: inline-block;
+        text-decoration: none;
+        text-align: center;
         margin: 0 auto;
         background: #FFD700;
         color: #8D24B4;
@@ -420,7 +431,7 @@ export const HowItWorksSection = styled.div`
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
         }
-    }
+    
 `
 
 export const FAQSection = styled.div`
