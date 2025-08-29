@@ -70,8 +70,9 @@ const Program = () => {
                 "Virtual and in-person options"
             ],
             actionText: "Join a Group",
-            actionLink: "/volunteer#volunteer",
-            color: "#4CAF50"
+            actionLink: "https://docs.google.com/forms/d/1Iimy5FVRtlxAuuIQqB8m7sPB0MGwGsWjefD2YZcuTyA/edit",
+            color: "#4CAF50",
+            target: "_blank"
         }
     ]
 
@@ -128,7 +129,7 @@ const Program = () => {
                                     </div>
 
                                     <div className="program-footer">
-                                        <ActionButton to={program.actionLink} style={{ textDecoration: 'none' }} color={program.color}>
+                                        <ActionButton to={program.actionLink} style={{ textDecoration: 'none' }} color={program.color} target={program.target || "_self"}>
                                             {program.actionText}
                                         </ActionButton>
                                     </div>

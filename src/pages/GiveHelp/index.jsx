@@ -24,6 +24,7 @@ import BigGirLogo from "../../assets/sponsors/bigGirl.jpg"
 import soulReaction from "../../assets/sponsors/soulReaction.jpg"
 import oxfordCollege from "../../assets/sponsors/oxfordCollege.jpg"
 import dCare from "../../assets/sponsors/dcare.jpg"
+import gasImage from "../../assets/sponsors/gas.jpg"
 
 const GiveHelp = () => {
     const [activeTab, setActiveTab] = useState('corporate')
@@ -461,6 +462,14 @@ const GiveHelp = () => {
                         </div>
                         <div className="text">
                             D'Care Foundation
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={gasImage} />
+                        </div>
+                        <div className="text">
+                            Gas Group
                         </div>
                     </div>
 

@@ -17,6 +17,10 @@ const Volunteer = () => {
     const [activeTab, setActiveTab] = useState('volunteer')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitMessage, setSubmitMessage] = useState('')
+
+    const [isStudentSubmitting, setIsStudentSubmitting] = useState(false)
+    const [studentSubmitMessage, setStudentSubmitMessage] = useState('')
+
     const location = useLocation()
     const navigate = useNavigate()
     const handleHashNavigation = useHashNavigation(location)
@@ -181,6 +185,106 @@ const Volunteer = () => {
         }
     }
 
+
+    const handleStudentSubmit = async (e) => {
+        e.preventDefault()
+        setIsStudentSubmitting(true)
+        setStudentSubmitMessage('')
+
+        try {
+            const formData = new FormData(e.target)
+            console.log('Form Data:', Object.fromEntries(formData.entries()))
+            console.log('-----', formData)
+
+            const programType = []
+            if (formData.get('placementPSW')) programType.push('PSW')
+            if (formData.get('placementCSW')) programType.push('CSW')
+            if (formData.get('placementSocialWork')) programType.push('Social Work')
+            if (formData.get('placementNursing')) programType.push('Nursing')
+            if (formData.get('placementOther')) programType.push('Others')
+            
+
+            const logistics = []
+            if (formData.get('placementWeekdays')) logistics.push("Weekdays")
+            if (formData.get("placementWeekends")) logistics.push("Weekends")
+            if (formData.get("placementEvenings")) logistics.push("Evenings ")
+
+            const consent = []
+            if (formData.get('placementConfidentiality')) consent.push('Placement Confidentiality Agreement')
+            if (formData.get('placementSchoolShare')) consent.push('Placement School Share Agreement')
+
+            const studentData = {
+                name: formData.get('volunteerFullName'),
+                email: formData.get('volunteerEmail'),
+                phone: formData.get('volunteerPhone'),
+                program: formData.get('placementSchool'),
+                programType: programType.join(', ') || 'None selected',
+                placementHours: formData.get('placementHours'),
+                placementExperience: formData.get('placementExperience'),
+                logistics: logistics.join(', ') || 'None selected',
+                transportation: formData.get('placementTransportation'),
+                placementPoliceCheck: formData.get('placementPoliceCheck'),
+                placementImmunization: formData.get('placementImmunization'),
+                placementFirstAid: formData.get('placementFirstAid'),
+                placementCPI: formData.get('placementCPI'),
+                consent: consent.join(', ') || 'None selected'
+            }
+
+            const templateParams = {
+                to_email: 'volunteers@heartsandmind.org',
+                name: studentData.name,
+                from_email: studentData.email,
+                time: new Date().toLocaleString(),
+                subject: 'Placement Student Signup Form - Hearts & Mind',
+                message: `
+                    New Volunteer Application
+
+                    Personal Information:
+                    - Name: ${studentData.name}
+                    - Email: ${studentData.email}
+                    - Phone: ${studentData.phone}
+                    - School/Program: ${studentData.program}
+
+                    - Program Type: ${studentData.programType}
+
+                    - Placement Hour: ${studentData.placementHours}
+
+                    - Placement Experience: ${studentData.placementExperience}
+                    - Logistics: ${studentData.logistics}
+                    - Transportation: ${studentData.transportation}
+
+                    - Police Check: ${studentData.placementPoliceCheck ? 'Yes' : 'No'}
+                    - Immunization: ${studentData.placementImmunization ? 'Yes' : 'No'}
+                    - First Aid: ${studentData.placementFirstAid ? 'Yes' : 'No'}
+                    - CPI: ${studentData.placementCPI ? 'Yes' : 'No'}
+
+                    Consent:
+                    - ${studentData.consent}
+
+                `
+            }
+
+            // emailjs attachment
+            
+
+            const result = await emailjs.send(
+                'service_142mhiv',
+                'template_2qqpf08',
+                templateParams,
+                'PmoxR6KKr41SNPbuL'
+            )
+
+            console.log('Email sent successfully:', result.text)
+            setSubmitMessage('Thank you! Your Placement Student Signup Form has been submitted successfully.')
+            e.target.reset()
+        } catch (error) {
+            console.error('Error submitting form:', error)
+            setSubmitMessage('Sorry, there was an error submitting your application. Please try again.')
+        } finally {
+            setIsSubmitting(false)
+        }
+
+    }
 
     return (
         <>
@@ -557,7 +661,7 @@ const Volunteer = () => {
                                     For PSW, CSW, Social Work, Addictions & Mental Health or Nursing students seeking practicums/internships.
                                 </p>
                                 
-                                <form className="volunteer-form">
+                                <form className="volunteer-form" onSubmit={handleStudentSubmit}>
                                     <div className="form-section">
                                         <h4>Student Details</h4>
                                         <div className="form-row">
@@ -674,16 +778,16 @@ const Volunteer = () => {
                                         <p className="section-description">Please upload the following documents:</p>
                                         <div className="document-uploads">
                                             <div className="form-group">
-                                                <label htmlFor="placementPoliceCheck">Police Check Status *</label>
-                                                <input type="file" id="placementPoliceCheck" name="placementPoliceCheck" accept=".pdf,.doc,.docx" required />
+                                                <label htmlFor="placementPoliceCheck">Police Check Status </label>
+                                                <input type="file" id="placementPoliceCheck" name="placementPoliceCheck" accept=".pdf,.doc,.docx"  />
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="placementImmunization">Immunization Records *</label>
-                                                <input type="file" id="placementImmunization" name="placementImmunization" accept=".pdf,.doc,.docx" required />
+                                                <label htmlFor="placementImmunization">Immunization Records </label>
+                                                <input type="file" id="placementImmunization" name="placementImmunization" accept=".pdf,.doc,.docx"  />
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="placementFirstAid">First Aid & CPR Certificate *</label>
-                                                <input type="file" id="placementFirstAid" name="placementFirstAid" accept=".pdf,.doc,.docx" required />
+                                                <label htmlFor="placementFirstAid">First Aid & CPR Certificate </label>
+                                                <input type="file" id="placementFirstAid" name="placementFirstAid" accept=".pdf,.doc,.docx"  />
                                             </div>
                                             <div className="form-group">
                                                 <label htmlFor="placementCPI">CPI Training Certificate</label>
@@ -709,7 +813,17 @@ const Volunteer = () => {
                                         </div>
                                     </div>
 
-                                    <button type="submit" className="submit-btn">Apply for Placement</button>
+                                    <button 
+                                        type="submit" 
+                                        className="submit-btn"
+                                        disabled={isStudentSubmitting}
+                                        >
+                                        {isStudentSubmitting ? 'Submitting...' : 'Apply for Placement'}
+                                    </button>
+                                    {studentSubmitMessage && (
+                                        <div className={`submit-message ${studentSubmitMessage.startsWith('Sorry') ? 'error' : 'success'}`}>
+                                            {studentSubmitMessage}
+                                        </div>)}
                                 </form>
                             </div>
                         </FormSection>
