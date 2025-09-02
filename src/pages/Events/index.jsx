@@ -27,9 +27,16 @@ const Events = () => {
         })
     }
 
+
+
     const isEventUpcoming = (dateString) => {
         const eventDate = new Date(dateString)
         const today = new Date()
+
+        // Normalize both to midnight local time
+        eventDate.setHours(0, 0, 0, 0)
+        today.setHours(0, 0, 0, 0)
+
         return eventDate >= today
     }
 

@@ -46,7 +46,7 @@ const Home = ()=>{
             description: 'Hearts and mind trauma informed care approach for foster parents',
             link: "https://www.eventbrite.ca/e/introductory-workshop-tickets-1597710337629?aff=oddtdtcreator",
             flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1755404999/HeartsAndMind/Group_xlbl2p.jpg'
-        }
+        },
     ]
 
     const getCalendarDays = () => {
@@ -64,7 +64,8 @@ const Home = ()=>{
             const date = new Date(startDate)
             date.setDate(startDate.getDate() + i)
             
-            const dateString = date.toISOString().split('T')[0]
+            // const dateString = date.toISOString().split('T')[0]
+            const dateString = date.toLocaleDateString('en-CA')
             const event = events.find(e => e.date === dateString)
             
             days.push({
@@ -337,7 +338,7 @@ const Home = ()=>{
                     <div className="package-features">
                         <div className="feature">
                             <span className="feature-icon">⏰</span>
-                            <span>4 hrs / 2 times a month</span>
+                            <span>2 hrs / 2 times a month</span>
                         </div>
                         <div className="feature">
                             <span className="feature-icon">👥</span>
