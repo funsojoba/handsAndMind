@@ -47,6 +47,15 @@ const Home = ()=>{
             link: "https://www.eventbrite.ca/e/introductory-workshop-tickets-1597710337629?aff=oddtdtcreator",
             flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1755404999/HeartsAndMind/Group_xlbl2p.jpg'
         },
+        {
+            date: '2025-09-27',
+            title: 'Heart and Brunch Series',
+            time: '12:30 PM - 3:30 PM EST',
+            location: 'Online Meeting',
+            description: 'Hearts and mind trauma informed care approach for foster parents. Join us for an introductory session where we explore trauma-informed care principles specifically designed for foster parents.',
+            link: "https://www.eventbrite.ca/e/hearts-and-brunch-series-september-editiontoronto-tickets-1661860231689?aff=oddtdtcreator",
+            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1757518976/HeartsAndMind/heatsandbrunch_lidu3h.jpg'
+        },
     ]
 
     const getCalendarDays = () => {
@@ -219,7 +228,7 @@ const Home = ()=>{
             }
 
             const templateParams = {
-                to_email: '',
+                to_email: 'parentssupport@heartsandmind.org',
                 name: supportData.fullName,
                 from_email: supportData.email,
                 phone: supportData.phone,
@@ -242,10 +251,10 @@ const Home = ()=>{
             }
 
             const result = await emailjs.send(
-                'service_oq0ipyq', 
-                'template_j3e1slg', // Replace with your EmailJS template ID
+                'service_24qbx28', 
+                'template_k1is77a', // Replace with your EmailJS template ID
                 templateParams,
-                'n5PSYCctGphvtLEB6' // Replace with your EmailJS user ID
+                'IcunHnsazaGHQNKhj' // Public Key
             )
             console.log('Email sent successfully:', result.text)
             setSupportSubmitMessage('Thank you! Your support signup has been submitted successfully.')

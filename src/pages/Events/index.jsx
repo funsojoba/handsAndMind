@@ -14,7 +14,17 @@ const Events = () => {
             description: 'Hearts and mind trauma informed care approach for foster parents. Join us for an introductory session where we explore trauma-informed care principles specifically designed for foster parents.',
             link: "https://www.eventbrite.ca/e/introductory-workshop-tickets-1597710337629?aff=oddtdtcreator",
             flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1755404999/HeartsAndMind/Group_xlbl2p.jpg'
-        }
+        },
+        {
+            id: 1,
+            date: '2025-09-27',
+            title: 'Heart and Brunch Series',
+            time: '12:30 PM - 3:30 PM EST',
+            location: 'Online Meeting',
+            description: 'Hearts and mind trauma informed care approach for foster parents. Join us for an introductory session where we explore trauma-informed care principles specifically designed for foster parents.',
+            link: "https://www.eventbrite.ca/e/hearts-and-brunch-series-september-editiontoronto-tickets-1661860231689?aff=oddtdtcreator",
+            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1757518976/HeartsAndMind/heatsandbrunch_lidu3h.jpg'
+        },
     ]
 
     const formatDate = (dateString) => {
