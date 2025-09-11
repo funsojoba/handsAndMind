@@ -16,12 +16,22 @@ const Events = () => {
             flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1755404999/HeartsAndMind/Group_xlbl2p.jpg'
         },
         {
-            id: 1,
+            id: 2,
+            date: '2025-09-26',
+            title: 'Reflect and Renew Workshop',
+            time: '7:00 PM - 8:00 PM EST',
+            location: 'Online Meeting',
+            description: 'From surviving to thriving: Building resilience and setting boundaries as a foster parent',
+            link: "https://www.eventbrite.ca/e/reflect-and-renew-workshop-september-edition-tickets-1681318100699?aff=oddtdtcreator",
+            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1757588861/HeartsAndMind/https___cdn.evbuc.com_images_1119321153_2854776033591_1_original_qfm8sz.jpg'
+        },
+        {
+            id: 3,
             date: '2025-09-27',
             title: 'Heart and Brunch Series',
             time: '12:30 PM - 3:30 PM EST',
             location: 'Online Meeting',
-            description: 'Hearts and mind trauma informed care approach for foster parents. Join us for an introductory session where we explore trauma-informed care principles specifically designed for foster parents.',
+            description: 'Hearts and Mind Brunch Series',
             link: "https://www.eventbrite.ca/e/hearts-and-brunch-series-september-editiontoronto-tickets-1661860231689?aff=oddtdtcreator",
             flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1757518976/HeartsAndMind/heatsandbrunch_lidu3h.jpg'
         },
