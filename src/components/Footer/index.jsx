@@ -20,6 +20,11 @@ const Footer = () => {
                 </FooterSection>
 
                 <FooterSection>
+                    <FooterTitle>Compliance</FooterTitle>
+                    <FooterLink href="/privacy">Privacy Policy</FooterLink>
+                </FooterSection>
+
+                <FooterSection>
                     <FooterTitle>Find Us On</FooterTitle>
                     <SocialLinks>
                         <SocialLink href="https://www.facebook.com/share/1AzxcDeoSy/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">

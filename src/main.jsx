@@ -11,6 +11,7 @@ import Workshops from './pages/Workshops/index.jsx'
 import Events from './pages/Events/index.jsx'
 import Volunteer from './pages/Volunteer/index.jsx'
 import Community from './pages/Community/index.jsx'
+import PrivacyPolicy from './pages/Privacy/index.jsx'
 
 import {
   createBrowserRouter,
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "/community",
     element: <Community />
+  },
+  {
+    path: "/privacy",
+    element: <PrivacyPolicy />
   }
 ])
 
