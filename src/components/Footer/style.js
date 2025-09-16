@@ -34,6 +34,14 @@ export const FooterContent = styled.div`
 `
 
 export const FooterSection = styled.div`
+    .link{
+        display: inline-block;
+        color: #fff;
+
+        &:hover {
+        color: #FFD700;
+    }
+    }
     p {
         margin: 0;
         color: #f0f0f0;

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router";
 import { FooterContainer, FooterContent, FooterSection, FooterTitle, FooterLink, SocialLinks, SocialLink } from "./style"
 
 const Footer = () => {
@@ -21,7 +22,7 @@ const Footer = () => {
 
                 <FooterSection>
                     <FooterTitle>Compliance</FooterTitle>
-                    <FooterLink href="/privacy">Privacy Policy</FooterLink>
+                    <Link className="link" to="/privacy">Privacy Policy</Link>
                 </FooterSection>
 
                 <FooterSection>
