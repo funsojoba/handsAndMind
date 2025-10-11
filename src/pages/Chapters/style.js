@@ -7,8 +7,6 @@ export const ChaptersContainer = styled.div`
 `
 
 export const HeroSection = styled.div`
-    /* background: #8D24B4; */
-    /* background: linear-gradient(rgba(141,36,180,0.7), rgba(141,36,180,0.7)), url(${ChapterImg}) center/cover no-repeat; */
     background: url(${ChapterImg});
     background-position: center;
     background-size: cover;

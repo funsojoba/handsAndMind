@@ -35,6 +35,26 @@ const Events = () => {
             link: "https://www.eventbrite.ca/e/hearts-and-brunch-series-september-editiontoronto-tickets-1661860231689?aff=oddtdtcreator",
             flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1757518976/HeartsAndMind/heatsandbrunch_lidu3h.jpg'
         },
+        {
+            id: 4,
+            date: '2025-10-24',
+            title: 'Storytelling & Advocacy',
+            time: '7:00 PM EST',
+            location: 'Online Meeting',
+            description: 'Using Your Voice as a Foster Parent',
+            link: "https://www.eventbrite.com/e/1760116157809?aff=oddtdtcreator",
+            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1760152910/HeartsAndMind/WhatsApp_Image_2025-10-10_at_7.26.58_PM_tm41ac.jpg'
+        },
+        {
+            id: 5,
+            date: '2025-10-25',
+            title: 'Heart and Brunch Series',
+            time: '1:00 PM EST',
+            location: 'North York (Exact location to be disclosed upon registration)',
+            description: 'A monthly in-person brunch for foster parents to relax, reset, and connect.',
+            link: "https://www.eventbrite.com/e/1763940135429?aff=oddtdtcreator",
+            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1760152911/HeartsAndMind/WhatsApp_Image_2025-10-10_at_7.26.59_PM_mbdk7v.jpg'
+        },
     ]
 
     const formatDate = (dateString) => {

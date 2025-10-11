@@ -103,10 +103,7 @@ const Community = () => {
                                 <div className="quote">"As a new foster parent, I was overwhelmed. The community here helped me feel less alone and gave me practical advice that made all the difference."</div>
                                 <div className="author">- Jennifer, First-time Foster Parent</div>
                             </div>
-                            {/* <div className="testimonial">
-                                <div className="quote">"Our children love coming to the brunches. They've made friends with other foster kids and feel like they belong to a special community."</div>
-                                <div className="author">- David & Lisa, Foster Family</div>
-                            </div> */}
+                            
                         </div>
                     </TestimonialSection>
 
