@@ -85,6 +85,18 @@ const Home = ()=>{
         },
     ]
 
+    const formatDate = (dateString) => {
+        const [year, month, day] = dateString.split('-');
+        const date = new Date(year, month - 1, day); // Don't use time zone parsing
+
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        };
+
+
     const getCalendarDays = () => {
         const year = currentMonth.getFullYear()
         const month = currentMonth.getMonth()
@@ -462,7 +474,7 @@ const Home = ()=>{
                             <img src={selectedEvent.flier} alt={selectedEvent.title} />
                             <div className="event-info">
                                 <h3>{selectedEvent.title}</h3>
-                                <p className="event-date">{selectedEvent.date}</p>
+                                <p className="event-date">{formatDate(selectedEvent.date)}</p>
                                 <p className="event-time">{selectedEvent.time}</p>
                                 <p className="event-location">{selectedEvent.location}</p>
                                 <p className="event-description">{selectedEvent.description}</p>

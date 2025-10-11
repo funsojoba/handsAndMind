@@ -58,14 +58,15 @@ const Events = () => {
     ]
 
     const formatDate = (dateString) => {
-        const date = new Date(dateString)
-        return date.toLocaleDateString('en-US', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        })
-    }
+        const [year, month, day] = dateString.split('-');
+        const date = new Date(year, month - 1, day); // Don't use time zone parsing
+
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        };
 
 
 
