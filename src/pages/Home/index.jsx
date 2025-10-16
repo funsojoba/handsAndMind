@@ -321,7 +321,7 @@ const Home = ()=>{
             <Link 
                 className="hero-cta" 
                 target="_blank"
-                to="https://donate.stripe.com/4gM5kCbDcc4XcsZ5rs4ko00">DONATE</Link>
+                to="https://buy.stripe.com/bJefZgdLk0mf3Wt5rs4ko01">DONATE</Link>
         </div>
     </SectionOne>
 
