@@ -239,7 +239,6 @@ const GiveHelp = () => {
                         and keep foster placements stable.
                     </p>
                     <Link className="hero-cta" to="#sponsorship">Learn How to Help</Link>
-                    {/* <button className="hero-cta">Learn How to Help</button> */}
                 </div>
                 <div className="hero-image">
                     <img 

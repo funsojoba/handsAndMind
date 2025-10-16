@@ -316,6 +316,13 @@ const Home = ()=>{
             <h1 className="montserrat-bold">Hearts And Mind</h1>
             <p>Support  &nbsp; | &nbsp; Connect &nbsp; | &nbsp; Heal</p>
         </div>
+        
+        <div className="donate">
+            <Link 
+                className="hero-cta" 
+                target="_blank"
+                to="https://donate.stripe.com/4gM5kCbDcc4XcsZ5rs4ko00">DONATE</Link>
+        </div>
     </SectionOne>
 
     <AboutMe>

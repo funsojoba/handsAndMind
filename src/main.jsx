@@ -13,6 +13,9 @@ import Volunteer from './pages/Volunteer/index.jsx'
 import Community from './pages/Community/index.jsx'
 import PrivacyPolicy from './pages/Privacy/index.jsx'
 
+import AdminAuth from './pages/Admin/Auth/index.jsx'
+import AdminDashboard from "./pages/Admin/Dashboard/index.jsx"
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -59,6 +62,14 @@ const router = createBrowserRouter([
   {
     path: "/privacy",
     element: <PrivacyPolicy />
+  },
+  {
+    path: "/admin/auth",
+    element: <AdminAuth/>
+  },
+  {
+    path: "/admin/dashboard",
+    element: <AdminDashboard/>
   }
 ])
 

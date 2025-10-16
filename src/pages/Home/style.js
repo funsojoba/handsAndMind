@@ -24,6 +24,7 @@ export const LinkTag = styled.a`
 
 export const SectionOne = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 80vh;
@@ -47,6 +48,33 @@ export const SectionOne = styled.div`
             text-align: center;
         }
     }   
+
+    .donate{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+
+        .hero-cta {
+            background: #FFD700;
+            color: #8D24B4;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            
+            &:hover {
+                background: #ffed4e;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            }
+        }
+    }
 `
 
 
