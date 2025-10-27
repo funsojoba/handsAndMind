@@ -1,11 +1,13 @@
 import { SectionOne, SectionTwo, SectionThree, SectionFour, AboutMe, UpcomingEvents, LinkTag, FormContainer } from "./style"
 import Nav from "../../components/Nav"
 import Footer from "../../components/Footer"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import emailjs from "emailjs-com"
 
 import fosterFamily from "../../assets/foster-family.jpg"
 import { Link } from "react-router-dom"
+import api from "../../api/axiosInstance"
+import { formatDate, convertTime } from "../../utils/dateTimeFormat"
 
 const Home = ()=>{
     const [currentMonth, setCurrentMonth] = useState(new Date())
@@ -17,6 +19,28 @@ const Home = ()=>{
 
     const [supportSubmitting, setSupportSubmitting] = useState(false)
     const [supportSubmitMessage, setSupportSubmitMessage] = useState('')
+
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [eventData, setEventData] = useState(null);
+
+
+
+    useEffect(() => {
+        const fetchEvents = async () => {
+        try {
+            const res = await api.get("event");
+            setEventData(res.data?.data);
+        } catch (err) {
+            console.error(err);
+            setError("Failed to fetch events");
+        } finally {
+            setLoading(false);
+        }
+        };
+
+        fetchEvents();
+    }, []);
 
 
     const scrollToSignupForm = () => {
@@ -36,98 +60,43 @@ const Home = ()=>{
         }, 0)
     }
 
-    // Sample event data - you can replace these with real events
-    const events = [
-        {
-            date: '2025-08-29',
-            title: 'Introductory Workshop',
-            time: '7:00 PM - 8:00 PM EST',
-            location: 'Online Meeting',
-            description: 'Hearts and mind trauma informed care approach for foster parents',
-            link: "https://www.eventbrite.ca/e/introductory-workshop-tickets-1597710337629?aff=oddtdtcreator",
-            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1755404999/HeartsAndMind/Group_xlbl2p.jpg'
-        },
-        {
-            date: '2025-09-26',
-            title: 'Reflect and Renew Workshop',
-            time: '7:00 PM - 8:00 PM EST',
-            location: 'Online Meeting',
-            description: 'From surviving to thriving: Building resilience and setting boundaries as a foster parent',
-            link: "https://www.eventbrite.ca/e/reflect-and-renew-workshop-september-edition-tickets-1681318100699?aff=oddtdtcreator",
-            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1757588861/HeartsAndMind/https___cdn.evbuc.com_images_1119321153_2854776033591_1_original_qfm8sz.jpg'
-        },
-        {
-            date: '2025-09-27',
-            title: 'Heart and Brunch Series',
-            time: '12:30 PM - 3:30 PM EST',
-            location: 'Online Meeting',
-            description: 'Hearts and Mind Brunch Series',
-            link: "https://www.eventbrite.ca/e/hearts-and-brunch-series-september-editiontoronto-tickets-1661860231689?aff=oddtdtcreator",
-            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1757518976/HeartsAndMind/heatsandbrunch_lidu3h.jpg'
-        },
-        {
-            date: '2025-10-24',
-            title: 'Storytelling & Advocacy',
-            time: '7:00 PM EST',
-            location: 'Online Meeting',
-            description: 'Using Your Voice as a Foster Parent',
-            link: "https://www.eventbrite.com/e/1760116157809?aff=oddtdtcreator",
-            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1760152910/HeartsAndMind/WhatsApp_Image_2025-10-10_at_7.26.58_PM_tm41ac.jpg'
-        },
-        {
-            date: '2025-10-25',
-            title: 'Heart and Brunch Series',
-            time: '1:00 PM EST',
-            location: 'North York (Exact location to be disclosed upon registration)',
-            description: 'A monthly in-person brunch for foster parents to relax, reset, and connect.',
-            link: "https://www.eventbrite.com/e/1763940135429?aff=oddtdtcreator",
-            flier: 'https://res.cloudinary.com/ddl2pf4qh/image/upload/v1760152911/HeartsAndMind/WhatsApp_Image_2025-10-10_at_7.26.59_PM_mbdk7v.jpg'
-        },
-    ]
-
-    const formatDate = (dateString) => {
-        const [year, month, day] = dateString.split('-');
-        const date = new Date(year, month - 1, day); // Don't use time zone parsing
-
-        return date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-        };
+    console.log("EVENT ERROR: ", error)
 
 
     const getCalendarDays = () => {
-        const year = currentMonth.getFullYear()
-        const month = currentMonth.getMonth()
-        const firstDay = new Date(year, month, 1)
-        // const lastDay = new Date(year, month + 1, 0)
-        const startDate = new Date(firstDay)
-        startDate.setDate(startDate.getDate() - firstDay.getDay())
-        
-        const days = []
-        const today = new Date()
-        
+        const year = currentMonth.getFullYear();
+        const month = currentMonth.getMonth();
+        const firstDay = new Date(year, month, 1);
+        const startDate = new Date(firstDay);
+        startDate.setDate(startDate.getDate() - firstDay.getDay());
+
+        const days = [];
+        const today = new Date();
+
         for (let i = 0; i < 42; i++) {
-            const date = new Date(startDate)
-            date.setDate(startDate.getDate() + i)
-            
-            // const dateString = date.toISOString().split('T')[0]
-            const dateString = date.toLocaleDateString('en-CA')
-            const event = events.find(e => e.date === dateString)
-            
+            const date = new Date(startDate);
+            date.setDate(startDate.getDate() + i);
+
+            // const dateString = date.toISOString().split("T")[0]; // e.g. "2025-10-30"
+
+            const dateString = date.getFullYear() + "-" + 
+                String(date.getMonth() + 1).padStart(2, "0") + "-" + 
+                String(date.getDate()).padStart(2, "0");
+                
+            const event = eventData?.find(e => e.date.startsWith(dateString)); // match backend format
+
             days.push({
                 date: date.getDate(),
                 fullDate: date,
                 hasEvent: !!event,
                 isCurrentMonth: date.getMonth() === month,
                 isToday: date.toDateString() === today.toDateString(),
-                event: event
-            })
+                event: event,
+                });
         }
-        
-        return days
-    }
+
+        return days;
+        };
 
     const handleDateClick = (day) => {
         if (day.hasEvent) {
@@ -479,33 +448,40 @@ const Home = ()=>{
             
             <div className="flier-section">
                 <div className="flier-container">
-                    {selectedEvent ? (
-                        <div className="event-flier">
-                            <img src={selectedEvent.flier} alt={selectedEvent.title} />
-                            <div className="event-info">
-                                <h3>{selectedEvent.title}</h3>
-                                <p className="event-date">{formatDate(selectedEvent.date)}</p>
-                                <p className="event-time">{selectedEvent.time}</p>
-                                <p className="event-location">{selectedEvent.location}</p>
-                                <p className="event-description">{selectedEvent.description}</p>
-                                {selectedEvent.link && (
-                                    <a 
-                                        href={selectedEvent.link} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="event-registration-link"
-                                    >
-                                        Register for this event
-                                    </a>
-                                )}
-                            </div>
-                        </div>
+
+                    {loading ? (
+                        <div className="loading">loading ...</div>
                     ) : (
-                        <div className="no-event-selected">
-                            <div className="placeholder-icon">📅</div>
-                            <h3>Select a Date</h3>
-                            <p>Click on a highlighted date in the calendar to view event details</p>
-                        </div>
+                        selectedEvent ? (
+                            <div className="event-flier">
+                                <img src={selectedEvent.event_flier} alt={selectedEvent.event_title} />
+                                <div className="event-info">
+                                    <h3>{selectedEvent.event_title}</h3>
+                                    <div className="date-time">
+                                        <p className="event-date">{formatDate(selectedEvent.date)}</p>
+                                        <p className="event-time">{convertTime(selectedEvent.time)}</p>
+                                    </div>
+                                    <p className="event-location">{selectedEvent.location}</p>
+                                    <p className="event-description">{selectedEvent.description}</p>
+                                    {selectedEvent.registration_link && (
+                                        <a
+                                            href={selectedEvent.registration_link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="event-registration-link"
+                                        >
+                                            Register for this event
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="no-event-selected">
+                                <div className="placeholder-icon">📅</div>
+                                <h3>Select a Date</h3>
+                                <p>Click on a highlighted date in the calendar to view event details</p>
+                            </div>
+                        )
                     )}
                 </div>
             </div>

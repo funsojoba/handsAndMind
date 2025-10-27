@@ -1207,7 +1207,6 @@ export const UpcomingEvents = styled.div`
         }
         
         .event-flier {
-            text-align: center;
             width: 100%;
             
             img {
@@ -1227,6 +1226,12 @@ export const UpcomingEvents = styled.div`
                     font-size: 1.5rem;
                     margin-bottom: 10px;
                     font-weight: 600;
+                }
+
+                .date-time{
+                    display: flex;
+                    gap: 15px;
+                    margin-bottom: 10px;
                 }
                 
                 p {
