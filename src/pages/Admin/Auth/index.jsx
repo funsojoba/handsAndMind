@@ -65,11 +65,13 @@ const AdminAuth = () => {
                     })
                 })
 
+                console.log("RESPONSE: ", response)
+
                 // Handle server response format
-                if (response.success && response.token) {
+                if (response.success && response.data.token) {
                     console.log('Server response:', response) // Debug log
                     console.log('User data to store:', response.data) // Debug log
-                    localStorage.setItem('adminToken', response.token)
+                    localStorage.setItem('adminToken', response.data.token)
                     localStorage.setItem('adminUser', JSON.stringify(response.data))
                     console.log('Stored user data:', JSON.stringify(response.data)) // Debug log
                     navigate('/admin/dashboard')

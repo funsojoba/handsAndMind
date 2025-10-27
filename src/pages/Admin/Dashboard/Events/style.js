@@ -10,10 +10,8 @@ export const EventsList = styled.div`
     margin-top: 20px;
 
     p {
-        text-align: center;
         color: #666;
         font-size: 1.1rem;
-        padding: 40px;
     }
 `
 
@@ -70,7 +68,7 @@ export const EventCard = styled.div`
 
             .date-time {
                 display: flex;
-                justify-content: space-between;
+                gap: 20px;
                 margin-top: auto;
 
                 small {
@@ -80,16 +78,23 @@ export const EventCard = styled.div`
                 }
             }
 
-            .event-link {
-                color: #8D24B4;
-                text-decoration: none;
-                font-weight: 500;
-                font-size: 0.9rem;
-                margin-top: 8px;
-                display: inline-block;
 
+            .event-link {
+                color: #FFD700;
+                background: #8D24B4;
+                border: none;
+                padding: 15px 30px;
+                border-radius: 25px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                
                 &:hover {
-                    text-decoration: underline;
+                    background: #48155aff;
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
                 }
             }
         }
@@ -172,7 +177,7 @@ export const FormGroup = styled.div`
         font-weight: 500;
     }
 
-    input, textarea {
+    input, textarea, select {
         width: 100%;
         padding: 12px 15px;
         border: 2px solid #e1e5e9;

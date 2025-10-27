@@ -12,9 +12,11 @@ import Events from './pages/Events/index.jsx'
 import Volunteer from './pages/Volunteer/index.jsx'
 import Community from './pages/Community/index.jsx'
 import PrivacyPolicy from './pages/Privacy/index.jsx'
+import DonationPage from './pages/Donation/index.jsx'
 
 import AdminAuth from './pages/Admin/Auth/index.jsx'
 import AdminDashboard from "./pages/Admin/Dashboard/index.jsx"
+import SuccessPayment from './pages/Donation/SuccessPayment.jsx'
 
 import {
   createBrowserRouter,
@@ -28,8 +30,20 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
+    path:"*",
+    element:<Home/>
+  },
+  {
     path: "/about",
     element: <About />
+  },
+  {
+    path: "/donate",
+    element: <DonationPage />
+  },
+  {
+    path: "/donate/success",
+    element: <SuccessPayment />
   },
   {
     path: "/give-help",

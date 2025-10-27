@@ -46,6 +46,11 @@ const Nav = () => {
       to: "/volunteer", 
       type: "link" 
     },
+    {
+      name: "Donate",
+      type: "link",
+      to: "/donate"
+    }
   ];
 
   useEffect(() => {

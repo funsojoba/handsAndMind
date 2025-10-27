@@ -1,57 +1,77 @@
-// API Configuration
+// =============================
+// API CONFIGURATION
+// =============================
 const API_CONFIG = {
-    // Base URL for API calls
-    BASE_URL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000',
-    
-    // API endpoints
-    ENDPOINTS: {
-        // Admin authentication
-        ADMIN_SIGNUP: '/api/admin/signup',
-        ADMIN_SIGNIN: '/api/admin/signin',
-        
-        // Events
-        EVENTS: '/api/admin/events',
-        EVENT_BY_ID: (id) => `/api/admin/events/${id}`,
-        
-        // Blog
-        BLOG: '/api/admin/blog',
-        BLOG_BY_ID: (id) => `/api/admin/blog/${id}`,
-    }
-}
+  BASE_URL: import.meta.env.VITE_API_BASE_URL, // Example: http://localhost:8000/api/
 
-// Helper function to get full API URL
+  ENDPOINTS: {
+    // Admin authentication
+    ADMIN_SIGNUP: 'admin/signup',
+    ADMIN_SIGNIN: 'admin/login',
+
+    // Events
+    EVENTS: 'event',
+    EVENT_BY_ID: (id) => `event/${id}`,
+
+    // Blog
+    BLOG: 'admin/blog',
+    BLOG_BY_ID: (id) => `admin/blog/${id}`,
+  },
+};
+
+// =============================
+// Helper to get full API URL
+// =============================
 export const getApiUrl = (endpoint) => {
-    return `${API_CONFIG.BASE_URL}${endpoint}`
-}
+  // Ensure no double slashes
+  return `${API_CONFIG.BASE_URL.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`;
+};
 
-// Helper function to make authenticated API calls
+// =============================
+// Main API Call Helper
+// =============================
 export const apiCall = async (endpoint, options = {}) => {
-    const token = localStorage.getItem('adminToken')
-    
-    const defaultOptions = {
-        headers: {
-            'Content-Type': 'application/json',
-            ...(token && { 'Authorization': `Bearer ${token}` }),
-            ...options.headers
-        }
-    }
-    
-    const url = getApiUrl(endpoint)
-    
-    try {
-        const response = await fetch(url, { ...defaultOptions, ...options })
-        
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}))
-            throw new Error(errorData.message || `HTTP error! status: ${response.status}`)
-        }
-        
-        return await response.json()
-    } catch (error) {
-        console.error('API call failed:', error)
-        throw error
-    }
-}
+  const token = localStorage.getItem('adminToken');
+  const url = getApiUrl(endpoint);
 
-export { API_CONFIG }
+  // Detect if the body is FormData
+  const isFormData = options.body instanceof FormData;
+
+  // Default headers
+  const headers = {
+    ...(token && { Authorization: `Bearer ${token}` }),
+    ...(options.headers || {}),
+  };
+
+  // Only set JSON content type if not using FormData
+  if (!isFormData && !headers['Content-Type']) {
+    headers['Content-Type'] = 'application/json';
+  }
+
+  try {
+    const response = await fetch(url, {
+      method: options.method || 'GET',
+      headers,
+      body: options.body || null,
+    });
+
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      data = null;
+    }
+
+    if (!response.ok) {
+      throw new Error(data?.message || `HTTP error! status: ${response.status}`);
+    }
+
+    return data;
+  } catch (error) {
+    console.error('API call failed:', error);
+    throw error;
+  }
+};
+
+export { API_CONFIG };
 export default API_CONFIG;
