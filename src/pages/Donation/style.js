@@ -49,6 +49,22 @@ export const DonateContainer = styled.div`
         max-width: 600px;
         margin: 0 auto;
 
+        &-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .recurring-button label{
+                font-size: 1rem;
+                color: #555;
+                cursor: pointer;
+
+                input {
+                    margin-right: 8px;
+                }
+            }
+        }
+
         @media (max-width: 768px) {
             padding: 30px 20px;
         }
