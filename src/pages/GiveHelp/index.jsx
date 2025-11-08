@@ -581,7 +581,7 @@ const GiveHelp = () => {
                                         <label className="checkbox-label">
                                             <input type="checkbox" name="financialSupport" value="generalDonation" />
                                             <span className="checkmark"></span>
-                                            General Donation (donation link won't work yet as we don't have a charitable status yet)
+                                            General Donation 
                                         </label>
                                         <label className="checkbox-label">
                                             <input type="checkbox" name="financialSupport" value="programSponsor" />
