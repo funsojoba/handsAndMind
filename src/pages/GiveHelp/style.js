@@ -546,6 +546,9 @@ export const SponsorsSpotlightSection = styled.div`
                 width: 150px;
                 border-radius: 10px;
                 overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 img{
                     width: 100%;

@@ -12,12 +12,12 @@ const Footer = () => {
                     <FooterTitle>Start A Conversation</FooterTitle>
                     <FooterLink href="mailto:info@heartsandmind.org">info@heartsandmind.org</FooterLink>
                     <FooterLink href="mailto:heartsandmindfc@gmail.com">heartsandmindfc@gmail.com</FooterLink>
-                    <FooterLink href="tel:+(905) 723-6908">(905) 723-6908</FooterLink>
+                    <FooterLink href="tel:(905) 668-9608">(905) 668-9608</FooterLink>
                 </FooterSection>
 
                 <FooterSection>
                     <FooterTitle>Visit Our Office</FooterTitle>
-                    <p>Ajax ON Canada</p>
+                    <p>190 Harwood Avenue South Ajax L1S 2H6</p>
                 </FooterSection>
 
                 <FooterSection>

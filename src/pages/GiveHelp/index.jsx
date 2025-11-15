@@ -26,6 +26,11 @@ import oxfordCollege from "../../assets/sponsors/oxfordCollege.jpg"
 import dCare from "../../assets/sponsors/dcare.jpg"
 import gasImage from "../../assets/sponsors/gas.jpg"
 
+import blackWomen from "../../assets/sponsors/black_women.jpg"
+import cop from "../../assets/sponsors/cop.jpg"
+import eyeni from "../../assets/sponsors/eyeni.jpg"
+import joseline from "../../assets/sponsors/joseline.jpg"
+
 const GiveHelp = () => {
     const [activeTab, setActiveTab] = useState('corporate')
     const [activeFormTab, setActiveFormTab] = useState('sponsor')
@@ -469,6 +474,38 @@ const GiveHelp = () => {
                         </div>
                         <div className="text">
                             Gas Group
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={blackWomen} />
+                        </div>
+                        <div className="text">
+                            The Black Women <br/> Collective
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={cop} />
+                        </div>
+                        <div className="text">
+                            Dempsey Insurance 
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={eyeni} />
+                        </div>
+                        <div className="text">
+                            Eyeni
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={joseline} />
+                        </div>
+                        <div className="text">
+                            Joseline Siles
                         </div>
                     </div>
 
