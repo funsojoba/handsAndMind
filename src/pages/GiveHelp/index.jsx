@@ -30,6 +30,8 @@ import blackWomen from "../../assets/sponsors/black_women.jpg"
 import cop from "../../assets/sponsors/cop.jpg"
 import eyeni from "../../assets/sponsors/eyeni.jpg"
 import joseline from "../../assets/sponsors/joseline.jpg"
+import verse from "../../assets/sponsors/verse.jpg"
+import zen from "../../assets/sponsors/zen.jpg"
 
 const GiveHelp = () => {
     const [activeTab, setActiveTab] = useState('corporate')
@@ -506,6 +508,22 @@ const GiveHelp = () => {
                         </div>
                         <div className="text">
                             Joseline Siles
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={verse} />
+                        </div>
+                        <div className="text">
+                            Verse Thread
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={zen} />
+                        </div>
+                        <div className="text">
+                            ZenWellness
                         </div>
                     </div>
 

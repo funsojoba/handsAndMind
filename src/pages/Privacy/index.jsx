@@ -17,7 +17,7 @@ const PrivacyPolicy = () =>{
                         <h4>Introduction</h4>
                         <p>
                             
-                            HeartsandMind ("we, "us", or "our") is committed to protecting the privacy and security of
+                            HeartsandMind ("we", "us", or "our") is committed to protecting the privacy and security of
                             your personal information. This Privacy Policy explains how we collect, use, disclose, and
                             safeguard your information when you visit our website heartsandmind.org, submit forms
                             to us, or otherwise interact with our services.
@@ -136,7 +136,7 @@ const PrivacyPolicy = () =>{
                             </li>
                             <li><strong>Opt-out</strong> of receiving promotional communications from us by using the
                                 unsubscribe link in our emails or contacting us directly.
-                                To exercise any of these rights, please contact us at<a href="mainto:privacy@heartsandmind.org" target="_blank">privacy@heartsandmind.org</a></li>
+                                To exercise any of these rights, please contact us at <a href="mainto:privacy@heartsandmind.org" target="_blank">privacy@heartsandmind.org</a></li>
                         </ul>
                     </div>
                     

@@ -536,6 +536,10 @@ export const SponsorsSpotlightSection = styled.div`
             font-size: 1.1rem;
             transition: all 0.3s ease;
             
+            .text{
+                font-size: .7em;
+            }
+
             &:hover {
                 border-color: #8D24B4;
                 background: #f0f0f0;
@@ -543,12 +547,13 @@ export const SponsorsSpotlightSection = styled.div`
             }
 
             .image{
-                width: 150px;
+                width: 120px;
                 border-radius: 10px;
                 overflow: hidden;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                margin-bottom: 5px;
 
                 img{
                     width: 100%;
