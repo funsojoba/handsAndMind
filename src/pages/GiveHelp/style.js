@@ -519,11 +519,13 @@ export const SponsorsSpotlightSection = styled.div`
     
     .sponsors-grid {
         margin: 0 auto 30px;
+        padding: 30px;
         display: flex;
-        gap: 30px;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
+        gap: 15px;
+        /* justify-content: center; */
+        /* align-items: center; */
+        overflow: scroll;
+        /* flex-wrap: wrap; */
         
         .sponsor-logo {
             background: #f8f9fa;

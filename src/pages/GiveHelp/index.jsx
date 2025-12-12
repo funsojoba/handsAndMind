@@ -21,9 +21,9 @@ import { useHashNavigation } from "../../utils/scrollToSection"
 
 // sponsors logo
 import BigGirLogo from "../../assets/sponsors/bigGirl.jpg"
-import soulReaction from "../../assets/sponsors/soulReaction.jpg"
+// import soulReaction from "../../assets/sponsors/soulReaction.jpg"
 import oxfordCollege from "../../assets/sponsors/oxfordCollege.jpg"
-import dCare from "../../assets/sponsors/dcare.jpg"
+// import dCare from "../../assets/sponsors/dcare.jpg"
 import gasImage from "../../assets/sponsors/gas.jpg"
 
 import blackWomen from "../../assets/sponsors/black_women.jpg"
@@ -32,6 +32,12 @@ import eyeni from "../../assets/sponsors/eyeni.jpg"
 import joseline from "../../assets/sponsors/joseline.jpg"
 import verse from "../../assets/sponsors/verse.jpg"
 import zen from "../../assets/sponsors/zen.jpg"
+import chefPike from "../../assets/sponsors/chef_pike.jpeg"
+import myrie from "../../assets/sponsors/myrie.jpeg"
+import paradyse from "../../assets/sponsors/paradeyes.jpeg"
+import primerica from "../../assets/sponsors/primerica.png"
+import goled from "../../assets/sponsors/Goled-Photo.png"
+
 
 const GiveHelp = () => {
     const [activeTab, setActiveTab] = useState('corporate')
@@ -435,14 +441,6 @@ const GiveHelp = () => {
             <SponsorsSpotlightSection>
                 <h2 className="section-title">Current Sponsors/Partners Spotlight</h2>
                 <div className="sponsors-grid">
-                    <div className="sponsor-logo">
-                        <div className="image">
-                            <img src={soulReaction} />
-                        </div>
-                        <div className="text">
-                            Soul Reaction
-                        </div>
-                    </div>
                     
                     <div className="sponsor-logo">
                         <div className="image">
@@ -462,14 +460,6 @@ const GiveHelp = () => {
                         </div>
                     </div>
                     
-                    <div className="sponsor-logo">
-                        <div className="image">
-                            <img src={dCare} />
-                        </div>
-                        <div className="text">
-                            D'Care Foundation
-                        </div>
-                    </div>
                     <div className="sponsor-logo">
                         <div className="image">
                             <img src={gasImage} />
@@ -524,6 +514,46 @@ const GiveHelp = () => {
                         </div>
                         <div className="text">
                             ZenWellness
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={chefPike} />
+                        </div>
+                        <div className="text">
+                            Chef Pike
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={myrie} />
+                        </div>
+                        <div className="text">
+                            Myrie Beauty
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={paradyse} />
+                        </div>
+                        <div className="text">
+                            Paradeyes Optical
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={primerica} />
+                        </div>
+                        <div className="text">
+                            Primerica
+                        </div>
+                    </div>
+                    <div className="sponsor-logo">
+                        <div className="image">
+                            <img src={goled} />
+                        </div>
+                        <div className="text">
+                            Gale D’ Souza photographic Touch
                         </div>
                     </div>
 
