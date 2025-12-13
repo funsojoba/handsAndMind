@@ -73,7 +73,7 @@ return (
                                     ariaLabel="loading"
                                 />
                             ) : (
-                                `$${amt}`
+                                `US$${amt}`
                             )}
                         </AmountButton>
                     ))}
