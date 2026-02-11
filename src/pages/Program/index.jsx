@@ -70,9 +70,10 @@ const Program = () => {
                 "Virtual and in-person options"
             ],
             actionText: "Join a Group",
-            actionLink: "https://docs.google.com/forms/d/1Iimy5FVRtlxAuuIQqB8m7sPB0MGwGsWjefD2YZcuTyA/edit",
+            // actionLink: "https://docs.google.com/forms/d/1Iimy5FVRtlxAuuIQqB8m7sPB0MGwGsWjefD2YZcuTyA/edit",
+            actionLink: "/get-help",
             color: "#4CAF50",
-            target: "_blank"
+            // target: "_blank"
         }
     ]
 

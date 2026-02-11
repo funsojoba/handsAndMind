@@ -17,6 +17,7 @@ import DonationPage from './pages/Donation/index.jsx'
 import AdminAuth from './pages/Admin/Auth/index.jsx'
 import AdminDashboard from "./pages/Admin/Dashboard/index.jsx"
 import SuccessPayment from './pages/Donation/SuccessPayment.jsx'
+import GetHelpPage from './pages/GetHelp/index.jsx'
 
 import {
   createBrowserRouter,
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
   {
     path: "/volunteer",
     element: <Volunteer />
+  },
+  {
+    path: "/get-help",
+    element: <GetHelpPage />
   },
   {
     path: "/community",

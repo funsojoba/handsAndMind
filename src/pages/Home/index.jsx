@@ -306,7 +306,7 @@ const Home = ()=>{
                 <h2 className="about-title montserrat-bold">About Hearts & Mind</h2>
                 <p className="about-description">
                     We envision a future where every child in foster care thrives in a home grounded in 
-                    compassion, cultural integrity, and emotional safety—and where every foster parent is 
+                    compassion, cultural integrity, and emotional safety and where every foster parent is 
                     supported, respected, and equipped to sustain that environment.
                 </p>
                 <p className="about-description">
