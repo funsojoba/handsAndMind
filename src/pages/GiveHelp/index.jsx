@@ -383,7 +383,7 @@ const GiveHelp = () => {
                     <div className="step">
                         <div className="step-number">2</div>
                         <h3>We Deliver</h3>
-                        <p>Impact Report (not available yet)</p>
+                        <p>Impact Report, measurable outcomes and transparent reporting you can trust.</p>
                     </div>
                     <div className="step">
                         <div className="step-number">3</div>
@@ -597,7 +597,7 @@ const GiveHelp = () => {
                     >
                         💼 Sponsor Form
                     </button>
-                    <button 
+                    {/* <button 
                         className={`form-tab ${activeFormTab === 'placement' ? 'active' : ''}`}
                         onClick={() => setActiveFormTab('placement')}
                     >
@@ -608,7 +608,7 @@ const GiveHelp = () => {
                         onClick={() => setActiveFormTab('volunteer')}
                     >
                         🤝 Volunteer
-                    </button>
+                    </button> */}
                 </div>
                 
                 <div className="form-content">

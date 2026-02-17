@@ -8,6 +8,7 @@ import fosterFamily from "../../assets/foster-family.jpg"
 import { Link } from "react-router-dom"
 import api from "../../api/axiosInstance"
 import { formatDate, convertTime } from "../../utils/dateTimeFormat"
+import SalesforceForm from "../../components/SalesForce"
 
 const Home = ()=>{
     const [currentMonth, setCurrentMonth] = useState(new Date())
@@ -509,98 +510,99 @@ const Home = ()=>{
             </div>
             
             {activeForm === 'support' ? (
-                <form className="signup-form" onSubmit={handleSupportSubmit}>
-                    <h3 className="form-section-title">Hearts & Mind Support Request Sign-Up Form</h3>
+                <SalesforceForm/>
+                // <form className="signup-form" onSubmit={handleSupportSubmit}>
+                //     <h3 className="form-section-title">Hearts & Mind Support Request Sign-Up Form</h3>
                     
-                    <div className="form-row">
-                        <div className="form-group">
-                            <label htmlFor="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="supportFullName" required />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="supportEmail" required />
-                        </div>
-                    </div>
+                //     <div className="form-row">
+                //         <div className="form-group">
+                //             <label htmlFor="fullName">Full Name</label>
+                //             <input type="text" id="fullName" name="supportFullName" required />
+                //         </div>
+                //         <div className="form-group">
+                //             <label htmlFor="email">Email</label>
+                //             <input type="email" id="email" name="supportEmail" required />
+                //         </div>
+                //     </div>
                     
-                    <div className="form-row">
-                        <div className="form-group">
-                            <label htmlFor="phone">Phone</label>
-                            <input type="tel" id="phone" name="supportPhone" required />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="contactMethod">Preferred Contact Method</label>
-                            <select id="contactMethod" name="supportContactMethod" required>
-                                <option value="">Select contact method</option>
-                                <option value="email">Email</option>
-                                <option value="text">Text</option>
-                                <option value="phone">Phone Call</option>
-                            </select>
-                        </div>
-                    </div>
+                //     <div className="form-row">
+                //         <div className="form-group">
+                //             <label htmlFor="phone">Phone</label>
+                //             <input type="tel" id="phone" name="supportPhone" required />
+                //         </div>
+                //         <div className="form-group">
+                //             <label htmlFor="contactMethod">Preferred Contact Method</label>
+                //             <select id="contactMethod" name="supportContactMethod" required>
+                //                 <option value="">Select contact method</option>
+                //                 <option value="email">Email</option>
+                //                 <option value="text">Text</option>
+                //                 <option value="phone">Phone Call</option>
+                //             </select>
+                //         </div>
+                //     </div>
                     
-                    <div className="form-section">
-                        <h4 className="section-subtitle">Your Needs (Check All That Apply)</h4>
+                //     <div className="form-section">
+                //         <h4 className="section-subtitle">Your Needs (Check All That Apply)</h4>
                         
-                        <div className="checkbox-group">
-                            <h5>Practical Support:</h5>
-                            <label className="checkbox-label">
-                                <input type="checkbox" name="laundry" />
-                                <span className="checkmark"></span>
-                                Laundry Assistance
-                            </label>
-                            <label className="checkbox-label">
-                                <input type="checkbox" name="mealPrep" />
-                                <span className="checkmark"></span>
-                                Meal Prep
-                            </label>
-                            <label className="checkbox-label">
-                                <input type="checkbox" name="emergencyCleaning" />
-                                <span className="checkmark"></span>
-                                Emergency Cleaning
-                            </label>
-                        </div>
+                //         <div className="checkbox-group">
+                //             <h5>Practical Support:</h5>
+                //             <label className="checkbox-label">
+                //                 <input type="checkbox" name="laundry" />
+                //                 <span className="checkmark"></span>
+                //                 Laundry Assistance
+                //             </label>
+                //             <label className="checkbox-label">
+                //                 <input type="checkbox" name="mealPrep" />
+                //                 <span className="checkmark"></span>
+                //                 Meal Prep
+                //             </label>
+                //             <label className="checkbox-label">
+                //                 <input type="checkbox" name="emergencyCleaning" />
+                //                 <span className="checkmark"></span>
+                //                 Emergency Cleaning
+                //             </label>
+                //         </div>
                         
-                        <div className="checkbox-group">
-                            <h5>Community Connection:</h5>
-                            <label className="checkbox-label">
-                                <input type="checkbox" name="brunchInvites" />
-                                <span className="checkmark"></span>
-                                Hearts & Mind Brunch Invites
-                            </label>
-                            <label className="checkbox-label">
-                                <input type="checkbox" name="joinPod" />
-                                <span className="checkmark"></span>
-                                Join a POD
-                            </label>
-                        </div>
+                //         <div className="checkbox-group">
+                //             <h5>Community Connection:</h5>
+                //             <label className="checkbox-label">
+                //                 <input type="checkbox" name="brunchInvites" />
+                //                 <span className="checkmark"></span>
+                //                 Hearts & Mind Brunch Invites
+                //             </label>
+                //             <label className="checkbox-label">
+                //                 <input type="checkbox" name="joinPod" />
+                //                 <span className="checkmark"></span>
+                //                 Join a POD
+                //             </label>
+                //         </div>
                         
-                        <div className="checkbox-group">
-                            <h5>Cultural Support:</h5>
-                            <label className="checkbox-label">
-                                <input type="checkbox" name="indigenousHealing" />
-                                <span className="checkmark"></span>
-                                Indigenous Healing Circles
-                            </label>
-                            <label className="checkbox-label">
-                                <input type="checkbox" name="blackParentGroup" />
-                                <span className="checkmark"></span>
-                                Black Parent Affinity Group
-                            </label>
-                        </div>
-                    </div>
-                    <button 
-                        type="submit" 
-                        disabled={supportSubmitting}
-                        className="submit-btn">
-                            {supportSubmitting ? 'Submitting...' : 'Submit Support Request'}
+                //         <div className="checkbox-group">
+                //             <h5>Cultural Support:</h5>
+                //             <label className="checkbox-label">
+                //                 <input type="checkbox" name="indigenousHealing" />
+                //                 <span className="checkmark"></span>
+                //                 Indigenous Healing Circles
+                //             </label>
+                //             <label className="checkbox-label">
+                //                 <input type="checkbox" name="blackParentGroup" />
+                //                 <span className="checkmark"></span>
+                //                 Black Parent Affinity Group
+                //             </label>
+                //         </div>
+                //     </div>
+                //     <button 
+                //         type="submit" 
+                //         disabled={supportSubmitting}
+                //         className="submit-btn">
+                //             {supportSubmitting ? 'Submitting...' : 'Submit Support Request'}
                             
-                    </button>
+                //     </button>
                     
-                    {supportSubmitMessage && (
-                        <p className="submit-message">{supportSubmitMessage}</p>
-                    )}
-                </form>
+                //     {supportSubmitMessage && (
+                //         <p className="submit-message">{supportSubmitMessage}</p>
+                //     )}
+                // </form>
             ) : (
                 <form className="signup-form" onSubmit={handleContactSubmit}>
                     <h3 className="form-section-title">Hearts & Mind Contact Form</h3>

@@ -14,7 +14,7 @@ import {
 } from "./style"
 
 const Volunteer = () => {
-    const [activeTab, setActiveTab] = useState('volunteer')
+    const [activeTab, setActiveTab] = useState('sponsor')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitMessage, setSubmitMessage] = useState('')
 
@@ -308,24 +308,24 @@ const Volunteer = () => {
                     </div>
 
                     <TabNavigation>
-                        <TabButton 
+                        {/* <TabButton 
                             active={activeTab === 'volunteer'} 
                             onClick={() => handleTabChange('volunteer')}
                         >
                             Volunteer
-                        </TabButton>
+                        </TabButton> */}
                         <TabButton 
                             active={activeTab === 'sponsor'} 
                             onClick={() => handleTabChange('sponsor')}
                         >
                             Sponsor
                         </TabButton>
-                        <TabButton 
+                        {/* <TabButton 
                             active={activeTab === 'placement'} 
                             onClick={() => handleTabChange('placement')}
                         >
                             Student Placement
-                        </TabButton>
+                        </TabButton> */}
                     </TabNavigation>
 
                     {activeTab === 'volunteer' && (
