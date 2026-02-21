@@ -41,7 +41,7 @@ const AdminAuth = () => {
                 const response = await apiCall(API_CONFIG.ENDPOINTS.ADMIN_SIGNUP, {
                     method: 'POST',
                     body: JSON.stringify({
-                        fullName: formData.name,
+                        fullname: formData.name,
                         email: formData.email,
                         password: formData.password
                     })
