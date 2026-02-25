@@ -113,8 +113,12 @@ export default function SupportRequest() {
           </CardHeader> */}
 
           <Form
+            // action="https://heartsandmindfostercommunity--hmsandbx.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DbZ000003bby9"
+            // method="POST"
             action="https://heartsandmindfostercommunity--hmsandbx.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DbZ000003bby9"
             method="POST"
+            id="hmWebToCaseForm"
+            novalidate
             onSubmit={handleSubmit}
           >
             <input type="hidden" name="orgid" value="00DbZ000003bby9" />
