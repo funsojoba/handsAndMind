@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import styled, { createGlobalStyle, keyframes } from "styled-components";
+import { ThreeDots } from 'react-loader-spinner'
 
 // ─── Design Tokens ───────────────────────────────────────────────────────────
 const tokens = {
@@ -39,10 +40,6 @@ const fadeUp = keyframes`
   to   { opacity: 1; transform: translateY(0); }
 `;
 
-const shimmer = keyframes`
-  0%   { background-position: -400px 0; }
-  100% { background-position: 400px 0; }
-`;
 
 // ─── Styled Components ───────────────────────────────────────────────────────
 const Hero = styled.header`
@@ -441,6 +438,7 @@ export default function SupportRequestSalesForce() {
   const [selectedNeeds, setSelectedNeeds] = useState([]);
   const [needsError, setNeedsError] = useState(false);
   const [modal, setModal] = useState({ visible: false, message: "" });
+  const [isLoading, setIsLoading] = useState(false);
 
   const needsRef = useRef(null);
   const formRef = useRef(null);
@@ -494,6 +492,9 @@ export default function SupportRequestSalesForce() {
       needsRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
+
+    setIsLoading(true);
+    
     // If all validations pass, form submits natively to Salesforce
   };
 
@@ -522,13 +523,13 @@ export default function SupportRequestSalesForce() {
 
           <StyledForm
             ref={formRef}
-            action="https://heartsandmindfostercommunity--hmsandbx.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DbZ000003bby9"
+            action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8"
             method="POST"
             onSubmit={handleSubmit}
             noValidate
           >
             {/* Hidden Salesforce fields */}
-            <input type="hidden" name="orgid" value="00DbZ000003bby9" />
+            <input type="hidden" name="orgid" value="00Dau000008c2oz"></input>
             <input type="hidden" name="retURL" value="https://heartsandmind.org/about" />
             <input type="hidden" name="subject" value="Caregiver Support Request" />
 
@@ -724,7 +725,7 @@ export default function SupportRequestSalesForce() {
 
             <Actions>
               <SubmitBtn type="submit" name="submit">
-                Submit Request
+                {isLoading ? <ThreeDots /> : "Submit Request"}
               </SubmitBtn>
             </Actions>
 

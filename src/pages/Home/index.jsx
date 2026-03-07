@@ -19,9 +19,6 @@ const Home = ()=>{
     const [contactIsSubmitting, setContactIsSubmitting] = useState(false)
     const [contactSubmitMessage, setContactSubmitMessage] = useState('')
 
-    const [supportSubmitting, setSupportSubmitting] = useState(false)
-    const [supportSubmitMessage, setSupportSubmitMessage] = useState('')
-
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [eventData, setEventData] = useState(null);
@@ -204,80 +201,6 @@ const Home = ()=>{
         }
     }
 
-    const handleSupportSubmit = async (e) =>{
-        e.preventDefault()
-        setSupportSubmitting(true)
-        setSupportSubmitMessage('')
-
-        try{
-            const formData = new FormData(e.target)
-            console.log("FORM DATA:", formData)
-
-            const practicalSupport = []
-            if (formData.get('laundry')) practicalSupport.push("Laundry")
-            if (formData.get('mealPrep')) practicalSupport.push("Meal Prep")
-            if (formData.get('emergencyCleaning')) practicalSupport.push("Emergency Cleaning")
-
-            const communityConnection = []
-            if (formData.get('brunchInvites')) communityConnection.push("Brunch Invites")
-            if (formData.get('joinPod')) communityConnection.push("Join a POD")
-
-            const culturalSupport = []
-            if (formData.get('indigenousHealing')) culturalSupport.push("Indigenous Healing Circles")
-            if (formData.get('blackParentGroup')) culturalSupport.push("Black Parent Affinity Group")
-
-            const supportData = {
-                fullName: formData.get('supportFullName'),
-                email: formData.get('supportEmail'),
-                phone: formData.get('supportPhone'),
-                supportContactMethod: formData.get('supportContactMethod'),
-                practicalSupport: practicalSupport.join(", ") || "None selected",
-                communityConnection: communityConnection.join(", ") || "None selected",
-                culturalSupport: culturalSupport.join(", ") || "None selected",
-
-            }
-
-            const templateParams = {
-                to_email: 'parentssupport@heartsandmind.org',
-                name: supportData.fullName,
-                from_email: supportData.email,
-                phone: supportData.phone,
-                time: new Date().toLocaleString(),
-                subject: 'New Support Signup - Hearts & Mind',
-                message: `
-                    New Support Signup:
-
-                    Personal Information:
-                    - Name : ${supportData.fullName}
-                    - Email: ${supportData.email}
-                    - Phone: ${supportData.phone || "Not provided"}
-                    - Preferred Contact Method: ${supportData.supportContactMethod}
-
-                    Support Interests:
-                    - Practical Support: ${supportData.practicalSupport}
-                    - Community Connection: ${supportData.communityConnection}
-                    - Cultural Support: ${supportData.culturalSupport}
-                `
-            }
-
-            const result = await emailjs.send(
-                'service_24qbx28', 
-                'template_k1is77a', // Replace with your EmailJS template ID
-                templateParams,
-                'IcunHnsazaGHQNKhj' // Public Key
-            )
-            console.log('Email sent successfully:', result.text)
-            setSupportSubmitMessage('Thank you! Your support signup has been submitted successfully.')
-            e.target.reset()
-
-        }catch(error){
-            console.log("error: ", error)
-            setSupportSubmitMessage("Sorry, there was an error submitting this form. Please try again")
-            }
-        finally{
-            setSupportSubmitting(false)
-        }
-    }
 
     return <>
     <Nav />
