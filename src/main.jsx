@@ -18,6 +18,7 @@ import AdminAuth from './pages/Admin/Auth/index.jsx'
 import AdminDashboard from "./pages/Admin/Dashboard/index.jsx"
 import SuccessPayment from './pages/Donation/SuccessPayment.jsx'
 import GetHelpPage from './pages/GetHelp/index.jsx'
+import SupportRequestSuccess from './pages/SupportSuccess/index.jsx'
 
 import {
   createBrowserRouter,
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/dashboard",
     element: <AdminDashboard/>
+  },
+  {
+    path: "/support-success",
+    element: <SupportRequestSuccess/>
   }
 ])
 

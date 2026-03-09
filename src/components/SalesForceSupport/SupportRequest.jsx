@@ -521,16 +521,21 @@ export default function SupportRequestSalesForce() {
             </Hint>
           </CardHeader>
 
+          {/* <input type="hidden" name="retURL" value="https://heartsandmind.org/support-request-success.html"> */}
+
+
           <StyledForm
             ref={formRef}
-            action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8"
+            id="hmWebToCaseForm"
+            action="https://webto.salesforce.com/servlet/servlet.WebToCase"
+            // action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8"
             method="POST"
             onSubmit={handleSubmit}
             noValidate
           >
             {/* Hidden Salesforce fields */}
             <input type="hidden" name="orgid" value="00Dau000008c2oz"></input>
-            <input type="hidden" name="retURL" value="https://heartsandmind.org/about" />
+            <input type="hidden" name="retURL" value="https://heartsandmind.org/support-success" />
             <input type="hidden" name="subject" value="Caregiver Support Request" />
 
             {/* Sync selected needs into hidden multi-select for Salesforce */}
