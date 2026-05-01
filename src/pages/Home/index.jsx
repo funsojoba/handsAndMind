@@ -342,72 +342,78 @@ const Home = ()=>{
 
     <UpcomingEvents>
         <div className="events-container">
-            <div className="calendar-section">
+            <div className="event-header">
                 <h2 className="events-title montserrat-bold">Upcoming Events</h2>
-                <div className="calendar">
-                    <div className="calendar-header">
-                        <button className="nav-btn" onClick={() => setCurrentMonth(prev => new Date(prev.getFullYear(), prev.getMonth() - 1))}>
-                            ‹
-                        </button>
-                        <h3>{currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</h3>
-                        <button className="nav-btn" onClick={() => setCurrentMonth(prev => new Date(prev.getFullYear(), prev.getMonth() + 1))}>
-                            ›
-                        </button>
-                    </div>
-                    <div className="calendar-grid">
-                        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-                            <div key={day} className="calendar-day-header">{day}</div>
-                        ))}
-                        {getCalendarDays().map((day, index) => (
-                            <div
-                                key={index}
-                                className={`calendar-day ${day.hasEvent ? 'has-event' : ''} ${day.isCurrentMonth ? '' : 'other-month'} ${day.isToday ? 'today' : ''}`}
-                                onClick={() => handleDateClick(day)}
-                            >
-                                {day.date}
-                            </div>
-                        ))}
+            </div>
+
+            <div className="content">
+                <div className="calendar-section">
+                    
+                    <div className="calendar">
+                        <div className="calendar-header">
+                            <button className="nav-btn" onClick={() => setCurrentMonth(prev => new Date(prev.getFullYear(), prev.getMonth() - 1))}>
+                                ‹
+                            </button>
+                            <h3>{currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</h3>
+                            <button className="nav-btn" onClick={() => setCurrentMonth(prev => new Date(prev.getFullYear(), prev.getMonth() + 1))}>
+                                ›
+                            </button>
+                        </div>
+                        <div className="calendar-grid">
+                            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+                                <div key={day} className="calendar-day-header">{day}</div>
+                            ))}
+                            {getCalendarDays().map((day, index) => (
+                                <div
+                                    key={index}
+                                    className={`calendar-day ${day.hasEvent ? 'has-event' : ''} ${day.isCurrentMonth ? '' : 'other-month'} ${day.isToday ? 'today' : ''}`}
+                                    onClick={() => handleDateClick(day)}
+                                >
+                                    {day.date}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div className="flier-section">
-                <div className="flier-container">
+                
+                <div className="flier-section">
+                    <div className="flier-container">
 
-                    {loading ? (
-                        <div className="loading">loading ...</div>
-                    ) : (
-                        selectedEvent ? (
-                            <div className="event-flier">
-                                <img src={selectedEvent.event_flier} alt={selectedEvent.event_title} />
-                                <div className="event-info">
-                                    <h3>{selectedEvent.event_title}</h3>
-                                    <div className="date-time">
-                                        <p className="event-date">{formatDate(selectedEvent.date)}</p>
-                                        <p className="event-time">{convertTime(selectedEvent.time)}</p>
-                                    </div>
-                                    <p className="event-location">{selectedEvent.location}</p>
-                                    <p className="event-description">{selectedEvent.description}</p>
-                                    {selectedEvent.registration_link && (
-                                        <a
-                                            href={selectedEvent.registration_link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="event-registration-link"
-                                        >
-                                            Register for this event
-                                        </a>
-                                    )}
-                                </div>
-                            </div>
+                        {loading ? (
+                            <div className="loading">loading ...</div>
                         ) : (
-                            <div className="no-event-selected">
-                                <div className="placeholder-icon">📅</div>
-                                <h3>Select a Date</h3>
-                                <p>Click on a highlighted date in the calendar to view event details</p>
-                            </div>
-                        )
-                    )}
+                            selectedEvent ? (
+                                <div className="event-flier">
+                                    <img src={selectedEvent.event_flier} alt={selectedEvent.event_title} />
+                                    <div className="event-info">
+                                        <h3>{selectedEvent.event_title}</h3>
+                                        <div className="date-time">
+                                            <p className="event-date">{formatDate(selectedEvent.date)}</p>
+                                            <p className="event-time">{convertTime(selectedEvent.time)}</p>
+                                        </div>
+                                        <p className="event-location">{selectedEvent.location}</p>
+                                        <p className="event-description">{selectedEvent.description}</p>
+                                        {selectedEvent.registration_link && (
+                                            <a
+                                                href={selectedEvent.registration_link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="event-registration-link"
+                                            >
+                                                Register for this event
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="no-event-selected">
+                                    <div className="placeholder-icon">📅</div>
+                                    <h3>Select a Date</h3>
+                                    <p>Click on a highlighted date in the calendar to view event details</p>
+                                </div>
+                            )
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

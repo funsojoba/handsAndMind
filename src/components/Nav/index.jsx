@@ -19,10 +19,12 @@ const Nav = () => {
       name: "Our Programs",
       type: "dropdown",
       items: [
+        { name: "Hearts & Home Relief Support", to: "/hearts-home-relief-support" },
         { name: "Hearts & Home Relief Packages", to: "/programs#hears-home-relief" },
-        { name: "Reflect & Renew Workshops", to: "/programs#reflect-renew-workshop" },
-        { name: "Hearts & Mind support group", to: "/programs#community-network" },
-        { name: "Hearts & Mind Brunchin", to: "/programs#brunchin" }
+        { name: "Reflect & Renew Workshops", to: "/reflect-renew-workshops" },
+        { name: "Coaching & Mentorship Program", to: "/coaching-mentorship-program" },
+        { name: "Hearts and Mind Support Group", to: "/caregiver-circle" },
+        { name: "Hearts & Mind Brunchin", to: "/hearts-brunch-series" }
       ]
     },
     {

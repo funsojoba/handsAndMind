@@ -87,6 +87,11 @@ const HeartsHomeReliefSupport = () => {
                 </HeroSection>
 
                 <Section>
+                    <p>Sometimes the most powerful support is not a workshop or a conversation. It is someone actually showing up to help with the everyday tasks that weigh you down. Our <b>Hearts &amp; Home Relief Support</b> program offers direct, hands-on help to foster parents and kinship caregivers in their homes.
+                        We understand the daily responsibilities such as laundry, meal prep and housekeeping can pile up and the weight of caregiving can feel overwhelming. This is where we step in. With the help of our amazing volunteers, we provide relief so you can breathe easier and focus on caring for yourself and the children in your home.
+                        Imagine the difference it makes when someone helps fold the laundry or tidies up the house. You do not have to do it all alone and this is not just about chores.
+                        This program is our way of letting you know we see you, we value you, and we are here to help. When your load is lighter, you have more energy to give love, patience, and stability to the children who depend on you.</p>
+                    <br />
                     <p>
                         Care-giving can feel overwhelming, and sometimes the most powerful support is someone
                         showing up to help with everyday tasks. Our Hearts &amp; Home Relief Support program

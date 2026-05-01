@@ -1065,14 +1065,38 @@ export const UpcomingEvents = styled.div`
     .events-container {
         max-width: 1200px;
         margin: 0 auto;
-        display: grid;
+        /* display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: start;
+        align-items: start; */
         
-        @media (max-width: 768px) {
+        /* @media (max-width: 768px) {
             grid-template-columns: 1fr;
             gap: 40px;
+            } */
+            
+            .content{
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-start;
+                gap: 60px;
+
+                @media only screen and (max-width: 768px){
+                    flex-direction: column-reverse;
+                }
+
+            .calendar-section{
+                flex: 1;
+
+                @media only screen and (max-width: 768px){
+                    width: 100%;
+                }
+            }
+            .flier-section{
+                flex: 1;
+                @media only screen and (max-width: 768px){
+                    width: 100%;
+                }
+            }
         }
     }
     

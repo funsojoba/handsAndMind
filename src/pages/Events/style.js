@@ -56,6 +56,7 @@ export const EventCard = styled.div`
     background: white;
     border-radius: 20px;
     overflow: hidden;
+    width: 420px;
     box-shadow: 0 10px 30px rgba(141, 36, 180, 0.1);
     border: 2px solid #f0f0f0;
     transition: all 0.3s ease;
@@ -69,7 +70,7 @@ export const EventCard = styled.div`
 
 export const EventImage = styled.div`
     width: 100%;
-    height: 200px;
+    /* height: 200px; */
     overflow: hidden;
     
     img {

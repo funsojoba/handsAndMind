@@ -19,6 +19,11 @@ import AdminDashboard from "./pages/Admin/Dashboard/index.jsx"
 import SuccessPayment from './pages/Donation/SuccessPayment.jsx'
 import GetHelpPage from './pages/GetHelp/index.jsx'
 import SupportRequestSuccess from './pages/SupportSuccess/index.jsx'
+import HeartsHomeReliefSupport from './pages/HeartsHomeReliefSupport/index.jsx'
+import ReflectRenewWorkshops from './pages/ReflectRenewWorkshops/index.jsx'
+import HeartsBrunchSeries from './pages/HeartsBrunchSeries/index.jsx'
+import CoachingMentorshipProgram from './pages/CoachingMentorshipProgram/index.jsx'
+import CaregiverCircle from './pages/CaregiverCircle/index.jsx'
 
 import {
   createBrowserRouter,
@@ -94,6 +99,26 @@ const router = createBrowserRouter([
   {
     path: "/support-success",
     element: <SupportRequestSuccess/>
+  },
+  {
+    path: "/hearts-home-relief-support",
+    element: <HeartsHomeReliefSupport />
+  },
+  {
+    path: "/reflect-renew-workshops",
+    element: <ReflectRenewWorkshops />
+  },
+  {
+    path: "/hearts-brunch-series",
+    element: <HeartsBrunchSeries />
+  },
+  {
+    path: "/coaching-mentorship-program",
+    element: <CoachingMentorshipProgram />
+  },
+  {
+    path: "/caregiver-circle",
+    element: <CaregiverCircle />
   }
 ])
 
