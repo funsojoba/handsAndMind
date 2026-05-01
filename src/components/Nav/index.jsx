@@ -20,7 +20,7 @@ const Nav = () => {
       type: "dropdown",
       items: [
         { name: "Hearts & Home Relief Support", to: "/hearts-home-relief-support" },
-        { name: "Hearts & Home Relief Packages", to: "/programs#hears-home-relief" },
+        // { name: "Hearts & Home Relief Packages", to: "/programs#hears-home-relief" },
         { name: "Reflect & Renew Workshops", to: "/reflect-renew-workshops" },
         { name: "Coaching & Mentorship Program", to: "/coaching-mentorship-program" },
         { name: "Hearts and Mind Support Group", to: "/caregiver-circle" },

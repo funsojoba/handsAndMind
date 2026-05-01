@@ -49,7 +49,7 @@ const About = () => {
             <HeroSection>
                 <div className="hero-content">
                     <h1 className="montserrat-bold">About HEARTS AND MIND</h1>
-                    <p>Empowering foster parents with resources, relational guidance, and in-home support</p>
+                    <p>Empowering foster parents, kinship caregivers and families with resources, relational guidance, and in-home support</p>
                 </div>
             </HeroSection>
 
@@ -58,7 +58,7 @@ const About = () => {
                     <h2 className="section-title montserrat-bold">Our Mission</h2>
                     <div className="mission-content">
                         <p className="mission-text">
-                            HEARTS AND MIND exists to empower foster parents with the resources, relational guidance, 
+                            HEARTS AND MIND exists to empower foster parents, kinship caregivers and families with the resources, relational guidance, 
                             and in-home support they need to provide safe, nurturing, and stable environments for the 
                             children entrusted to their care. We believe that by centering healing, cultural safety, and 
                             dignity, we can reduce caregiver burnout, stabilize foster placements, and improve long-term 
@@ -80,7 +80,7 @@ const About = () => {
                     <div className="vision-content">
                         <p className="vision-text">
                             We envision a future where every child in foster care thrives in a home grounded in 
-                            compassion, cultural integrity, and emotional safety and where every foster parent is 
+                            compassion, cultural integrity, and emotional safety and where every foster parent, kinship caregivers and families are 
                             supported, respected, and equipped to sustain that environment.
                         </p>
                         <p className="vision-text">

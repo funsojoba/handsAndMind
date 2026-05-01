@@ -21,7 +21,7 @@ const Program = () => {
             id: "relief-package",
             title: "Hearts & Mind Relief Package",
             subtitle: "Practical, in-home support to ease daily burdens",
-            description: "Our Relief Package provides foster parents with free, hands-on help for everyday tasks—meal prep, laundry, light housekeeping. Designed to reduce burnout, this service allows caregivers to focus on building strong connections with their children.",
+            description: "Our Relief Package provides foster parents and kinship caregivers with free, hands-on help for everyday tasks—meal prep, laundry, light housekeeping. Designed to reduce burnout, this service allows caregivers to focus on building strong connections with their children.",
             features: [
                 "Customized support based on family needs",
                 "Trauma-trained volunteers",
@@ -35,7 +35,7 @@ const Program = () => {
             id: "brunch-series",
             title: "Hearts & Brunch Series",
             subtitle: "Building community over shared meals",
-            description: "A monthly gathering where foster parents connect, share experiences, and access resources—all while enjoying a chef-prepared meal.",
+            description: "A monthly gathering where foster parents and kinship caregivers connect, share experiences, and access resources—all while enjoying a chef-prepared meal.",
             features: [
                 "Themed discussions (e.g., advocacy, self-care)",
                 "Peer mentorship opportunities",

@@ -35,7 +35,7 @@ const CaregiverCircle = () => {
                 <HeroSection>
                     <div className="content">
                         <h1>Hearts and Mind Support Group (Caregiver Circle)</h1>
-                        <p>A support space for foster parents &amp; kinship caregivers.</p>
+                        <p>A support space for foster parents, kinship caregivers and families.</p>
                     </div>
                 </HeroSection>
 

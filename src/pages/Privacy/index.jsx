@@ -21,10 +21,8 @@ const PrivacyPolicy = () =>{
                             your personal information. This Privacy Policy explains how we collect, use, disclose, and
                             safeguard your information when you visit our website heartsandmind.org, submit forms
                             to us, or otherwise interact with our services.
-                            We exist to support foster parents and families with dignity and respect, and that includes
-                            handling your data with the utmost care and integrity.
                         </p>
-                        <p>We exist to support foster parents and families with dignity and respect, and that includes
+                        <p>We exist to support foster parents, kinship caregivers and families with dignity and respect, and that includes
                         handling your data with the utmost care and integrity.</p>
                     </div>
 
